@@ -1,4 +1,6 @@
-export const dataset_canada_2023 = [
+import { Semiconductor } from "@/types";
+
+export const dataset_canada_2023: Semiconductor[] = [
     {
       model_name: "XenoChip A1",
       type: "cpu",

@@ -18,7 +18,8 @@ import {
 } from "recharts";
 
 import colors from "../utils/colors";
-import { dataset_canada_2023 } from "../mock-data/dataset_canada_2023";
+import { datasets } from "./../mock-data/datasets";
+// import { dataset_canada_2023 } from "../mock-data/dataset_canada_2023";
 import { useData } from "../contexts/DataContext";
 import { semiconductorProps } from "../utils/semiconductorProps";
 import { SemiconductorProperty } from "@/types";
@@ -30,11 +31,12 @@ import { SemiconductorProperty } from "@/types";
 // const InsightView: React.FC<InsightViewProps> = () => {
 const InsightView: React.FC = () => {
   // const { chartType, set_chartType } = useData();
+  const { datasetName } = useData();
   const { yAxis } = useData();
   const { xAxis } = useData();
 
   const sortedData = useMemo(() => {
-    return [...dataset_canada_2023].sort(
+    return datasets[datasetName]?.sort(
       (a, b) =>
         Number(a[xAxis as keyof typeof a]) - Number(b[xAxis as keyof typeof b])
     );
@@ -59,6 +61,8 @@ const InsightView: React.FC = () => {
 
   return (
     <div className="pdf-insight-view mt-4 p-4">
+      
+
       <div className="insight-container pdf-shadow p-2">
         <div className="d-flex align-center">
           {yAxis && xAxis && (
@@ -116,7 +120,7 @@ const InsightView: React.FC = () => {
                     color: "#8D929C",
                     fontSize: "11px",
                     paddingTop: "28px",
-                    marginBottom: "10px"
+                    marginBottom: "10px",
                   }}
                 />
               </LineChart>
