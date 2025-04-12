@@ -33,11 +33,12 @@ const InsightView: React.FC = () => {
   const { yAxis } = useData();
   const { xAxis } = useData();
 
-  // const sortedData = useMemo(() => {
-  //   return [...dataset_canada_2023].sort(
-  //     (a, b) => Number(a[xAxis as keyof typeof a]) - Number(b[xAxis as keyof typeof b])
-  //   );
-  // }, [xAxis]);
+  const sortedData = useMemo(() => {
+    return [...dataset_canada_2023].sort(
+      (a, b) =>
+        Number(a[xAxis as keyof typeof a]) - Number(b[xAxis as keyof typeof b])
+    );
+  }, [xAxis]);
 
   const [yAxisLabel, set_yAxisLabel] = useState<SemiconductorProperty>({
     name: "",
@@ -57,68 +58,76 @@ const InsightView: React.FC = () => {
   }, [yAxis, xAxis]);
 
   return (
-    <div className="pdf-insight-view mt-4 pa-4 mx-4">
-      <div className="d-flex align-center">
-        {yAxis && xAxis && (
-          <div className="insight-title mb-2">
-            <strong>{semiconductorProps[yAxis]?.name}</strong>{" "}
-            {semiconductorProps[yAxis]?.unit
-              ? `(${semiconductorProps[yAxis].unit})`
-              : null}{" "}
-            and <strong>{xAxisLabel?.name}</strong>{" "}
-            {xAxisLabel.unit && ` (${xAxisLabel.unit})`}
-          </div>
-        )}
-      </div>
-      <div className="insight-container pdf-shadow d-flex py-5 px-4">
-        <div className="yAxis-label__holder ">
-          <div className="axis-label yAxis-label">
-            <div>
-              <strong>{yAxisLabel?.name} </strong>{" "}
-              {yAxisLabel?.unit &&
-                `(${yAxisLabel.unit})`}
+    <div className="pdf-insight-view mt-4 p-4 mx-4">
+      <div className="insight-container pdf-shadow p-4">
+        <div className="d-flex align-center">
+          {yAxis && xAxis && (
+            <div className="insight-title mb-2">
+              <strong>{semiconductorProps[yAxis]?.name}</strong>{" "}
+              {semiconductorProps[yAxis]?.unit
+                ? `(${semiconductorProps[yAxis].unit})`
+                : null}{" "}
+              and <strong>{xAxisLabel?.name}</strong>{" "}
+              {xAxisLabel.unit && ` (${xAxisLabel.unit})`}
+            </div>
+          )}
+        </div>
+
+        <div className="d-flex mb-5">
+          <div className="yAxis-label__holder ">
+            <div className="axis-label yAxis-label">
+              <div>
+                <strong>{yAxisLabel?.name} </strong>{" "}
+                {yAxisLabel?.unit && `(${yAxisLabel.unit})`}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="w-100">
-          <ResponsiveContainer width="100%" height={600}>
-            <LineChart
-              data={dataset_canada_2023}
-              margin={{ bottom: 32, right: 16 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <YAxis
-                dataKey={yAxis}
-                tick={{ fill: colors["pdf-med"], fontSize: 9, fontWeight: 500 }}
-                axisLine={{ stroke: colors["pdf-lightest"] }}
-                tickLine={{ stroke: colors["pdf-med-light"] }}
-              />
-              <XAxis
-                dataKey={xAxis}
-                axisLine={{ stroke: colors["pdf-lightest"] }}
-                tickLine={{ stroke: colors["pdf-med-light"] }}
-                tick={{ fill: colors["pdf-med"], fontSize: 9, fontWeight: 500 }}
-              />
+          <div className="w-100">
+            <ResponsiveContainer width="100%" height={600}>
+              <LineChart data={sortedData} margin={{ bottom: 32, right: 16 }}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <YAxis
+                  dataKey={yAxis}
+                  tick={{
+                    fill: colors["pdf-med"],
+                    fontSize: 11,
+                    fontWeight: 500,
+                  }}
+                  axisLine={{ stroke: colors["pdf-lightest"] }}
+                  tickLine={{ stroke: colors["pdf-med-light"] }}
+                />
+                <XAxis
+                  dataKey={xAxis}
+                  axisLine={{ stroke: colors["pdf-lightest"] }}
+                  tickLine={{ stroke: colors["pdf-med-light"] }}
+                  tick={{
+                    fill: colors["pdf-med"],
+                    fontSize: 11,
+                    fontWeight: 500,
+                  }}
+                />
 
-              <Line type="monotone" dataKey={yAxis} stroke="#F6CB67" />
-              <Tooltip
-                content={<CustomTooltip xAxis={xAxis} yAxis={yAxis} />}
-              />
-              <Legend
-                wrapperStyle={{
-                  color: "#8D929C",
-                  fontSize: "8px",
-                  paddingTop: "32px",
-                }}
-              />
-            </LineChart>
-          </ResponsiveContainer>
+                <Line type="monotone" dataKey={yAxis} stroke="#F6CB67" />
+                <Tooltip
+                  content={<CustomTooltip xAxis={xAxis} yAxis={yAxis} />}
+                />
+                <Legend
+                  wrapperStyle={{
+                    color: "#8D929C",
+                    fontSize: "11px",
+                    paddingTop: "28px",
+                    marginBottom: "10px"
+                  }}
+                />
+              </LineChart>
+            </ResponsiveContainer>
 
-          <div className="xAxis-label__holder ma-0 px-0">
-            <div className="axis-label xAxis-label">
-              {" "}
-              <strong>{xAxisLabel?.name} </strong>{" "}
-              {xAxisLabel.unit && ` (${xAxisLabel.unit})`}
+            <div className="xAxis-label__holder ma-0 px-0">
+              <div className="axis-label xAxis-label">
+                {" "}
+                <strong>{xAxisLabel?.name} </strong>{" "}
+                {xAxisLabel.unit && ` (${xAxisLabel.unit})`}
+              </div>
             </div>
           </div>
         </div>

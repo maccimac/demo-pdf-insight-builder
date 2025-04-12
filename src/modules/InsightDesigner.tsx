@@ -23,7 +23,7 @@ const InsightDesigner: React.FC<InsightDesignerProps> = () => {
   const scParams: Record<string, SemiconductorProperty> = semiconductorProps;
 
   return (
-    <div className="pdf-insight-designer p-4">
+    <div className="pdf-insight-designer p-4 mt-5">
       <div className="select-a-chart">
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Select a chart</InputLabel>
@@ -45,13 +45,14 @@ const InsightDesigner: React.FC<InsightDesignerProps> = () => {
       </div>
 
       <Divider className="my-4" />
+
       <div className="mt-4">
         <FormControl fullWidth>
           <InputLabel id="y-axis">Y-Axis</InputLabel>
           <Select
             labelId="y-axis-label"
             id="y-axis"
-            label="Y-Axis"
+            label="y-Axis"
             value={yAxis}
             onChange={(e) => {
               set_yAxis(e.target.value);

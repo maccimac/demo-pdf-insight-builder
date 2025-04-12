@@ -23,7 +23,7 @@ export const semiconductorProps: Record<string, SemiconductorProperty> = {
     dataType: "number"
   },
   cost_to_produce: {
-    name: "Cost to produce",
+    name: "Cost of production",
     unit: "$",
     dataType: "number"
   },

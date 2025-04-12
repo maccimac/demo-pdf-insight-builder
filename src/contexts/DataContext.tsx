@@ -4,8 +4,8 @@ const DataContext = createContext<any>(null);
 
 export function DataProvider({ children }: { children: React.ReactNode }) {
   const [chartType, set_chartType] = useState("line");
-  const [xAxis, set_xAxis] = useState<string>("cost_of_production");
   const [yAxis, set_yAxis] = useState<string>("processing_power");
+  const [xAxis, set_xAxis] = useState<string>("cost_to_produce");
 
 
   return (
