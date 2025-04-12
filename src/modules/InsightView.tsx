@@ -58,8 +58,8 @@ const InsightView: React.FC = () => {
   }, [yAxis, xAxis]);
 
   return (
-    <div className="pdf-insight-view mt-4 p-4 mx-4">
-      <div className="insight-container pdf-shadow p-4">
+    <div className="pdf-insight-view mt-4 p-4">
+      <div className="insight-container pdf-shadow p-2">
         <div className="d-flex align-center">
           {yAxis && xAxis && (
             <div className="insight-title mb-2">

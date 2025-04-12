@@ -23,7 +23,7 @@ const InsightDesigner: React.FC<InsightDesignerProps> = () => {
   const scParams: Record<string, SemiconductorProperty> = semiconductorProps;
 
   return (
-    <div className="pdf-insight-designer p-4 mt-5">
+    <div className="pdf-insight-designer p-2 mt-5">
       <div className="select-a-chart">
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Select a chart</InputLabel>

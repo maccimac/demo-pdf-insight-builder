@@ -5,6 +5,7 @@
 @import './utils/typography.scss';
 @import './utils/borders-and-bgs.scss';
 
+@import './bootstrap-custom.scss';
 
 // Layouts
 @import './modules/your-data.scss';
@@ -14,7 +15,7 @@
 
 
 *, .pdf-insight-builder{
-    font-family: "IBM Plex Sans", sans-serif;
+    font-family: "IBM Plex Sans", sans-serif !important;
     // font-size: 16px;
     color: #535965;
 }
