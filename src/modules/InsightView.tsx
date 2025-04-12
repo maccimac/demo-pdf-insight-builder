@@ -16,7 +16,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { paramLabels } from "../utils/paramLabels";
+import { semiconductorProps } from "../utils/semiconductorProps";
 import colors from "../utils/colors";
 import { dataset_canada_2023 } from "../mock-data/dataset_canada_2023";
 
@@ -44,10 +44,10 @@ const InsightView: React.FC = () => {
     <div className="pdf-insight-view mt-4 pa-4 mx-4">
       <div className="d-flex align-center">
         <div className="insight-title mb-2">
-          <strong>{paramLabels[yKey].name}</strong>{" "}
-          {paramLabels[yKey]?.unit ? `(${paramLabels[yKey].unit})` : null}
-          {" "} and <strong>{paramLabels[xKey].name}</strong>{" "}
-          {paramLabels[xKey]?.unit ? `(${paramLabels[xKey].unit})` : null}{" "}
+          <strong>{semiconductorProps[yKey].name}</strong>{" "}
+          {semiconductorProps[yKey]?.unit ? `(${semiconductorProps[yKey].unit})` : null}
+          {" "} and <strong>{semiconductorProps[xKey].name}</strong>{" "}
+          {semiconductorProps[xKey]?.unit ? `(${semiconductorProps[xKey].unit})` : null}{" "}
          
         </div>
       </div>
@@ -56,8 +56,8 @@ const InsightView: React.FC = () => {
         <div className="ykey-label__holder ">
           <div className="axis-label ykey-label">
             <div>
-              <strong>{paramLabels[yKey].name} </strong>{" "}
-              {/* {{paramLabels[yKey]?.unit && `(${paramLabels[yKey].unit})`} */}
+              <strong>{semiconductorProps[yKey].name} </strong>{" "}
+              {/* {{semiconductorProps[yKey]?.unit && `(${semiconductorProps[yKey].unit})`} */}
             </div>
           </div>
         </div>
@@ -93,8 +93,8 @@ const InsightView: React.FC = () => {
           <div className="xkey-label__holder ma-0 px-0">
             <div className="axis-label xkey-label">
               {" "}
-              <strong>{paramLabels[xKey].name} </strong>{" "}
-              {paramLabels[xKey].unit ? `(${paramLabels[xKey].unit})` : null}{" "}
+              <strong>{semiconductorProps[xKey].name} </strong>{" "}
+              {semiconductorProps[xKey].unit ? `(${semiconductorProps[xKey].unit})` : null}{" "}
             </div>
           </div>
         </div>
@@ -125,13 +125,13 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({
         </div>
         <div className="">
           <span className="label">
-            {paramLabels[xKey as keyof typeof paramLabels].name} :
+            {semiconductorProps[xKey as keyof typeof semiconductorProps].name} :
           </span>{" "}
           <span className="value ml-2">{semiconductorItem[xKey]}</span>
         </div>
         <div className="">
           <span className="label">
-            {paramLabels[yKey as keyof typeof paramLabels].name} :
+            {semiconductorProps[yKey as keyof typeof semiconductorProps].name} :
           </span>{" "}
           <span className="value ml-2">{semiconductorItem[yKey]}</span>
         </div>

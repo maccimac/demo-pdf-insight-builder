@@ -1,14 +1,17 @@
-export const paramLabels = {
+import { SemiconductorProperty } from "@/types";
+
+export const semiconductorProps: Record<string, SemiconductorProperty> = {
   model_name: {
     name: "Name",
-    unit: ""
+    unit: "",
   },
   type: {
     name: "Type",
-    unit: ""
+    unit: "",
   },
   material: {
     name: "Materials",
+    unit: "",
     description: "",
   },
   processing_power: {
@@ -25,11 +28,11 @@ export const paramLabels = {
   },
   release_date: {
     name: "Release date",
-    unit: ""
+    unit: "",
   },
   volume_size_cm3: {
     name: "Volume size",
-    unit: "CM3",
-    // unit: "cm³",
+    // unit: "CM3",
+    unit: "cm³",
   },
 };
