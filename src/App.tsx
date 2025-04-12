@@ -8,7 +8,6 @@ function App() {
     <div className="">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
       </Routes>
     </div>
   );

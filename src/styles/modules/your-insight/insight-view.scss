@@ -1,0 +1,35 @@
+.pdf-insight-view {
+  .insight-title {
+    font-size: 16px;
+    text-align: center;
+  }
+  .insight-container {
+    border-radius: 4px;
+    padding: 12px;
+    background-color: #f7f9fb;
+  }
+  .xkey-label__holder{
+    display: flex;
+    min-height: 100%;
+    align-items: center;
+    width: 16px;
+  }
+  .xkey-label{
+    display: flex;
+    align-items: center;
+    transform: rotate(90deg);
+  }
+}
+.pdf-tooltip {
+  border-radius: 4px;
+  background-color: $pdf-darkest;
+  .label {
+    font-size: 16px;
+    font-weight: 500;
+    color: $pdf-lightest;
+  }
+  .value {
+    font-size: 16px;
+    color: $pdf-lightest;
+  }
+}

@@ -1,4 +1,124 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+.bg-pdf-blue-primary {
+  background-color: #00194D !important;
+}
+
+.border-pdf-blue-primary {
+  border: 1px solid #00194D;
+}
+
+.bg-pdf-blue-accent {
+  background-color: #428BE4 !important;
+}
+
+.border-pdf-blue-accent {
+  border: 1px solid #428BE4;
+}
+
+.bg-pdf-darkest {
+  background-color: #232933 !important;
+}
+
+.border-pdf-darkest {
+  border: 1px solid #232933;
+}
+
+.bg-pdf-med-dark {
+  background-color: #535965 !important;
+}
+
+.border-pdf-med-dark {
+  border: 1px solid #535965;
+}
+
+.bg-pdf-med {
+  background-color: #8D929C !important;
+}
+
+.border-pdf-med {
+  border: 1px solid #8D929C;
+}
+
+.bg-pdf-med-light {
+  background-color: #CFD3DA !important;
+}
+
+.border-pdf-med-light {
+  border: 1px solid #CFD3DA;
+}
+
+.bg-pdf-lightest {
+  background-color: #EEF1F7 !important;
+}
+
+.border-pdf-lightest {
+  border: 1px solid #EEF1F7;
+}
+
+.bg-pdf-blue-muted-medium-light {
+  background-color: #8DAACD !important;
+}
+
+.border-pdf-blue-muted-medium-light {
+  border: 1px solid #8DAACD;
+}
+
+.bg-pdf-blue-muted-medium {
+  background-color: #576C99 !important;
+}
+
+.border-pdf-blue-muted-medium {
+  border: 1px solid #576C99;
+}
+
+.shadow {
+  box-shadow: 0px 2px 8px 0px rgba(141, 146, 156, 0.24);
+}
+
+hr {
+  border-color: #CFD3DA;
+}
+
+.pdf-your-data {
+  background-color: #EEF1F7;
+  min-height: 240px;
+}
+
+.pdf-insight-view .insight-title {
+  font-size: 16px;
+  text-align: center;
+}
+.pdf-insight-view .insight-container {
+  border-radius: 4px;
+  padding: 12px;
+  background-color: #f7f9fb;
+}
+.pdf-insight-view .xkey-label__holder {
+  display: flex;
+  min-height: 100%;
+  align-items: center;
+  width: 16px;
+}
+.pdf-insight-view .xkey-label {
+  display: flex;
+  align-items: center;
+  transform: rotate(90deg);
+}
+
+.pdf-tooltip {
+  border-radius: 4px;
+  background-color: #232933;
+}
+.pdf-tooltip .label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #EEF1F7;
+}
+.pdf-tooltip .value {
+  font-size: 16px;
+  color: #EEF1F7;
+}
+
 *, .pdf-insight-builder {
   font-family: "IBM Plex Sans", sans-serif;
   font-size: 16px;
