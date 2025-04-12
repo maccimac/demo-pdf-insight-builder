@@ -7,8 +7,9 @@ import {
   MenuItem,
   Divider,
 } from "@mui/material";
-import { SemiconductorProperty } from "@/types";
+import { SemiconductorProperty } from "../types/index";
 import { semiconductorProps } from "../utils/semiconductorProps";
+import { useData } from "../contexts/DataContext";
 
 interface InsightDesignerProps {
   //
@@ -18,16 +19,15 @@ const InsightDesigner: React.FC<InsightDesignerProps> = () => {
   const [chartType, set_chartType] = useState("line");
   const [xAxis, set_xAxis] = useState("cost_of_production");
   const [yAxis, set_yAxis] = useState("processing_power");
+  const { myPetName, setMyPetName } = useData();
 
   const scParams: Record<string, SemiconductorProperty> = semiconductorProps;
 
-  // const handleChange = (event: { preventDefault: () => void }) => {
-  //   event.preventDefault();
-  // };
 
   return (
     <div className="pdf-insight-designer p-4">
       <div className="select-a-chart">
+        {myPetName}
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Select a chart</InputLabel>
           <Select
@@ -96,7 +96,12 @@ const InsightDesigner: React.FC<InsightDesignerProps> = () => {
         </FormControl>
       </div>
 
-      {/* <TextField /> */}
+      <TextField
+        value={myPetName}
+        onChange={(e) => {
+          setMyPetName(e.target.value);
+        }}
+      />
 
       {/* */}
     </div>

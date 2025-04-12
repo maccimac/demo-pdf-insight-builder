@@ -19,7 +19,7 @@ import {
 import { semiconductorProps } from "../utils/semiconductorProps";
 import colors from "../utils/colors";
 import { dataset_canada_2023 } from "../mock-data/dataset_canada_2023";
-
+import { useData } from "../contexts/DataContext";
 // interface InsightViewProps {
 //   xKey: string;
 //   yKey: string;
@@ -29,6 +29,7 @@ import { dataset_canada_2023 } from "../mock-data/dataset_canada_2023";
 const InsightView: React.FC = () => {
   // const xKey = "cost_to_produce";
   // const yKey = "life_span_years";
+    const { myPetName,  } = useData();
 
   const yKey = "processing_power";
   const xKey = "cost_to_produce";
@@ -42,6 +43,7 @@ const InsightView: React.FC = () => {
 
   return (
     <div className="pdf-insight-view mt-4 pa-4 mx-4">
+      { myPetName}
       <div className="d-flex align-center">
         <div className="insight-title mb-2">
           <strong>{semiconductorProps[yKey].name}</strong>{" "}
