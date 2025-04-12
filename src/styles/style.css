@@ -95,8 +95,9 @@ hr {
 }
 
 .pdf-insight-view .insight-title {
-  font-size: 16px;
+  font-size: 22px;
   text-align: center;
+  width: 100%;
 }
 .pdf-insight-view .insight-container {
   border-radius: 4px;
@@ -107,7 +108,7 @@ hr {
   font-weight: 500;
   color: #535965;
 }
-.pdf-insight-view .ykey-label__holder {
+.pdf-insight-view .yAxis-label__holder {
   display: flex;
   min-height: 100%;
   align-items: center;
@@ -116,12 +117,12 @@ hr {
   margin-bottom: 64px;
   margin-right: -20px;
 }
-.pdf-insight-view .ykey-label {
+.pdf-insight-view .yAxis-label {
   transform: rotate(90deg);
   min-width: 400px;
   text-align: center;
 }
-.pdf-insight-view .xkey-label__holder {
+.pdf-insight-view .xAxis-label__holder {
   width: 100%;
   display: flex;
   align-items: center;
@@ -145,7 +146,6 @@ hr {
 
 *, .pdf-insight-builder {
   font-family: "IBM Plex Sans", sans-serif;
-  font-size: 16px;
   color: #535965;
 }
 

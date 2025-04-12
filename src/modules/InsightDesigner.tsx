@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import {
   FormControl,
   InputLabel,
@@ -16,18 +16,15 @@ interface InsightDesignerProps {
 }
 
 const InsightDesigner: React.FC<InsightDesignerProps> = () => {
-  const [chartType, set_chartType] = useState("line");
-  const [xAxis, set_xAxis] = useState("cost_of_production");
-  const [yAxis, set_yAxis] = useState("processing_power");
-  const { myPetName, setMyPetName } = useData();
+  const { chartType, set_chartType } = useData();
+  const { yAxis, set_yAxis } = useData();
+  const { xAxis, set_xAxis } = useData();
 
   const scParams: Record<string, SemiconductorProperty> = semiconductorProps;
-
 
   return (
     <div className="pdf-insight-designer p-4">
       <div className="select-a-chart">
-        {myPetName}
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Select a chart</InputLabel>
           <Select
@@ -62,11 +59,20 @@ const InsightDesigner: React.FC<InsightDesignerProps> = () => {
             className="w-100"
           >
             {Object.entries(scParams).map(
-              ([key, semi]: [string, SemiconductorProperty]) => (
-                <MenuItem key={key} value={key}>
-                  {semi.name}
-                </MenuItem>
-              )
+              ([key, semi]: [string, SemiconductorProperty]) => {
+                if (
+                  typeof semi.dataType === "string" &&
+                  !["string", "array"].includes(semi.dataType)
+                ) {
+                  return (
+                    <MenuItem key={key} value={key}>
+                      {semi.name}
+                    </MenuItem>
+                  );
+                } else {
+                  return "";
+                }
+              }
             )}
           </Select>
         </FormControl>
@@ -96,12 +102,12 @@ const InsightDesigner: React.FC<InsightDesignerProps> = () => {
         </FormControl>
       </div>
 
-      <TextField
+      {/* <TextField
         value={myPetName}
         onChange={(e) => {
           setMyPetName(e.target.value);
         }}
-      />
+      /> */}
 
       {/* */}
     </div>

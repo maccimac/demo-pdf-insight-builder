@@ -3,11 +3,17 @@ import { createContext, useContext, useState } from "react";
 const DataContext = createContext<any>(null);
 
 export function DataProvider({ children }: { children: React.ReactNode }) {
-  const [data, setData] = useState("initial");
-  const [myPetName, setMyPetName] = useState("Pumpkin");
+  const [chartType, set_chartType] = useState("line");
+  const [xAxis, set_xAxis] = useState<string>("cost_of_production");
+  const [yAxis, set_yAxis] = useState<string>("processing_power");
+
 
   return (
-    <DataContext.Provider value={{ data, setData, myPetName, setMyPetName }}>
+    <DataContext.Provider value={{ 
+      chartType, set_chartType,
+      yAxis, set_yAxis,
+      xAxis, set_xAxis,
+     }}>
       {children}
     </DataContext.Provider>
   );
