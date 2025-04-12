@@ -11946,6 +11946,17 @@ textarea.form-control-lg {
   min-height: 240px;
 }
 
+.pdf-dataset-row:hover {
+  background-color: hsl(219, 21%, 87%);
+}
+.pdf-dataset-row .MuiTableCell-root {
+  max-width: 120px;
+  min-width: 40px;
+  line-height: 12px;
+  border-bottom: none;
+  color: #8D929C;
+}
+
 .pdf-insight-view .insight-title {
   font-size: 22px;
   text-align: center;

@@ -8,7 +8,8 @@
 @import './bootstrap-custom.scss';
 
 // Layouts
-@import './modules/your-data.scss';
+@import './modules/your-data/your-data.scss';
+@import './modules/your-data/dataset-table.scss';
 @import './modules/your-insight/your-insight.scss';
 @import './modules/your-insight/insight-view.scss';
 @import './modules/your-insight/insight-designer.scss';

@@ -19,7 +19,6 @@ import {
 
 import colors from "../utils/colors";
 import { datasets } from "./../mock-data/datasets";
-// import { dataset_canada_2023 } from "../mock-data/dataset_canada_2023";
 import { useData } from "../contexts/DataContext";
 import { semiconductorProps } from "../utils/semiconductorProps";
 import { SemiconductorProperty } from "@/types";
@@ -34,13 +33,13 @@ const InsightView: React.FC = () => {
   const { datasetName } = useData();
   const { yAxis } = useData();
   const { xAxis } = useData();
-
+  
   const sortedData = useMemo(() => {
     return datasets[datasetName]?.sort(
       (a, b) =>
         Number(a[xAxis as keyof typeof a]) - Number(b[xAxis as keyof typeof b])
     );
-  }, [xAxis]);
+  }, [xAxis, datasetName]);
 
   const [yAxisLabel, set_yAxisLabel] = useState<SemiconductorProperty>({
     name: "",

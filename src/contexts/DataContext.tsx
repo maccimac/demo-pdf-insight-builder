@@ -7,7 +7,7 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
   const [yAxis, set_yAxis] = useState<string>("processing_power");
   const [xAxis, set_xAxis] = useState<string>("cost_to_produce");
   const [datasetName, set_datasetName] = useState<string>(
-    "advan_featured"
+    "dataset_canada_2023"
   );
 
   return (
