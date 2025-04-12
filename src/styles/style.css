@@ -93,16 +93,30 @@ hr {
   padding: 12px;
   background-color: #f7f9fb;
 }
-.pdf-insight-view .xkey-label__holder {
+.pdf-insight-view .axis-labels {
+  font-weight: 500;
+  color: #535965;
+}
+.pdf-insight-view .ykey-label__holder {
   display: flex;
   min-height: 100%;
   align-items: center;
+  justify-content: center;
   width: 16px;
+  margin-bottom: 64px;
+  margin-right: -20px;
 }
-.pdf-insight-view .xkey-label {
+.pdf-insight-view .ykey-label {
+  transform: rotate(90deg);
+  min-width: 400px;
+  text-align: center;
+}
+.pdf-insight-view .xkey-label__holder {
+  width: 100%;
   display: flex;
   align-items: center;
-  transform: rotate(90deg);
+  justify-content: center;
+  margin-top: -84px;
 }
 
 .pdf-tooltip {

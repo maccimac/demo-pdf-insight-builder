@@ -1,14 +1,15 @@
 export const paramLabels = {
   model_name: {
     name: "Name",
+    unit: ""
   },
   type: {
     name: "Type",
+    unit: ""
   },
   material: {
     name: "Materials",
     description: "",
-    hint: "",
   },
   processing_power: {
     name: "Processing power",
@@ -24,9 +25,11 @@ export const paramLabels = {
   },
   release_date: {
     name: "Release date",
+    unit: ""
   },
   volume_size_cm3: {
     name: "Volume size",
-    unit: "cm³",
+    unit: "CM3",
+    // unit: "cm³",
   },
 };
