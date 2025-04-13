@@ -1,19 +1,5 @@
-import colors from "@utils/colors";
 import { datasets } from "@mock-data/datasets";
-import {
-  LineChart,
-  Line,
-  BarChart,
-  ScatterChart,
-  Scatter,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  TooltipProps,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+// import { TooltipProps } from "recharts";
 import InsightChartScatter from "./charts/InsightChartScatter";
 import { semiconductorProps } from "../utils/semiconductorProps";
 import { SemiconductorProperty } from "@/types";
@@ -21,7 +7,7 @@ import { useState, useEffect } from "react";
 import { useMemo } from "react";
 import { useData } from "@contexts/DataContext";
 import InsightChartBar from "./charts/InsightChartBar";
-import { formatDate } from "@utils/utils";
+
 import InsightChartLine from "./charts/InsightChartLine";
 
 const InsightView: React.FC = () => {
@@ -109,11 +95,7 @@ const InsightView: React.FC = () => {
             )}
 
             {chartType === "bar" && (
-              <InsightChartBar
-                data={sortedData}
-                xAxis={xAxis}
-                yAxis={yAxis}
-              />
+              <InsightChartBar data={sortedData} xAxis={xAxis} yAxis={yAxis} />
             )}
 
             {chartType === "line" && (
@@ -181,54 +163,54 @@ const InsightView: React.FC = () => {
   );
 };
 
-interface CustomTooltipProps extends TooltipProps<number, string> {
-  xAxis: string;
-  yAxis: string;
-}
+// interface CustomTooltipProps extends TooltipProps<number, string> {
+//   xAxis: string;
+//   yAxis: string;
+// }
 
-const CustomTooltip: React.FC<CustomTooltipProps> = ({
-  active,
-  payload,
-  label,
-  xAxis,
-  yAxis,
-}) => {
-  if (active && payload && payload.length) {
-    const semiconductorItem = payload[0]?.payload;
-    return (
-      <div className="pdf-tooltip p-2 flex flex-col gap-2 rounded-sm">
-        <div className="label mb-2">{semiconductorItem.model_name}</div>
+// const CustomTooltip: React.FC<CustomTooltipProps> = ({
+//   active,
+//   payload,
+//   label,
+//   xAxis,
+//   yAxis,
+// }) => {
+//   if (active && payload && payload.length) {
+//     const semiconductorItem = payload[0]?.payload;
+//     return (
+//       <div className="pdf-tooltip p-2 flex flex-col gap-2 rounded-sm">
+//         <div className="label mb-2">{semiconductorItem.model_name}</div>
 
-        {xAxis?.length && (
-          <div className="">
-            <span className="label">
-              {
-                semiconductorProps[xAxis as keyof typeof semiconductorProps]
-                  ?.name
-              }{" "}
-              :
-            </span>{" "}
-            <span className="value ml-2">{semiconductorItem[xAxis]}</span>
-          </div>
-        )}
+//         {xAxis?.length && (
+//           <div className="">
+//             <span className="label">
+//               {
+//                 semiconductorProps[xAxis as keyof typeof semiconductorProps]
+//                   ?.name
+//               }{" "}
+//               :
+//             </span>{" "}
+//             <span className="value ml-2">{semiconductorItem[xAxis]}</span>
+//           </div>
+//         )}
 
-        {yAxis?.length && (
-          <div className="">
-            <span className="label">
-              {
-                semiconductorProps[yAxis as keyof typeof semiconductorProps]
-                  ?.name
-              }{" "}
-              :
-            </span>{" "}
-            <span className="value ml-2">{semiconductorItem[yAxis]}</span>
-          </div>
-        )}
-      </div>
-    );
-  }
+//         {yAxis?.length && (
+//           <div className="">
+//             <span className="label">
+//               {
+//                 semiconductorProps[yAxis as keyof typeof semiconductorProps]
+//                   ?.name
+//               }{" "}
+//               :
+//             </span>{" "}
+//             <span className="value ml-2">{semiconductorItem[yAxis]}</span>
+//           </div>
+//         )}
+//       </div>
+//     );
+//   }
 
-  return null;
-};
+//   return null;
+// };
 
 export default InsightView;
