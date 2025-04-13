@@ -18,7 +18,7 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
   saveView,
   deleteView,
 }) => {
-  const { viewList, set_viewsList } = useData();
+  const { viewsList, set_viewsList } = useData();
   const { chartType, set_chartType } = useData();
   const { yAxis, set_yAxis } = useData();
   const { xAxis, set_xAxis } = useData();
@@ -32,6 +32,7 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
   const scParams: Record<string, SemiconductorProperty> = semiconductorProps;
 
   const [viewName, set_viewName] = useState<string>("");
+  const [validationError, set_validationError] = useState<string>("");
 
   const saveNewInsight = () => {
     // check if same name on insight
@@ -43,7 +44,18 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
         xAxis,
       },
     };
-    saveView(insightView);
+
+    const isNotUnique = viewsList.some(
+      (vl: InsightViewMeta) => vl.name === viewName
+    );
+    if (isNotUnique) {
+      set_validationError("An insight view with the same name has already been created");
+      return;
+    }else{
+      set_viewName("");
+      saveView(insightView);
+    }
+
   };
 
   return (
@@ -119,8 +131,11 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
         <TextField
           label="New insight name"
           variant="outlined"
+          value={viewName}
           placeholder="Lifespan x Volume size"
           fullWidth
+          error={!!validationError}
+          helperText={validationError}
           sx={{
             "& .MuiOutlinedInput-root": {
               color: colors["pdf-med-dark"],

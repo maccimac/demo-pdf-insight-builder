@@ -11,7 +11,7 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
     "dataset_canada_2023"
   );
 
-  const [viewList, set_viewList] = useState<InsightViewMeta[]>([
+  const [viewsList, set_viewsList] = useState<InsightViewMeta[]>([
     {
       name: "Processing power by production cost",
       params: {
@@ -37,7 +37,7 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
         datasetName,
         set_datasetName,
 
-        viewList, set_viewList
+        viewsList, set_viewsList
       }}
     >
       {children}
