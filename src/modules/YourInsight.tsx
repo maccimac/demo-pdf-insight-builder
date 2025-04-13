@@ -3,7 +3,9 @@ import { InsightViewMeta } from "@/types";
 import InsightDesigner from "./InsightDesigner";
 import PdfButton from "@components/PdfButton";
 import { useData } from "@contexts/DataContext";
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
+import PdfSelector from "@components/PdfSelector";
+import { MenuItem } from "@mui/material";
 
 interface YourInsightProps {
   // Add your prop types here
@@ -14,13 +16,20 @@ const YourInsight: React.FC<YourInsightProps> = () => {
   const { set_chartType } = useData();
   const { set_yAxis } = useData();
   const { set_xAxis } = useData();
+  const [selectedView, set_selectedView] = useState<string>(
+    "Processing power by production cost"
+  );
 
-  // const localStorageUserId = localStorage.getItem("sq_user_id")
-  // localStorage.setItem("sq_user_id", action.payload)
+  const selectViewListOptions = useMemo(() => {
+    return viewsList.map((vl: InsightViewMeta) => {
+      return { text: vl.name, value: vl.name };
+    });
+  }, [viewsList]);
 
   const saveView = (newView: InsightViewMeta) => {
     const updatedList = [...viewsList, newView];
     set_viewsList(updatedList);
+    set_selectedView(newView.name);
     localStorage.setItem("pdf_views_list", JSON.stringify(updatedList));
   };
 
@@ -34,8 +43,9 @@ const YourInsight: React.FC<YourInsightProps> = () => {
 
   const setCurrentView = (insightView: InsightViewMeta) => {
     if (insightView.params) {
+      set_selectedView(insightView.name);
       set_chartType(insightView.params.chartType);
-      set_yAxis(insightView.params.xAxis);
+      set_yAxis(insightView.params.yAxis);
       set_xAxis(insightView.params.xAxis);
     }
   };
@@ -51,27 +61,31 @@ const YourInsight: React.FC<YourInsightProps> = () => {
     }
   }, []);
 
+  useEffect(() => {
+    viewsList.map((vl: InsightViewMeta) => {
+      if (vl.name === selectedView) {
+        setCurrentView(vl);
+      }
+    });
+  }, [selectedView]);
+
   return (
-    <div className="pdf-your-insight">
+    <div className="pdf-your-insight mt-4">
       <div className="container-fluid">
         <div className="row">
           <div className="col col-xl-8">
             <InsightView></InsightView>
           </div>
           <div className="col col-xl-4">
-            {viewsList?.map((vl: InsightViewMeta) => (
-              <div>
-                <PdfButton
-                  onClick={() => {
-                    setCurrentView(vl);
-                  }}
-                  className="mb-2"
-                  width="100%"
-                >
-                  {vl.name}
-                </PdfButton>
-              </div>
-            ))}
+            <PdfSelector
+              id="select-view"
+              label="Select view"
+              value={selectedView}
+              setValue={set_selectedView}
+              items={selectViewListOptions}
+            >
+              =
+            </PdfSelector>
             <InsightDesigner saveView={saveView} deleteView={deleteView} />
           </div>
         </div>
