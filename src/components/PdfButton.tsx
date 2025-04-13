@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import colors from "./../utils/colors";
+import colors from "@utils/colors";
 import Icon from "@mdi/react";
 import { mdiArrowRight } from "@mdi/js";
 

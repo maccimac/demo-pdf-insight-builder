@@ -1,7 +1,8 @@
+import colors from "@utils/colors";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { ReactNode } from "react";
 import { SelectorItem } from "@/types";
-import colors from "../utils/colors";
+
 
 interface PdfSelectorProps<T = any> {
   id: string;

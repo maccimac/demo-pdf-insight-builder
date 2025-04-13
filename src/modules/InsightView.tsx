@@ -1,6 +1,6 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import { useMemo } from "react";
+import colors from "@utils/colors";
+import { datasets } from "@mock-data/datasets";
+
 import {
   LineChart,
   Line,
@@ -16,16 +16,11 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-
-import colors from "../utils/colors";
-import { datasets } from "./../mock-data/datasets";
-import { useData } from "../contexts/DataContext";
 import { semiconductorProps } from "../utils/semiconductorProps";
 import { SemiconductorProperty } from "@/types";
-// interface InsightViewProps {
-//   xAxis: string;
-//   yAxis: string;
-// }
+import { useState, useEffect } from "react";
+import { useMemo } from "react";
+import { useData } from "@contexts/DataContext";
 
 // const InsightView: React.FC<InsightViewProps> = () => {
 const InsightView: React.FC = () => {

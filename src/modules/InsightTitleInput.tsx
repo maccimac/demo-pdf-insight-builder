@@ -1,5 +1,5 @@
 import { TextField } from "@mui/material";
-import PdfButton from "./../components/PdfButton";
+import PdfButton from "@components/PdfButton";
 interface InsightTitleInputProps {
   //
 }

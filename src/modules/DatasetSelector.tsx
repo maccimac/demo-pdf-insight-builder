@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { datasetMeta, datasets } from "./../mock-data/datasets";
+import { datasetMeta, datasets } from "@mock-data/datasets";
 import PdfSelector from "../components/PdfSelector";
 import PdfDatasetItem from "../components/PdfDatasetItem";
 import { useData } from "../contexts/DataContext";

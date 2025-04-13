@@ -1,11 +1,10 @@
-import colors from "./../utils/colors";
+import colors from "@utils/colors";
 import { MenuItem, Divider } from "@mui/material";
-import { SemiconductorProperty } from "../types/index";
-import { semiconductorProps } from "../utils/semiconductorProps";
-import PdfSelector from "../components/PdfSelector";
-import { SelectorItem } from "../types/index";
+import { SemiconductorProperty, SelectorItem } from "./../types/index";
+import { semiconductorProps } from "@utils/semiconductorProps";
+import PdfSelector from "@components/PdfSelector";
 import InsightTitleInput from "./InsightTitleInput";
-import { useData } from "../contexts/DataContext";
+import { useData } from "@contexts/DataContext";
 
 const InsightDesigner = () => {
   const { chartType, set_chartType } = useData();
@@ -75,7 +74,7 @@ const InsightDesigner = () => {
           )}
         </PdfSelector>
       </div>
-      
+
       <Divider color={colors["pdf-med-light"]} className="my-4" />
 
       <InsightTitleInput />

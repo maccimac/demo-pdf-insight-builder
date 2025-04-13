@@ -1,6 +1,6 @@
 import React from "react";
-import { formatDate } from "../utils/utils";
-import { semiconductorProps } from "../utils/semiconductorProps";
+import { formatDate } from "@utils/utils";
+import { semiconductorProps } from "@utils/semiconductorProps";
 import { Semiconductor, SemiconductorProperty } from "@/types";
 import { TableCell, TableRow } from "@mui/material";
 

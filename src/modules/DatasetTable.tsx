@@ -1,20 +1,18 @@
-import React, { useMemo, useState } from "react";
 import { datasets } from "../mock-data/datasets";
-import { useData } from "../contexts/DataContext";
 import {
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
-  // TableRow,
-  // Paper,
   TableSortLabel,
   Button,
 } from "@mui/material";
 import PdfDatasetTableRow from "../components/PdfDatasetTableRow";
 import { semiconductorProps } from "../utils/semiconductorProps";
 import { Semiconductor, SemiconductorProperty } from "@/types";
+import { useMemo, useState } from "react";
+import { useData } from "../contexts/DataContext";
 
 interface DatasetTableProps {}
 

@@ -1,6 +1,6 @@
 import colors from "../utils/colors";
 import { DatasetItemMeta } from "@/types";
-import { formatDate } from "../utils/utils";
+import { formatDate } from "@utils/utils";
 import Icon from "@mdi/react";
 import { mdiStar, mdiStarOutline } from "@mdi/js";
 import { MenuItem } from "@mui/material";
