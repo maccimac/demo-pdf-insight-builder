@@ -1,4 +1,59 @@
-.pdf-your-data{
+.pdf-your-data {
+  background-color: $pdf-lightest;
+  min-height: 240px;
+}
+
+.dataset-selected {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  .MuiMenuItem-root {
+    display: block;
+  }
+  .dataset-title {
+    font-size: 32px !important;
+  }
+  .dataset-title,
+  .dataset-meta,
+  .dataset-description {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.MuiMenu-list {
+  .pdf-dataset-item {
+    max-width: 560px;
+  }
+}
+.pdf-dataset-item {
+  max-width: 100%;
+  &:hover {
     background-color: $pdf-lightest;
-    min-height: 240px;
+    .dataset-title {
+      color: $pdf-blue-accent;
+    }
+    .dataset-meta,
+    .dataset-description {
+      color: $pdf-darkest;
+    }
+  }
+  .meta-holder {
+    display: block;
+  }
+
+  .dataset-title {
+    font-size: 24px;
+    font-weight: 1000;
+    color: $pdf-blue-primary;
+  }
+  .dataset-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }

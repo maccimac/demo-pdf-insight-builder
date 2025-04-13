@@ -11946,6 +11946,59 @@ textarea.form-control-lg {
   min-height: 240px;
 }
 
+.dataset-selected {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dataset-selected .MuiMenuItem-root {
+  display: block;
+}
+.dataset-selected .dataset-title {
+  font-size: 32px !important;
+}
+.dataset-selected .dataset-title,
+.dataset-selected .dataset-meta,
+.dataset-selected .dataset-description {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.MuiMenu-list .pdf-dataset-item {
+  max-width: 560px;
+}
+
+.pdf-dataset-item {
+  max-width: 100%;
+}
+.pdf-dataset-item:hover {
+  background-color: #EEF1F7;
+}
+.pdf-dataset-item:hover .dataset-title {
+  color: #428BE4;
+}
+.pdf-dataset-item:hover .dataset-meta,
+.pdf-dataset-item:hover .dataset-description {
+  color: #232933;
+}
+.pdf-dataset-item .meta-holder {
+  display: block;
+}
+.pdf-dataset-item .dataset-title {
+  font-size: 24px;
+  font-weight: 1000;
+  color: #00194D;
+}
+.pdf-dataset-item .dataset-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .pdf-dataset-row:hover {
   background-color: hsl(219, 21%, 87%);
 }

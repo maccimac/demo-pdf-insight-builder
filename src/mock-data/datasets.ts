@@ -9,6 +9,7 @@ export const datasets: Record<string, Semiconductor[]> = {
   system_rec_global
 };
 
+
 export const datasetMeta: DatasetItemMeta[] = [
   {
     name: "Dataset Canada 2023",

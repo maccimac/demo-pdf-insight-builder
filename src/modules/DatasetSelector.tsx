@@ -1,5 +1,5 @@
-import { useMemo } from "react";
-import { datasetMeta } from "./../mock-data/datasets";
+import { useMemo, useState } from "react";
+import { datasetMeta, datasets } from "./../mock-data/datasets";
 import Selector from "../components/Selector";
 import DatasetItem from "../components/DatasetItem";
 import { useData } from "../contexts/DataContext";
@@ -17,20 +17,24 @@ const RenderChartType: React.FC<DatasetItemMeta> = ({
     return datasetMeta.find((ds) => ds.value === datasetName);
   }, [datasetName]);
 
-  return (
-    <div>{datasetSelected && <DatasetItem {...datasetSelected} />}</div>
-  
-  );
+  return <div
+  className="dataset-selected"
+  >{datasetSelected && <DatasetItem {...datasetSelected} />}</div>;
 };
 
 const DatasetSelector: React.FC<DatasetSelectorProps> = () => {
   const { datasetName, set_datasetName } = useData();
+
+  const [favoriteDatasets, set_favoriteDataSets] = useState<
+    (keyof typeof datasets)[]
+  >(["dataset_canada_2023"]);
+
   return (
     <div>
       <Selector
         id="select-dataset"
         value={datasetName}
-        label="Select dataset"
+        label="Select from dataset"
         renderSelected={(val) => (
           <RenderChartType {...datasetMeta[datasetName]} />
         )}
@@ -40,12 +44,14 @@ const DatasetSelector: React.FC<DatasetSelectorProps> = () => {
         ))} */}
 
         {datasetMeta.map((ds) => (
-          <div
-            
-          >
-            <DatasetItem key={ds.value} {...ds} onClick={(e) => {
-              set_datasetName(ds.value);
-            }}/>
+          <div>
+            <DatasetItem
+              key={ds.value}
+              {...ds}
+              onClick={(e) => {
+                set_datasetName(ds.value);
+              }}
+            />
           </div>
         ))}
       </Selector>
