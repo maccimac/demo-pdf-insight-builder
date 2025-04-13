@@ -5,11 +5,15 @@
   .MuiTableCell-root {
     max-width: 180px;
     min-width: 32px;
-    line-height: 12px;
+    line-height: 10px;
     border-bottom: none;
     color: $pdf-med;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    &.model_name{
+      font-weight: 500;
+      // color: $pdf-med-dark;
+    }
   }
 }

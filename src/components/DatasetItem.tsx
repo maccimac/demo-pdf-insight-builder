@@ -59,7 +59,7 @@ const DatasetItem: React.FC<DatasetItemProps> = ({
             <div>
               <Icon
                 path={isFavorite ? mdiStar : mdiStarOutline}
-                size="26px"
+                size="20px"
                 color={
                   isActive
                     ? colors["pdf-blue-primary"]

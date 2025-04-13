@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { SelectorItem } from "@/types";
+import colors from "./../utils/colors";
 
 interface SelectorProps<T = any> {
   id: string;
@@ -35,6 +36,31 @@ const Selector: React.FC<SelectorProps> = ({
           }}
           className="w-100"
           renderValue={renderSelected ? () => renderSelected(value) : undefined}
+          sx={{
+            color: colors["pdf-med"],
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: colors["pdf-light"],
+            },
+            "& .MuiSelect-icon": {
+              color: colors["pdf-med"],
+            },
+            "&:hover:": {
+              color: colors["pdf-med-dark"],
+            },
+            "&:hover .MuiOutlinedInput-notchedOutline": {
+              borderColor: colors["pdf-med-light"],
+            },
+            "&.Mui-focused": {
+              color: colors["pdf-med-dark"],
+            },
+          }}
+          MenuProps={{
+            MenuListProps: {
+              sx: {
+                color: colors["pdf-med-dark"],
+              },
+            },
+          }}
         >
           {items?.length
             ? items.map((item: SelectorItem) => (

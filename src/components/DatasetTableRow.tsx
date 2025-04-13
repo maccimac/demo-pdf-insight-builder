@@ -14,13 +14,19 @@ const DatasetTableRow: React.FC<DatasetTableRowProps> = ({ row }) => {
         ([key, semiCondProp]: [string, SemiconductorProperty]) => {
           if (key === "release_date") {
             return (
-              <TableCell key={key}>{formatDate(row.release_date)}</TableCell>
+              <TableCell className={key} key={key}>
+                {formatDate(row.release_date)}
+              </TableCell>
             );
           } else if (key === "material") {
-            return <TableCell key={key}>{row.material.join(", ")}</TableCell>;
+            return (
+              <TableCell className={key} key={key}>
+                {row.material.join(", ")}
+              </TableCell>
+            );
           }
           return (
-            <TableCell key={key}>
+            <TableCell className={key} key={key}>
               {row[key as keyof Semiconductor]} {semiCondProp.unit}
             </TableCell>
           );

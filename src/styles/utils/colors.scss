@@ -7,8 +7,9 @@ $pdf-darkest: #232933;
 $pdf-med-dark: #535965;
 $pdf-med: #8d929c;
 $pdf-med-light: #cfd3da;
+$pdf-light: #DEE2E9;
 $pdf-lightest: #eef1f7;
-$pdf-lightest-transparent: hsl(219, 21%, 87%);
+$pdf-lightest-transparent: rgba(215, 220, 219,33%) ;
 
 // Muted blues
 $pdf-blue-muted-medium-light: #8daacd;
@@ -21,6 +22,7 @@ $color-variables: (
   pdf-med-dark: $pdf-med-dark,
   pdf-med: $pdf-med,
   pdf-med-light: $pdf-med-light,
+  pdf-light: $pdf-light,
   pdf-lightest: $pdf-lightest,
   pdf-lightest-transparent: $pdf-lightest-transparent,
   pdf-blue-muted-medium-light: $pdf-blue-muted-medium-light,
