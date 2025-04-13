@@ -22,6 +22,7 @@ import { useMemo } from "react";
 import { useData } from "@contexts/DataContext";
 import InsightChartBar from "./charts/InsightChartBar";
 import { formatDate } from "@utils/utils";
+import InsightChartLine from "./charts/InsightChartLine";
 
 const InsightView: React.FC = () => {
   const { datasetName } = useData();
@@ -103,56 +104,67 @@ const InsightView: React.FC = () => {
                 data={sortedData}
                 xAxis={xAxis}
                 yAxis={yAxis}
+                xIsNumber={xIsNumber}
               />
             )}
 
             {chartType === "bar" && (
-              <InsightChartBar data={sortedData} xAxis={xAxis} yAxis={yAxis} />
+              <InsightChartBar
+                data={sortedData}
+                xAxis={xAxis}
+                yAxis={yAxis}
+              />
             )}
 
             {chartType === "line" && (
-              <ResponsiveContainer width="100%" height={600}>
-                <LineChart data={sortedData} margin={{ bottom: 32, right: 16 }}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <YAxis
-                    dataKey={yAxis}
-                    tick={{
-                      fill: colors["pdf-med"],
-                      fontSize: 11,
-                      fontWeight: 500,
-                    }}
-                    axisLine={{ stroke: colors["pdf-lightest"] }}
-                    tickLine={{ stroke: colors["pdf-med-light"] }}
-                  />
-                  <XAxis
-                    dataKey={xAxis}
-                    axisLine={{ stroke: colors["pdf-lightest"] }}
-                    tickLine={{ stroke: colors["pdf-med-light"] }}
-                    tickFormatter={(tick) =>
-                      xAxis === "release_date" ? formatDate(tick) : tick
-                    }
-                    tick={{
-                      fill: colors["pdf-med"],
-                      fontSize: 11,
-                      fontWeight: 500,
-                    }}
-                    type={xIsNumber ? "number" : "category"}
-                  />
+              <InsightChartLine
+                data={sortedData}
+                xAxis={xAxis}
+                yAxis={yAxis}
+                xIsNumber={xIsNumber}
+              />
+              // <ResponsiveContainer width="100%" height={600}>
+              //   <LineChart data={sortedData} margin={{ bottom: 32, right: 16 }}>
+              //     <CartesianGrid strokeDasharray="3 3" />
+              //     <YAxis
+              //       dataKey={yAxis}
+              //       tick={{
+              //         fill: colors["pdf-med"],
+              //         fontSize: 11,
+              //         fontWeight: 500,
+              //       }}
+              //       axisLine={{ stroke: colors["pdf-lightest"] }}
+              //       tickLine={{ stroke: colors["pdf-med-light"] }}
+              //     />
+              //     <XAxis
+              //       dataKey={xAxis}
+              //       axisLine={{ stroke: colors["pdf-lightest"] }}
+              //       tickLine={{ stroke: colors["pdf-med-light"] }}
+              //       tickFormatter={(tick) =>
+              //         xAxis === "release_date" ? formatDate(tick) : tick
+              //       }
+              //       tick={{
+              //         fill: colors["pdf-med"],
+              //         fontSize: 11,
+              //         fontWeight: 500,
+              //       }}
+              //       type={xIsNumber ? "number" : "category"}
+              //     />
 
-                  <Line type="monotone" dataKey={yAxis} stroke="#F6CB67" />
-                  <Tooltip
-                    content={<CustomTooltip xAxis={xAxis} yAxis={yAxis} />}
-                  />
-                  <Legend
-                    wrapperStyle={{
-                      color: "#8D929C",
-                      fontSize: "11px",
-                      paddingTop: "28px",
-                      marginBottom: "10px",
-                    }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
+              //     <Line type="monotone" dataKey={yAxis} stroke="#F6CB67" />
+              //     <Tooltip
+              //       content={<CustomTooltip xAxis={xAxis} yAxis={yAxis} />}
+              //     />
+              //     <Legend
+              //       wrapperStyle={{
+              //         color: "#8D929C",
+              //         fontSize: "11px",
+              //         paddingTop: "28px",
+              //         marginBottom: "10px",
+              //       }}
+              //     />
+              //   </LineChart>
+              // </ResponsiveContainer>
             )}
 
             <div className="xAxis-label__holder ma-0 px-0">
