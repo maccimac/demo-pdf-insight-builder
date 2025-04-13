@@ -1,13 +1,14 @@
 import React from "react";
-import { TableCell, TableRow } from "@mui/material";
+import { formatDate } from "../utils/utils";
 import { semiconductorProps } from "../utils/semiconductorProps";
 import { Semiconductor, SemiconductorProperty } from "@/types";
-import { formatDate } from "./../utils/utils";
+import { TableCell, TableRow } from "@mui/material";
+
 interface DatasetTableRowProps {
   row: Semiconductor;
 }
 
-const DatasetTableRow: React.FC<DatasetTableRowProps> = ({ row }) => {
+const PdfDatasetTableRow: React.FC<DatasetTableRowProps> = ({ row }) => {
   return (
     <TableRow className="pdf-dataset-row">
       {Object.entries(semiconductorProps).map(
@@ -36,4 +37,4 @@ const DatasetTableRow: React.FC<DatasetTableRowProps> = ({ row }) => {
   );
 };
 
-export default DatasetTableRow;
+export default PdfDatasetTableRow;

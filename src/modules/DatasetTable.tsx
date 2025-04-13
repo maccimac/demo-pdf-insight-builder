@@ -12,7 +12,7 @@ import {
   TableSortLabel,
   Button,
 } from "@mui/material";
-import DatasetTableRow from "./../components/DatasetTableRow";
+import PdfDatasetTableRow from "../components/PdfDatasetTableRow";
 import { semiconductorProps } from "../utils/semiconductorProps";
 import { Semiconductor, SemiconductorProperty } from "@/types";
 
@@ -82,7 +82,7 @@ const DatasetTable: React.FC<DatasetTableProps> = () => {
           </TableHead>
           <TableBody className="">
             {sortedData.map((row, index) => (
-              <DatasetTableRow row={row} />
+              <PdfDatasetTableRow row={row} />
             ))}
           </TableBody>
         </Table>

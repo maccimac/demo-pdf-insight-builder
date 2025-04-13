@@ -1,9 +1,9 @@
-import React, { ReactNode } from "react";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import { ReactNode } from "react";
 import { SelectorItem } from "@/types";
-import colors from "./../utils/colors";
+import colors from "../utils/colors";
 
-interface SelectorProps<T = any> {
+interface PdfSelectorProps<T = any> {
   id: string;
   value: T;
   setValue?: Function;
@@ -13,7 +13,7 @@ interface SelectorProps<T = any> {
   renderSelected?: (value: T) => ReactNode;
 }
 
-const Selector: React.FC<SelectorProps> = ({
+const PdfSelector: React.FC<PdfSelectorProps> = ({
   id,
   value,
   setValue,
@@ -75,4 +75,4 @@ const Selector: React.FC<SelectorProps> = ({
   );
 };
 
-export default Selector;
+export default PdfSelector;

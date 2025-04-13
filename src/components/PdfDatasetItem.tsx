@@ -1,8 +1,6 @@
-import React from "react";
-
-import colors from "./../utils/colors";
+import colors from "../utils/colors";
 import { DatasetItemMeta } from "@/types";
-import { formatDate } from "./../utils/utils";
+import { formatDate } from "../utils/utils";
 import Icon from "@mdi/react";
 import { mdiStar, mdiStarOutline } from "@mdi/js";
 import { MenuItem } from "@mui/material";
@@ -15,7 +13,7 @@ interface DatasetItemProps extends DatasetItemMeta {
   isActive?: boolean;
 }
 
-const DatasetItem: React.FC<DatasetItemProps> = ({
+const PdfDatasetItem: React.FC<DatasetItemProps> = ({
   name,
   value,
   description,
@@ -81,4 +79,4 @@ const DatasetItem: React.FC<DatasetItemProps> = ({
   );
 };
 
-export default DatasetItem;
+export default PdfDatasetItem;

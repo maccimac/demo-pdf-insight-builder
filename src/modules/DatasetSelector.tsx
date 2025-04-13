@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { datasetMeta, datasets } from "./../mock-data/datasets";
-import Selector from "../components/Selector";
-import DatasetItem from "../components/DatasetItem";
+import PdfSelector from "../components/PdfSelector";
+import PdfDatasetItem from "../components/PdfDatasetItem";
 import { useData } from "../contexts/DataContext";
 import { DatasetItemMeta } from "@/types";
 import { Divider } from "@mui/material";
@@ -29,7 +29,7 @@ const RenderActiveDatasetItem: React.FC<RenderActiveDatasetItemProp> = ({
   return (
     <div className="dataset-selected">
       {datasetSelected && (
-        <DatasetItem
+        <PdfDatasetItem
           {...datasetSelected}
           isActive={true}
           isFavorite={isFavorite}
@@ -71,7 +71,7 @@ const DatasetSelector: React.FC<DatasetSelectorProps> = () => {
 
   return (
     <div>
-      <Selector
+      <PdfSelector
         id="select-dataset"
         value={datasetName}
         label="Select from dataset"
@@ -85,7 +85,7 @@ const DatasetSelector: React.FC<DatasetSelectorProps> = () => {
       >
         <div>
           {favorites.map((ds) => (
-            <DatasetItem
+            <PdfDatasetItem
               {...ds}
               key={ds.value}
               isActive={datasetName === ds.value}
@@ -100,7 +100,7 @@ const DatasetSelector: React.FC<DatasetSelectorProps> = () => {
           ))}
           <Divider color={colors["pdf-med-dark"]} />
           {notFavorites.map((ds) => (
-            <DatasetItem
+            <PdfDatasetItem
               {...ds}
               key={ds.value}
               isActive={datasetName === ds.value}
@@ -114,7 +114,7 @@ const DatasetSelector: React.FC<DatasetSelectorProps> = () => {
             />
           ))}
         </div>
-      </Selector>
+      </PdfSelector>
     </div>
   );
 };
