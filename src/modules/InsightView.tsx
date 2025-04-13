@@ -24,7 +24,6 @@ import { useData } from "@contexts/DataContext";
 
 // const InsightView: React.FC<InsightViewProps> = () => {
 const InsightView: React.FC = () => {
-  // const { chartType, set_chartType } = useData();
   const { datasetName } = useData();
   const { yAxis } = useData();
   const { xAxis } = useData();
@@ -61,12 +60,13 @@ const InsightView: React.FC = () => {
         <div className="d-flex align-center">
           {yAxis && xAxis && (
             <div className="insight-title mb-2">
-              <strong>{semiconductorProps[yAxis]?.name}</strong>{" "}
-              {semiconductorProps[yAxis]?.unit
-                ? `(${semiconductorProps[yAxis].unit})`
-                : null}{" "}
-              and <strong>{xAxisLabel?.name}</strong>{" "}
+              <strong>{xAxisLabel?.name}</strong>{" "}
               {xAxisLabel.unit && ` (${xAxisLabel.unit})`}
+              and
+              d <strong>{yAxisLabel?.name}</strong>{" "}
+              {yAxisLabel.unit && ` (${yAxisLabel.unit})`}
+       
+              
             </div>
           )}
         </div>
@@ -153,6 +153,19 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({
       <div className="pdf-tooltip p-2 flex flex-col gap-2 rounded-sm">
         <div className="label mb-2">{semiconductorItem.model_name}</div>
 
+        {xAxis?.length && (
+          <div className="">
+            <span className="label">
+              {
+                semiconductorProps[xAxis as keyof typeof semiconductorProps]
+                  ?.name
+              }{" "}
+              :
+            </span>{" "}
+            <span className="value ml-2">{semiconductorItem[xAxis]}</span>
+          </div>
+        )}
+
         {yAxis?.length && (
           <div className="">
             <span className="label">
@@ -166,18 +179,7 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({
           </div>
         )}
 
-        {xAxis?.length && (
-          <div className="">
-            <span className="label">
-              {
-                semiconductorProps[xAxis as keyof typeof semiconductorProps]
-                  ?.name
-              }{" "}
-              :
-            </span>{" "}
-            <span className="value ml-2">{semiconductorItem[xAxis]}</span>
-          </div>
-        )}
+        
       </div>
     );
   }

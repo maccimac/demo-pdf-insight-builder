@@ -1,3 +1,8 @@
+.pdf-dataset-table{
+  // outline: 2px solid hotpink;
+  // max-height: 360px;
+  // overflow-y: scroll;
+}
 .pdf-dataset-row {
   &:hover {
     background-color:$pdf-lightest-transparent;

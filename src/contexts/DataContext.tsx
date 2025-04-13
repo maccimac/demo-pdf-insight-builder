@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { InsightViewMeta } from "@/types";
 
 const DataContext = createContext<any>(null);
 
@@ -9,6 +10,17 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
   const [datasetName, set_datasetName] = useState<string>(
     "dataset_canada_2023"
   );
+
+  const [viewList, set_viewList] = useState<InsightViewMeta[]>([
+    {
+      name: "Processing power by production cost",
+      params: {
+        chartType: "line",
+        xAxis: "processing_power",
+        yAxis: "cost_to_produce",
+      },
+    },
+  ]);
 
   return (
     <DataContext.Provider
@@ -24,6 +36,8 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
 
         datasetName,
         set_datasetName,
+
+        viewList, set_viewList
       }}
     >
       {children}

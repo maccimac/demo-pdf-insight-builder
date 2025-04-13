@@ -1,12 +1,24 @@
 import colors from "@utils/colors";
-import { MenuItem, Divider } from "@mui/material";
-import { SemiconductorProperty, SelectorItem } from "./../types/index";
-import { semiconductorProps } from "@utils/semiconductorProps";
-import PdfSelector from "@components/PdfSelector";
-import InsightTitleInput from "./InsightTitleInput";
-import { useData } from "@contexts/DataContext";
+import { MenuItem, Divider, TextField } from "@mui/material";
+import Icon from "@mdi/react";
 
-const InsightDesigner = () => {
+import { InsightViewMeta, SemiconductorProperty, SelectorItem } from "@/types";
+import { mdiContentSave } from "@mdi/js";
+import { semiconductorProps } from "@utils/semiconductorProps";
+import PdfButton from "@components/PdfButton";
+import PdfSelector from "@components/PdfSelector";
+import { useData } from "@contexts/DataContext";
+import { useState } from "react";
+
+interface InsightDesignerProps {
+  saveView: (value: InsightViewMeta) => void;
+  deleteView: (value: InsightViewMeta) => void;
+}
+const InsightDesigner: React.FC<InsightDesignerProps> = ({
+  saveView,
+  deleteView,
+}) => {
+  const { viewList, set_viewsList } = useData();
   const { chartType, set_chartType } = useData();
   const { yAxis, set_yAxis } = useData();
   const { xAxis, set_xAxis } = useData();
@@ -18,6 +30,21 @@ const InsightDesigner = () => {
   ];
 
   const scParams: Record<string, SemiconductorProperty> = semiconductorProps;
+
+  const [viewName, set_viewName] = useState<string>("");
+
+  const saveNewInsight = () => {
+    // check if same name on insight
+    const insightView: InsightViewMeta = {
+      name: viewName,
+      params: {
+        chartType,
+        yAxis,
+        xAxis,
+      },
+    };
+    saveView(insightView);
+  };
 
   return (
     <div className="pdf-insight-designer p-2 mb-5">
@@ -32,9 +59,13 @@ const InsightDesigner = () => {
       </div>
 
       <Divider color={colors["pdf-med-light"]} className="my-4" />
-
       <div className="mb-4">
-        <PdfSelector id="y-axis" value={yAxis} setValue={set_yAxis} label="Y-Axis">
+        <PdfSelector
+          id="x-axis"
+          value={xAxis}
+          setValue={set_xAxis}
+          label="X-Axis"
+        >
           {Object.entries(scParams).map(
             ([key, semi]: [string, SemiconductorProperty]) => {
               if (
@@ -55,7 +86,12 @@ const InsightDesigner = () => {
       </div>
 
       <div className="mb-4">
-        <PdfSelector id="x-axis" value={xAxis} setValue={set_xAxis} label="X-Axis">
+        <PdfSelector
+          id="y-axis"
+          value={yAxis}
+          setValue={set_yAxis}
+          label="Y-Axis"
+        >
           {Object.entries(scParams).map(
             ([key, semi]: [string, SemiconductorProperty]) => {
               if (
@@ -77,7 +113,49 @@ const InsightDesigner = () => {
 
       <Divider color={colors["pdf-med-light"]} className="my-4" />
 
-      <InsightTitleInput />
+      {viewName}
+      <br />
+      <div className="d-flex gap-2">
+        <TextField
+          label="New insight name"
+          variant="outlined"
+          placeholder="Lifespan x Volume size"
+          fullWidth
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              color: colors["pdf-med-dark"],
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: colors["pdf-light"],
+              },
+            },
+            "& .MuiInputLabel-root": {
+              color: colors["pdf-med-light"], // label color when inactive
+            },
+            "& .MuiInputLabel-shrink": {
+              color: colors["pdf-blue-accent"], // label color when active (shrunken/focused)
+            },
+            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+              color: colors["pdf-blue-accent"],
+              borderColor: colors["pdf-blue-accent"],
+              borderWidth: "2px",
+            },
+          }}
+          onChange={(e) => {
+            set_viewName(e.currentTarget.value);
+          }}
+        />
+
+        <PdfButton
+          onClick={saveNewInsight}
+          icon={
+            <Icon
+              path={mdiContentSave}
+              size="20px"
+              color={colors["pdf-lightest"]}
+            />
+          }
+        />
+      </div>
     </div>
   );
 };

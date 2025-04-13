@@ -19,9 +19,23 @@ export interface SemiconductorProperty {
   dataType?: string;
 }
 
-export interface InsightView {
-  value: string;
-  label: string;
+export interface InsightViewParameter {
+  chartType: string;
+  
+  xAxis: string;
+  
+  yAxis: string;
+  yAxisColor?: string;
+
+  YAxis2?: string;
+  yAxisColor2?: string;
+
+  dataset?: string;
+}
+
+export interface InsightViewMeta {
+  name: string;
+  params?: InsightViewParameter;
 }
 
 export interface SelectorItem<T = any> {
