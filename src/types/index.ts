@@ -22,3 +22,8 @@ export interface InsightView {
   value: string;
   label: string;
 }
+
+export interface SelectorItem<T = any> {
+  text: string;
+  value: T;
+}

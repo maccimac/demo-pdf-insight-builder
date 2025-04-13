@@ -1,16 +1,11 @@
-// src/components/MyComponent.tsx
 import React from "react";
 
-interface MyComponentProps {
+interface DatasetInfoProps {
   // Add your prop types here
 }
 
-const MyComponent: React.FC<MyComponentProps> = () => {
-  return (
-    <div>
-      {/* Your component content here */}
-    </div>
-  );
+const DatasetInfo: React.FC<DatasetInfoProps> = () => {
+  return <div>{/* Your component content here */}</div>;
 };
 
-export default MyComponent;
+export default DatasetInfo;

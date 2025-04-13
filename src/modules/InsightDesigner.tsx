@@ -9,39 +9,34 @@ import {
 } from "@mui/material";
 import { SemiconductorProperty } from "../types/index";
 import { semiconductorProps } from "../utils/semiconductorProps";
+import Selector from "../components/Selector";
 import { useData } from "../contexts/DataContext";
+import { SelectorItem } from "../types/index";
 
-interface InsightDesignerProps {
-  //
-}
-
-const InsightDesigner: React.FC<InsightDesignerProps> = () => {
+const InsightDesigner = () => {
   const { chartType, set_chartType } = useData();
   const { yAxis, set_yAxis } = useData();
   const { xAxis, set_xAxis } = useData();
+
+  const chartTypes: SelectorItem[] = [
+    { text: "Line", value: "line" },
+    { text: "Bar", value: "bar" },
+    { text: "Scatter plot", value: "scatter" },
+  ];
 
   const scParams: Record<string, SemiconductorProperty> = semiconductorProps;
 
   return (
     <div className="pdf-insight-designer p-2 mt-5">
       <div className="select-a-chart">
-        <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Select a chart</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={chartType}
-            label="Select a chart"
-            onChange={(e) => {
-              set_chartType(e.target.value);
-            }}
-            className="w-100"
-          >
-            <MenuItem value="line">Line</MenuItem>
-            <MenuItem value="bar">Bar</MenuItem>
-            <MenuItem value="scatter">Scatter</MenuItem>
-          </Select>
-        </FormControl>
+        <Selector
+          id="chart-type"
+          value={chartType}
+          setValue={set_chartType}
+          items={chartTypes}
+          label="Chart type"
+        />
+
       </div>
 
       <Divider className="my-4" />
