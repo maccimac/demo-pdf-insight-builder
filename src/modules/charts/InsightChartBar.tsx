@@ -16,6 +16,7 @@ const InsightChartBar: React.FC<InsightViewParameter> = ({
   data,
   xAxis,
   yAxis,
+  xIsNumber,
   yColor = "#F6CB67",
 }) => {
   return (

@@ -3,7 +3,6 @@ import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { ReactNode } from "react";
 import { SelectorItem } from "@/types";
 
-
 interface PdfSelectorProps<T = any> {
   id: string;
   value: T;

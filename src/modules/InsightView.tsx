@@ -21,15 +21,36 @@ import { useState, useEffect } from "react";
 import { useMemo } from "react";
 import { useData } from "@contexts/DataContext";
 import InsightChartBar from "./charts/InsightChartBar";
+import { formatDate } from "@utils/utils";
 
-// const InsightView: React.FC<InsightViewProps> = () => {
 const InsightView: React.FC = () => {
   const { datasetName } = useData();
   const { chartType } = useData();
   const { yAxis } = useData();
   const { xAxis } = useData();
+  const { xIsNumber } = useData();
 
   const sortedData = useMemo(() => {
+    if (xAxis === "model_name") {
+      return datasets[datasetName].sort(
+        (a, b) =>
+          Number(a[yAxis as keyof typeof a]) -
+          Number(b[yAxis as keyof typeof b])
+      );
+    }
+    if (xAxis === "release_date") {
+      return datasets[datasetName]?.sort((a, b) => {
+        const aVal =
+          xAxis === "release_date"
+            ? new Date(a.release_date).getTime()
+            : Number(a[xAxis as keyof typeof a]);
+        const bVal =
+          xAxis === "release_date"
+            ? new Date(b.release_date).getTime()
+            : Number(b[xAxis as keyof typeof b]);
+        return aVal - bVal;
+      });
+    }
     return datasets[datasetName]?.sort(
       (a, b) =>
         Number(a[xAxis as keyof typeof a]) - Number(b[xAxis as keyof typeof b])
@@ -91,7 +112,7 @@ const InsightView: React.FC = () => {
 
             {chartType === "line" && (
               <ResponsiveContainer width="100%" height={600}>
-                <LineChart data={sortedData} margin={{ bottom: 32, right: 16 }} >
+                <LineChart data={sortedData} margin={{ bottom: 32, right: 16 }}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <YAxis
                     dataKey={yAxis}
@@ -107,12 +128,15 @@ const InsightView: React.FC = () => {
                     dataKey={xAxis}
                     axisLine={{ stroke: colors["pdf-lightest"] }}
                     tickLine={{ stroke: colors["pdf-med-light"] }}
+                    tickFormatter={(tick) =>
+                      xAxis === "release_date" ? formatDate(tick) : tick
+                    }
                     tick={{
                       fill: colors["pdf-med"],
                       fontSize: 11,
                       fontWeight: 500,
                     }}
-                    type="number"
+                    type={xIsNumber ? "number" : "category"}
                   />
 
                   <Line type="monotone" dataKey={yAxis} stroke="#F6CB67" />

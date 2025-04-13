@@ -16,6 +16,7 @@ const InsightChartScatter: React.FC<InsightViewParameter> = ({
   data,
   xAxis,
   yAxis,
+  xIsNumber,
   yColor = "#F6CB67",
 }) => {
   return (
@@ -25,7 +26,7 @@ const InsightChartScatter: React.FC<InsightViewParameter> = ({
         <XAxis
           dataKey={xAxis}
           name={xAxis}
-          type="category"
+          type={xIsNumber ? "number" : "category"}
           axisLine={{ stroke: colors["pdf-lightest"] }}
           tickLine={{ stroke: colors["pdf-med-light"] }}
           tick={{

@@ -23,6 +23,7 @@ export interface InsightViewParameterCore {
   xAxis: string;
   yAxis: string;
   yColor?: string;
+  xIsNumber?: boolean;
 }
 
 export interface InsightViewParameter extends InsightViewParameterCore {

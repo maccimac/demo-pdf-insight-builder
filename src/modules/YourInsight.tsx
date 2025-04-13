@@ -1,11 +1,11 @@
+import colors from "@utils/colors";
+import { Divider } from "@mui/material";
 import InsightView from "./InsightView";
 import { InsightViewMeta } from "@/types";
 import InsightDesigner from "./InsightDesigner";
-import PdfButton from "@components/PdfButton";
 import { useData } from "@contexts/DataContext";
 import { useEffect, useMemo, useState } from "react";
 import PdfSelector from "@components/PdfSelector";
-import { MenuItem } from "@mui/material";
 
 interface YourInsightProps {
   // Add your prop types here
@@ -83,9 +83,10 @@ const YourInsight: React.FC<YourInsightProps> = () => {
               value={selectedView}
               setValue={set_selectedView}
               items={selectViewListOptions}
-            >
-              =
-            </PdfSelector>
+            ></PdfSelector>
+
+            <Divider color={colors["pdf-med-light"]} className="my-4" />
+            
             <InsightDesigner saveView={saveView} deleteView={deleteView} />
           </div>
         </div>
