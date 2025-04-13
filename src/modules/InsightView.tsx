@@ -1,11 +1,9 @@
 import colors from "@utils/colors";
 import { datasets } from "@mock-data/datasets";
-
 import {
   LineChart,
   Line,
   BarChart,
-  Bar,
   ScatterChart,
   Scatter,
   XAxis,
@@ -16,15 +14,18 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import InsightChartScatter from "./charts/InsightChartScatter";
 import { semiconductorProps } from "../utils/semiconductorProps";
 import { SemiconductorProperty } from "@/types";
 import { useState, useEffect } from "react";
 import { useMemo } from "react";
 import { useData } from "@contexts/DataContext";
+import InsightChartBar from "./charts/InsightChartBar";
 
 // const InsightView: React.FC<InsightViewProps> = () => {
 const InsightView: React.FC = () => {
   const { datasetName } = useData();
+  const { chartType } = useData();
   const { yAxis } = useData();
   const { xAxis } = useData();
 
@@ -76,44 +77,59 @@ const InsightView: React.FC = () => {
             </div>
           </div>
           <div className="w-100">
-            <ResponsiveContainer width="100%" height={600}>
-              <LineChart data={sortedData} margin={{ bottom: 32, right: 16 }}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <YAxis
-                  dataKey={yAxis}
-                  tick={{
-                    fill: colors["pdf-med"],
-                    fontSize: 11,
-                    fontWeight: 500,
-                  }}
-                  axisLine={{ stroke: colors["pdf-lightest"] }}
-                  tickLine={{ stroke: colors["pdf-med-light"] }}
-                />
-                <XAxis
-                  dataKey={xAxis}
-                  axisLine={{ stroke: colors["pdf-lightest"] }}
-                  tickLine={{ stroke: colors["pdf-med-light"] }}
-                  tick={{
-                    fill: colors["pdf-med"],
-                    fontSize: 11,
-                    fontWeight: 500,
-                  }}
-                />
+            {chartType === "scatter" && (
+              <InsightChartScatter
+                data={sortedData}
+                xAxis={xAxis}
+                yAxis={yAxis}
+              />
+            )}
 
-                <Line type="monotone" dataKey={yAxis} stroke="#F6CB67" />
-                <Tooltip
-                  content={<CustomTooltip xAxis={xAxis} yAxis={yAxis} />}
-                />
-                <Legend
-                  wrapperStyle={{
-                    color: "#8D929C",
-                    fontSize: "11px",
-                    paddingTop: "28px",
-                    marginBottom: "10px",
-                  }}
-                />
-              </LineChart>
-            </ResponsiveContainer>
+            {chartType === "bar" && (
+              <InsightChartBar data={sortedData} xAxis={xAxis} yAxis={yAxis} />
+            )}
+
+            {chartType === "line" && (
+              <ResponsiveContainer width="100%" height={600}>
+                <LineChart data={sortedData} margin={{ bottom: 32, right: 16 }} >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <YAxis
+                    dataKey={yAxis}
+                    tick={{
+                      fill: colors["pdf-med"],
+                      fontSize: 11,
+                      fontWeight: 500,
+                    }}
+                    axisLine={{ stroke: colors["pdf-lightest"] }}
+                    tickLine={{ stroke: colors["pdf-med-light"] }}
+                  />
+                  <XAxis
+                    dataKey={xAxis}
+                    axisLine={{ stroke: colors["pdf-lightest"] }}
+                    tickLine={{ stroke: colors["pdf-med-light"] }}
+                    tick={{
+                      fill: colors["pdf-med"],
+                      fontSize: 11,
+                      fontWeight: 500,
+                    }}
+                    type="number"
+                  />
+
+                  <Line type="monotone" dataKey={yAxis} stroke="#F6CB67" />
+                  <Tooltip
+                    content={<CustomTooltip xAxis={xAxis} yAxis={yAxis} />}
+                  />
+                  <Legend
+                    wrapperStyle={{
+                      color: "#8D929C",
+                      fontSize: "11px",
+                      paddingTop: "28px",
+                      marginBottom: "10px",
+                    }}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            )}
 
             <div className="xAxis-label__holder ma-0 px-0">
               <div className="axis-label xAxis-label">

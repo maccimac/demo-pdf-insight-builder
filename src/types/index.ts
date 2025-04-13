@@ -19,18 +19,20 @@ export interface SemiconductorProperty {
   dataType?: string;
 }
 
-export interface InsightViewParameter {
-  chartType: string;
-  
+export interface InsightViewParameterCore {
   xAxis: string;
-  
   yAxis: string;
-  yAxisColor?: string;
+  yColor?: string;
+}
 
-  YAxis2?: string;
-  yAxisColor2?: string;
+export interface InsightViewParameter extends InsightViewParameterCore {
+  chartType?: string;
 
-  dataset?: string;
+  yAxis2?: string;
+  yColor2?: string;
+
+  datasetName?: string;
+  data?: Semiconductor[];
 }
 
 export interface InsightViewMeta {
