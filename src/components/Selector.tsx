@@ -5,10 +5,11 @@ import { SelectorItem } from "@/types";
 interface SelectorProps<T = any> {
   id: string;
   value: T;
-  setValue: Function;
+  setValue?: Function;
   label: string;
-  items: SelectorItem[];
+  items?: SelectorItem[];
   children?: ReactNode;
+  renderSelected?: (value: T) => ReactNode;
 }
 
 const Selector: React.FC<SelectorProps> = ({
@@ -18,6 +19,7 @@ const Selector: React.FC<SelectorProps> = ({
   label,
   items,
   children,
+  renderSelected,
 }) => {
   return (
     <div>
@@ -29,18 +31,18 @@ const Selector: React.FC<SelectorProps> = ({
           value={value}
           label={label}
           onChange={(e) => {
-            setValue(e.target.value);
+            setValue && setValue(e.target.value);
           }}
           className="w-100"
+          renderValue={renderSelected ? () => renderSelected(value) : undefined}
         >
-          {items.length &&
-            items?.map((item: SelectorItem) => (
-              <MenuItem key={item.value} value={item.value}>
-                {item.text}
-              </MenuItem>
-            ))}
-
-          {children}
+          {items?.length
+            ? items.map((item: SelectorItem) => (
+                <MenuItem key={item.value} value={item.value}>
+                  {item.text}
+                </MenuItem>
+              ))
+            : children}
         </Select>
       </FormControl>
     </div>

@@ -1,16 +1,25 @@
-// src/components/MyComponent.tsx
 import React from "react";
+import { MenuItem } from "@mui/material";
+import { DatasetItemMeta } from "@/types";
 
-interface MyComponentProps {
-  // Add your prop types here
+interface DatasetItemProps extends DatasetItemMeta {
+  onClick?: (value: string) => void;
 }
 
-const MyComponent: React.FC<MyComponentProps> = () => {
+const DatasetItem: React.FC<DatasetItemProps> = ({
+  name,
+  value,
+  description,
+  count,
+  onClick,
+}) => {
   return (
-    <div>
-      {/* Your component content here */}
-    </div>
+    <MenuItem value={value} onClick={()=>{
+      onClick?.(value)
+    }}>
+      <h3>{name}</h3>
+    </MenuItem>
   );
 };
 
-export default MyComponent;
+export default DatasetItem;

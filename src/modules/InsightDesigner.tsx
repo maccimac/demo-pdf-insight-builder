@@ -1,12 +1,4 @@
-// import React, { useState } from "react";
-import {
-  FormControl,
-  InputLabel,
-  Select,
-  TextField,
-  MenuItem,
-  Divider,
-} from "@mui/material";
+import { MenuItem, Divider } from "@mui/material";
 import { SemiconductorProperty } from "../types/index";
 import { semiconductorProps } from "../utils/semiconductorProps";
 import Selector from "../components/Selector";
@@ -36,66 +28,50 @@ const InsightDesigner = () => {
           items={chartTypes}
           label="Chart type"
         />
-
       </div>
 
       <Divider className="my-4" />
 
       <div className="mt-4">
-        <FormControl fullWidth>
-          <InputLabel id="y-axis">Y-Axis</InputLabel>
-          <Select
-            labelId="y-axis-label"
-            id="y-axis"
-            label="y-Axis"
-            value={yAxis}
-            onChange={(e) => {
-              set_yAxis(e.target.value);
-            }}
-            className="w-100"
-          >
-            {Object.entries(scParams).map(
-              ([key, semi]: [string, SemiconductorProperty]) => {
-                if (
-                  typeof semi.dataType === "string" &&
-                  !["string", "array"].includes(semi.dataType)
-                ) {
-                  return (
-                    <MenuItem key={key} value={key}>
-                      {semi.name}
-                    </MenuItem>
-                  );
-                } else {
-                  return "";
-                }
+        <Selector id="y-axis" value={yAxis} setValue={set_yAxis} label="Y-Axis">
+          {Object.entries(scParams).map(
+            ([key, semi]: [string, SemiconductorProperty]) => {
+              if (
+                typeof semi.dataType === "string" &&
+                !["string", "array"].includes(semi.dataType)
+              ) {
+                return (
+                  <MenuItem key={key} value={key}>
+                    {semi.name}
+                  </MenuItem>
+                );
+              } else {
+                return "";
               }
-            )}
-          </Select>
-        </FormControl>
+            }
+          )}
+        </Selector>
       </div>
 
       <div className="mt-4">
-        <FormControl fullWidth>
-          <InputLabel id="x-axis">X-Axis</InputLabel>
-          <Select
-            labelId="x-axis-label"
-            id="x-axis"
-            label="x-Axis"
-            value={xAxis}
-            onChange={(e) => {
-              set_xAxis(e.target.value);
-            }}
-            className="w-100"
-          >
-            {Object.entries(scParams).map(
-              ([key, semi]: [string, SemiconductorProperty]) => (
-                <MenuItem key={key} value={key}>
-                  {semi.name}
-                </MenuItem>
-              )
-            )}
-          </Select>
-        </FormControl>
+        <Selector id="x-axis" value={xAxis} setValue={set_xAxis} label="X-Axis">
+          {Object.entries(scParams).map(
+            ([key, semi]: [string, SemiconductorProperty]) => {
+              if (
+                typeof semi.dataType === "string" &&
+                !["string", "array"].includes(semi.dataType)
+              ) {
+                return (
+                  <MenuItem key={key} value={key}>
+                    {semi.name}
+                  </MenuItem>
+                );
+              } else {
+                return "";
+              }
+            }
+          )}
+        </Selector>
       </div>
 
       {/* <TextField

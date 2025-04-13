@@ -1,3 +1,4 @@
+import { datasets } from "./../mock-data/datasets";
 export interface Semiconductor {
   model_name: string;
   type: string;
@@ -26,4 +27,11 @@ export interface InsightView {
 export interface SelectorItem<T = any> {
   text: string;
   value: T;
+}
+
+export interface DatasetItemMeta {
+  name: string;
+  value: keyof typeof datasets;
+  description?: string;
+  count?: number;
 }
