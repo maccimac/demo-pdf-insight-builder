@@ -1,7 +1,7 @@
 import React from "react";
 import { TableCell, TableRow } from "@mui/material";
-
-import { Semiconductor } from "@/types";
+import { semiconductorProps } from "../utils/semiconductorProps";
+import { Semiconductor, SemiconductorProperty } from "@/types";
 
 interface DatasetTableRowProps {
   row: Semiconductor;
@@ -19,20 +19,22 @@ const DatasetTableRow: React.FC<DatasetTableRowProps> = ({ row }) => {
 
   return (
     <TableRow className="pdf-dataset-row">
-      <TableCell>
-        <strong className="">{row.model_name}</strong>
-      </TableCell>
-      <TableCell>{row.type}</TableCell>
-      <TableCell className="mr-4">
-        {row.volume_size_cm3} cm³ &nbsp; &nbsp; &nbsp; &nbsp;
-      </TableCell>
-      <TableCell>{row.material.join(", ")}</TableCell>
-      <TableCell>
-        {row.processing_power} GHz &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-      </TableCell>
-      <TableCell>${row.cost_to_produce} &nbsp; &nbsp; &nbsp; &nbsp;</TableCell>
-      <TableCell>{row.life_span_years} years</TableCell>
-      <TableCell>{formatDate(row.release_date)}</TableCell>
+      {Object.entries(semiconductorProps).map(
+        ([key, semiCondProp]: [string, SemiconductorProperty]) => {
+          if (key === "release_date") {
+            return (
+              <TableCell key={key}>{formatDate(row.release_date)}</TableCell>
+            );
+          } else if (key === "material") {
+            return <TableCell key={key}>{row.material.join(", ")}</TableCell>;
+          }
+          return (
+            <TableCell key={key}>
+              {row[key as keyof Semiconductor]} {semiCondProp.unit}
+            </TableCell>
+          );
+        }
+      )}
     </TableRow>
   );
 };
