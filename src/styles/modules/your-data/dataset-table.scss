@@ -1,6 +1,6 @@
 .pdf-dataset-row {
   &:hover {
-    background-color: hsl(219, 21%, 87%);
+    background-color:$pdf-lightest-transparent;
   }
   .MuiTableCell-root {
     max-width: 180px;

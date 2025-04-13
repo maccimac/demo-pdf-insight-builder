@@ -34,4 +34,6 @@ export interface DatasetItemMeta {
   value: keyof typeof datasets;
   description?: string;
   count?: number;
+  publish_date?: string;
+  source?: string;
 }

@@ -2,21 +2,12 @@ import React from "react";
 import { TableCell, TableRow } from "@mui/material";
 import { semiconductorProps } from "../utils/semiconductorProps";
 import { Semiconductor, SemiconductorProperty } from "@/types";
-
+import { formatDate } from "./../utils/utils";
 interface DatasetTableRowProps {
   row: Semiconductor;
 }
 
 const DatasetTableRow: React.FC<DatasetTableRowProps> = ({ row }) => {
-  const formatDate = (rawDate: string) => {
-    const date = new Date(rawDate);
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    });
-  };
-
   return (
     <TableRow className="pdf-dataset-row">
       {Object.entries(semiconductorProps).map(

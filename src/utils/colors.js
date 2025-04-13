@@ -9,10 +9,12 @@ const colors = {
     "pdf-med": "#8D929C",
     "pdf-med-light": "#CFD3DA",
     "pdf-lightest": "#EEF1F7",
-  
+    "pdf-lightest-transparent": "hsl(219, 21%, 87%)",
+
     // Muted blues
     "pdf-blue-muted-medium-light": "#8DAACD",
     "pdf-blue-muted-medium": "#576C99",
+    
   };
   
   export default colors;

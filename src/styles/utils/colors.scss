@@ -1,17 +1,18 @@
 // Primary palette
-$pdf-blue-primary: #00194D;
-$pdf-blue-accent: #428BE4;
+$pdf-blue-primary: #00194d;
+$pdf-blue-accent: #428be4;
 
 // Grayscale tones
 $pdf-darkest: #232933;
 $pdf-med-dark: #535965;
-$pdf-med: #8D929C;
-$pdf-med-light: #CFD3DA;
-$pdf-lightest: #EEF1F7;
+$pdf-med: #8d929c;
+$pdf-med-light: #cfd3da;
+$pdf-lightest: #eef1f7;
+$pdf-lightest-transparent: hsl(219, 21%, 87%);
 
 // Muted blues
-$pdf-blue-muted-medium-light: #8DAACD;
-$pdf-blue-muted-medium: #576C99;
+$pdf-blue-muted-medium-light: #8daacd;
+$pdf-blue-muted-medium: #576c99;
 
 $color-variables: (
   pdf-blue-primary: $pdf-blue-primary,
@@ -21,6 +22,7 @@ $color-variables: (
   pdf-med: $pdf-med,
   pdf-med-light: $pdf-med-light,
   pdf-lightest: $pdf-lightest,
+  pdf-lightest-transparent: $pdf-lightest-transparent,
   pdf-blue-muted-medium-light: $pdf-blue-muted-medium-light,
-  pdf-blue-muted-medium: $pdf-blue-muted-medium
+  pdf-blue-muted-medium: $pdf-blue-muted-medium,
 );

@@ -1,6 +1,6 @@
 import { Semiconductor } from "@/types";
 
-export const system_rec_global: Semiconductor[] = [
+export const system_composition_index: Semiconductor[] = [
   {
     model_name: "TitanEdge V2",
     type: "controller",

@@ -1,10 +1,18 @@
 import React from "react";
-import { MenuItem } from "@mui/material";
+
+import colors from "./../utils/colors";
 import { DatasetItemMeta } from "@/types";
+import { formatDate } from "./../utils/utils";
+import Icon from "@mdi/react";
+import { mdiStar, mdiStarOutline } from "@mdi/js";
+import { MenuItem } from "@mui/material";
+
 
 interface DatasetItemProps extends DatasetItemMeta {
   onClick?: (value: string) => void;
+  onClickFavorite?: (value: string) => void;
   isFavorite?: boolean;
+  isActive?: boolean;
 }
 
 const DatasetItem: React.FC<DatasetItemProps> = ({
@@ -12,11 +20,18 @@ const DatasetItem: React.FC<DatasetItemProps> = ({
   value,
   description,
   count,
+  publish_date,
+  source,
+  isFavorite,
+  isActive,
   onClick,
+  onClickFavorite,
 }) => {
   return (
     <MenuItem
-      className="pdf-dataset-item"
+      className={
+        isActive ? "pdf-dataset-item dataset-item--active" : "pdf-dataset-item"
+      }
       value={value}
       onClick={() => {
         onClick?.(value);
@@ -24,18 +39,43 @@ const DatasetItem: React.FC<DatasetItemProps> = ({
       disableRipple
       sx={{
         "&:hover": {
-          backgroundColor: "transparent", 
+          backgroundColor: "transparent",
         },
-        whiteSpace: "normal",       
-        alignItems: "flex-start",  
-        paddingY: 1.5,    
+        whiteSpace: "normal",
+        alignItems: "flex-start",
+        paddingY: 1.5,
       }}
     >
       <div className="meta-holder">
-        <div className="dataset-title">{name}</div>
-        <i className="fa-solid fa-regular fa-xmark fa-md m-1 text-color-sq-green-black" />
-        <div className="dataset-meta">{count} datasets</div>
-        <p className="dataset-description">{description}</p>
+        <div className="title-favorite-holder">
+          <div className="dataset-title">{name}</div>
+          <div
+            className="dataset-favorite"
+            onClick={(e) => {
+              e.preventDefault();
+              onClickFavorite?.(value);
+            }}
+          >
+            <div>
+              <Icon
+                path={isFavorite ? mdiStar : mdiStarOutline}
+                size="26px"
+                color={
+                  isActive
+                    ? colors["pdf-blue-primary"]
+                    : colors["pdf-blue-muted-medium"]
+                }
+              />
+            </div>
+          </div>
+        </div>
+        <div className="">
+          <div className="dataset-meta">
+            {count} datasets | {publish_date && formatDate(publish_date)} |{" "}
+            {source}
+          </div>
+          <div className="dataset-description">{description}</div>
+        </div>
       </div>
     </MenuItem>
   );
