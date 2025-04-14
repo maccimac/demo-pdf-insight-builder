@@ -1,16 +1,14 @@
-import { SetStateAction, useEffect, useMemo, useState } from "react";
-import colors from "@utils/colors";
-import { getMinAndMax } from "@utils/utils";
-
+import { semiconductorProps } from "@utils/semiconductorProps";
+import { useEffect, useState } from "react";
 import { Box, Slider } from "@mui/material";
-import { FilterOptions, Semiconductor } from "@/types";
+import { FilterOptions } from "@/types";
+
 interface PdfFilterRangeSliderProps {
   filter: FilterOptions;
   setFilter: Function;
   filterKey: keyof FilterOptions;
   initValue: number | number[];
-  min: number;
-  max: number;
+  max: number
 }
 
 const PdfFilterRangeSlider: React.FC<PdfFilterRangeSliderProps> = ({
@@ -18,8 +16,9 @@ const PdfFilterRangeSlider: React.FC<PdfFilterRangeSliderProps> = ({
   setFilter,
   filterKey,
   initValue,
-  max,
+  max
 }) => {
+
   const [value, setValue] = useState<number[]>([0, max]);
 
   const handleChange = (event: Event, newValue: number | number[]) => {

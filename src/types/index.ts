@@ -17,6 +17,7 @@ export interface SemiconductorProperty {
   hint?: string;
   description?: string;
   dataType?: string;
+  filterOptions?: any
 }
 
 export interface InsightViewParameterCore {
@@ -57,7 +58,11 @@ export interface DatasetItemMeta {
 
 export interface FilterOptions {
   type?: string[] | null;
+  material?: string[] | null;
   cost_to_produce?: any;
   life_span_years?: any;
+  volume_size_cm3?: any;
+  processing_power?: any;
+  release_date?: any
   
 }

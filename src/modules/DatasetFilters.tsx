@@ -28,8 +28,7 @@ const DatasetFilters: React.FC<DatasetFiltersProps> = ({
             setFilter={set_filter}
             filterKey="cost_to_produce"
             initValue={filter.cost_to_produce}
-            min={0}
-            max={20}
+            max={25}
           />
         </PdfFilterButton>
 
@@ -48,8 +47,7 @@ const DatasetFilters: React.FC<DatasetFiltersProps> = ({
             setFilter={set_filter}
             filterKey="life_span_years"
             initValue={filter.life_span_years}
-            min={0}
-            max={10}
+            max={15}
           />
         </PdfFilterButton>
       </div>
