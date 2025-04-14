@@ -54,12 +54,14 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
         "life_span_years",
         "volume_size_cm3",
         "model_name",
+        "release_date",
       ],
       line: [
         "cost_to_produce",
         "processing_power",
         "life_span_years",
         "volume_size_cm3",
+        "release_date",
       ],
     };
 

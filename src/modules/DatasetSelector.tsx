@@ -1,11 +1,11 @@
-import { useMemo, useState } from "react";
-import { datasetMeta, datasets } from "@mock-data/datasets";
-import PdfSelector from "../components/PdfSelector";
-import PdfDatasetItem from "../components/PdfDatasetItem";
-import { useData } from "../contexts/DataContext";
+import colors from "@utils/colors";
 import { DatasetItemMeta } from "@/types";
-import { Divider } from "@mui/material";
-import colors from "./../utils/colors";
+import { Divider, InputLabel } from "@mui/material";
+import { datasetMeta, datasets } from "@mock-data/datasets";
+import PdfSelector from "@components/PdfSelector";
+import PdfDatasetItem from "@components/PdfDatasetItem";
+import { useData } from "@contexts/DataContext";
+import { useMemo, useState } from "react";
 
 interface DatasetSelectorProps {}
 
@@ -84,6 +84,17 @@ const DatasetSelector: React.FC<DatasetSelectorProps> = () => {
         )}
       >
         <div>
+          <InputLabel
+            className="mb-0 mx-3 pt-2"
+            shrink
+            sx={{
+              "&.MuiInputLabel-shrink": {
+                fontSize: "20px",
+              },
+            }}
+          >
+            Favorite datasets
+          </InputLabel>
           {favorites.map((ds) => (
             <PdfDatasetItem
               {...ds}
@@ -98,7 +109,18 @@ const DatasetSelector: React.FC<DatasetSelectorProps> = () => {
               }}
             />
           ))}
-          <Divider className="mb-4" color={colors["pdf-light"]} />
+          <Divider className="my-3" color={colors["pdf-light"]} />
+          <InputLabel
+            className="mb-0 mx-3 pt-2"
+            shrink
+            sx={{
+              "&.MuiInputLabel-shrink": {
+                fontSize: "20px",
+              },
+            }}
+          >
+            More datasets
+          </InputLabel>
           {notFavorites.map((ds) => (
             <PdfDatasetItem
               {...ds}

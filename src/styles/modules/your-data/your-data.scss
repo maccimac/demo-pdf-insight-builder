@@ -10,11 +10,13 @@
   .MuiMenuItem-root,
   .met {
     display: block;
-    .dataset-title{
+    .dataset-title {
       font-size: 40px !important;
     }
     .dataset-description {
-      display: none;
+      -webkit-line-clamp: none;
+      overflow: visible;
+      text-overflow: auto;
     }
   }
 }
@@ -25,8 +27,6 @@
 
 .pdf-dataset-item {
   max-width: 100%;
-  // padding-top: 24px;
-  // padding-bottom: 24px;
   &:hover {
     background-color: $pdf-med-light;
     .dataset-title,
@@ -68,7 +68,7 @@
     color: $pdf-med;
     font-weight: 400;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;

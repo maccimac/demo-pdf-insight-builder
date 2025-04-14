@@ -12071,7 +12071,9 @@ textarea.form-control-lg {
 }
 .dataset-selected .MuiMenuItem-root .dataset-description,
 .dataset-selected .met .dataset-description {
-  display: none;
+  -webkit-line-clamp: none;
+  overflow: visible;
+  text-overflow: auto;
 }
 
 .MuiPaper-root:has(.pdf-dataset-item) {
@@ -12121,7 +12123,7 @@ textarea.form-control-lg {
   color: #8d929c;
   font-weight: 400;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;

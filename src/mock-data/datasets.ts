@@ -16,7 +16,7 @@ export const datasetMeta: DatasetItemMeta[] = [
     name: "Dataset Canada 2023",
     value: "dataset_canada_2023",
     description:
-      "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte.",
+      "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Il trouve ses racines. ",
     count: dataset_canada_2023.length,
     publish_date: "2023-11-01",
     source: "Semiconductor Canada Board"
@@ -25,7 +25,7 @@ export const datasetMeta: DatasetItemMeta[] = [
     name: "System Composition Index",
     value: "system_composition_index",
     description:
-      "Contrairement à une opinion répandue, le Lorem Ipsum n'est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans. ",
+      "Contrairement à une opinion répandue, le Lorem Ipsum n'est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature la.",
     count: system_composition_index.length,
     publish_date: "2022-09-15",
     source: "Global Materials Consortium"
@@ -34,7 +34,7 @@ export const datasetMeta: DatasetItemMeta[] = [
     name: "Advan Featured Systems",
     value: "advan_featured",
     description:
-      "Dans une petite ville de l’Aveyron ou des Pyrénées, le moindre incident eût été rendu décisif par le feu du climat. ",
+      "Dans une petite ville de l’Aveyron ou des Pyrénées, le moindre incident eût été rendu décisif par le feu du climat.  Il trouve ses racines dans une oeuvre de la littérature la. ",
     count: advan_featured.length,
     publish_date: "2024-01-22",
     source: "Advan Labs"

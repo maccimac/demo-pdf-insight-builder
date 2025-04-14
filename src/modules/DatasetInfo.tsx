@@ -6,14 +6,12 @@ interface DatasetInfoProps {
 }
 
 const DatasetInfo: React.FC<DatasetInfoProps> = () => {
-
-  
   return (
-    <div className="mt-5">
-      <div className="section-title mb-3">
-        Your data
+    <div className="d-flex align-items-center h-100">
+      <div>
+        <div className="section-title mb-3">Your data</div>
+        <DatasetSelector />
       </div>
-      <DatasetSelector/>
     </div>
   );
 };
