@@ -2,7 +2,7 @@ import { datasets } from "@mock-data/datasets";
 // import { TooltipProps } from "recharts";
 import InsightChartScatter from "./charts/InsightChartScatter";
 import { semiconductorProps } from "../utils/semiconductorProps";
-import { SemiconductorProperty } from "@/types";
+import { Semiconductor, SemiconductorProperty } from "@/types";
 import { useState, useEffect } from "react";
 import { useMemo } from "react";
 import { useData } from "@contexts/DataContext";
@@ -16,17 +16,19 @@ const InsightView: React.FC = () => {
   const { yAxis } = useData();
   const { xAxis } = useData();
   const { xIsNumber } = useData();
+  const { filteredAndSortedData } = useData();
 
   const sortedData = useMemo(() => {
+    const data: Semiconductor[] = filteredAndSortedData;
     if (xAxis === "model_name") {
-      return datasets[datasetName].sort(
+      return data.sort(
         (a, b) =>
           Number(a[yAxis as keyof typeof a]) -
           Number(b[yAxis as keyof typeof b])
       );
     }
     if (xAxis === "release_date") {
-      return datasets[datasetName]?.sort((a, b) => {
+      return data?.sort((a, b) => {
         const aVal =
           xAxis === "release_date"
             ? new Date(a.release_date).getTime()
@@ -38,11 +40,11 @@ const InsightView: React.FC = () => {
         return aVal - bVal;
       });
     }
-    return datasets[datasetName]?.sort(
+    return data?.sort(
       (a, b) =>
         Number(a[xAxis as keyof typeof a]) - Number(b[xAxis as keyof typeof b])
     );
-  }, [xAxis, datasetName]);
+  }, [xAxis, datasetName, filteredAndSortedData]);
 
   const [yAxisLabel, set_yAxisLabel] = useState<SemiconductorProperty>({
     name: "",
@@ -105,48 +107,6 @@ const InsightView: React.FC = () => {
                 yAxis={yAxis}
                 xIsNumber={xIsNumber}
               />
-              // <ResponsiveContainer width="100%" height={600}>
-              //   <LineChart data={sortedData} margin={{ bottom: 32, right: 16 }}>
-              //     <CartesianGrid strokeDasharray="3 3" />
-              //     <YAxis
-              //       dataKey={yAxis}
-              //       tick={{
-              //         fill: colors["pdf-med"],
-              //         fontSize: 11,
-              //         fontWeight: 500,
-              //       }}
-              //       axisLine={{ stroke: colors["pdf-lightest"] }}
-              //       tickLine={{ stroke: colors["pdf-med-light"] }}
-              //     />
-              //     <XAxis
-              //       dataKey={xAxis}
-              //       axisLine={{ stroke: colors["pdf-lightest"] }}
-              //       tickLine={{ stroke: colors["pdf-med-light"] }}
-              //       tickFormatter={(tick) =>
-              //         xAxis === "release_date" ? formatDate(tick) : tick
-              //       }
-              //       tick={{
-              //         fill: colors["pdf-med"],
-              //         fontSize: 11,
-              //         fontWeight: 500,
-              //       }}
-              //       type={xIsNumber ? "number" : "category"}
-              //     />
-
-              //     <Line type="monotone" dataKey={yAxis} stroke="#F6CB67" />
-              //     <Tooltip
-              //       content={<CustomTooltip xAxis={xAxis} yAxis={yAxis} />}
-              //     />
-              //     <Legend
-              //       wrapperStyle={{
-              //         color: "#8D929C",
-              //         fontSize: "11px",
-              //         paddingTop: "28px",
-              //         marginBottom: "10px",
-              //       }}
-              //     />
-              //   </LineChart>
-              // </ResponsiveContainer>
             )}
 
             <div className="xAxis-label__holder ma-0 px-0">

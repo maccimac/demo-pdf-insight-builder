@@ -54,3 +54,8 @@ export interface DatasetItemMeta {
   publish_date?: string;
   source?: string;
 }
+
+export interface FilterOptions {
+  type?: string[] | null;
+  cost_to_produce?: [number, number] | null;
+}

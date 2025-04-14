@@ -13,38 +13,33 @@ import Icon from "@mdi/react";
 import { mdiChevronDown, mdiChevronUp } from "@mdi/js";
 import PdfDatasetTableRow from "../components/PdfDatasetTableRow";
 import PdfFilterItem from "@components/PdfFilterItem";
+import { FilterOptions, Semiconductor, SemiconductorProperty } from "@/types";
+import {
+  filterSemiconductors,
+  sortSemiconstructors,
+} from "@utils/sortAndFilter";
+
 import { semiconductorProps } from "../utils/semiconductorProps";
-import { Semiconductor, SemiconductorProperty } from "@/types";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useData } from "@contexts/DataContext";
 
 interface DatasetTableProps {}
 
 const DatasetTable: React.FC<DatasetTableProps> = () => {
   const { datasetName } = useData();
+  const { filteredAndSortedData, set_filteredAndSortedData } = useData();
   const [displayAll, set_displayAll] = useState<boolean>(false);
+
+  // Filter logic
+  const [filter, set_filter] = useState<FilterOptions>({
+    type: undefined,
+    cost_to_produce: [0, 10],
+  });
 
   // Sorting logic
   const [order, set_order] = useState<"asc" | "desc">("asc");
   const [orderBy, set_orderBy] = useState<keyof Semiconductor>("model_name");
 
-  function descendingComparator<T>(a: T, b: T, orderBy: keyof T): number {
-    if (b[orderBy] < a[orderBy]) return -1;
-    if (b[orderBy] > a[orderBy]) return 1;
-    return 0;
-  }
-
-  // Fix: pass `orderBy` as keyof Semiconductor
-  function getComparator(
-    order: "asc" | "desc",
-    orderBy: keyof Semiconductor
-  ): (a: Semiconductor, b: Semiconductor) => number {
-    return order === "desc"
-      ? (a, b) => descendingComparator(a, b, orderBy)
-      : (a, b) => -descendingComparator(a, b, orderBy);
-  }
-
-  // Fix: strongly type `property`
   const handleSortRequest = (property: keyof Semiconductor) => {
     const isAsc = orderBy === property && order === "asc";
     set_order(isAsc ? "desc" : "asc");
@@ -52,12 +47,33 @@ const DatasetTable: React.FC<DatasetTableProps> = () => {
   };
 
   // Fix: sortedData
-  const sortedData = useMemo<Semiconductor[]>(() => {
+  useEffect(() => {
     let data = datasets[datasetName] || [];
-    data = data.sort(getComparator(order, orderBy));
-
-    return displayAll ? data : data.slice(0, 4);
+    data = filterSemiconductors(data, filter);
+    data = sortSemiconstructors(
+      data,
+      order, // ex: asc / desc
+      orderBy // ex: life_span_year
+    );
+    set_filteredAndSortedData(data);
   }, [datasetName, displayAll, order, orderBy]);
+
+  // const sortedData = useMemo<Semiconductor[]>(() => {
+  //   let data = datasets[datasetName] || [];
+  //   data = filterSemiconductors(data, filter);
+  //   data = sortSemiconstructors(
+  //     data,
+  //     order, // ex: asc / desc
+  //     orderBy // ex: life_span_year
+  //   );
+  //   return data;
+  // }, [datasetName, displayAll, order, orderBy]);
+
+  const displayData = useMemo<Semiconductor[]>(() => {
+    return displayAll
+      ? filteredAndSortedData
+      : filteredAndSortedData.slice(0, 4);
+  }, [filteredAndSortedData]);
 
   return (
     <div
@@ -95,7 +111,7 @@ const DatasetTable: React.FC<DatasetTableProps> = () => {
             )}
           </TableHead>
           <TableBody className="">
-            {sortedData.map((row, index) => (
+            {displayData.map((row, index) => (
               <PdfDatasetTableRow row={row} />
             ))}
           </TableBody>
@@ -119,7 +135,7 @@ const DatasetTable: React.FC<DatasetTableProps> = () => {
           <div className="text-we-are-analyzing">
             We are analyzing{" "}
             <span className="active-count">
-              {datasets[datasetName].length}{" "}
+              {filteredAndSortedData.length}{" "}
             </span>
             of{" "}
             <span className="total-count">{datasets[datasetName].length} </span>

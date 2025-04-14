@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { InsightViewMeta } from "@/types";
+import { InsightViewMeta, Semiconductor } from "@/types";
 
 const DataContext = createContext<any>(null);
 
@@ -8,10 +8,12 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
   const [yAxis, set_yAxis] = useState<string>("processing_power");
   const [xAxis, set_xAxis] = useState<string>("cost_to_produce");
   const [xIsNumber, set_xIsNumber] = useState<boolean>(true);
-  
   const [datasetName, set_datasetName] = useState<string>(
     "dataset_canada_2023"
   );
+  const [filteredAndSortedData, set_filteredAndSortedData] = useState<
+    Semiconductor[]
+  >([]);
 
   const [viewsList, set_viewsList] = useState<InsightViewMeta[]>([
     {
@@ -19,7 +21,7 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
       params: {
         chartType: "line",
         xAxis: "processing_power",
-        yAxis: "cost_to_produce", 
+        yAxis: "cost_to_produce",
       },
     },
   ]);
@@ -27,12 +29,20 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
   return (
     <DataContext.Provider
       value={{
-        chartType, set_chartType,
-        yAxis,set_yAxis,
-        xAxis, set_xAxis,
-        datasetName, set_datasetName,
-        viewsList, set_viewsList,
-        xIsNumber, set_xIsNumber
+        chartType,
+        set_chartType,
+        yAxis,
+        set_yAxis,
+        xAxis,
+        set_xAxis,
+        datasetName,
+        set_datasetName,
+        viewsList,
+        set_viewsList,
+        xIsNumber,
+        set_xIsNumber,
+        filteredAndSortedData,
+        set_filteredAndSortedData,
       }}
     >
       {children}
