@@ -12173,6 +12173,15 @@ textarea.form-control-lg {
   text-transform: none;
   border-radius: 4px;
 }
+.pdf-filter-item .filter-button .button-filter-label {
+  max-width: 200px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
 .pdf-filter-item .filter-label {
   color: #576c99 !important;
 }

@@ -27,9 +27,6 @@ const PdfFilterButton: React.FC<PdfFilterButtonProps> = ({
 
   const handleClose = (value?: string) => {
     setAnchorEl(null);
-    // if (value && onSelect) {
-    //   // onSelect(value);
-    // }
   };
 
   return (
@@ -38,7 +35,7 @@ const PdfFilterButton: React.FC<PdfFilterButtonProps> = ({
         variant="contained"
         className="filter-button"
         disableElevation
-        onClick={handleClick} 
+        onClick={handleClick}
         sx={{
           color: colors["pdf-blue-muted-medium"],
           fontSize: "12px",
@@ -54,8 +51,7 @@ const PdfFilterButton: React.FC<PdfFilterButtonProps> = ({
           />
         }
       >
-        <span></span>
-        {label}
+        <span className="button-filter-label">{label}</span>
       </Button>
       <Menu
         id={`pdf-filter-menu-${filterKey}`}
@@ -66,10 +62,7 @@ const PdfFilterButton: React.FC<PdfFilterButtonProps> = ({
           "aria-labelledby": `pdf-filter-Pdfbutton-${filterKey}`,
         }}
       >
-        
-        <div
-        className="p-2"
-        >{children}</div>
+        <div className="p-2">{children}</div>
       </Menu>
     </div>
   );

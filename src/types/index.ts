@@ -57,8 +57,8 @@ export interface DatasetItemMeta {
 }
 
 export interface FilterOptions {
-  type?: string[] | null;
-  material?: string[] | null;
+  type?: any;
+  material?: any;
   cost_to_produce?: any;
   life_span_years?: any;
   volume_size_cm3?: any;

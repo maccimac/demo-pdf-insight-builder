@@ -1,6 +1,9 @@
 import PdfFilterButton from "@components/PdfFilterButton";
 import PdfFilterRangeSlider from "@components/PdfFilterRangeSlider";
+import PdfFilterCheckboxes from "@components/PdfFilterRangeCheckboxes";
 import { FilterOptions } from "@/types";
+import { semiconductorProps } from "@utils/semiconductorProps";
+
 interface DatasetFiltersProps {
   filter: FilterOptions;
   set_filter: Function;
@@ -37,8 +40,8 @@ const DatasetFilters: React.FC<DatasetFiltersProps> = ({
           filterKey="life_span_years"
           label={
             <div>
-              <strong>Lifespan</strong> is between{" "}
-              {filter.life_span_years[0]} to {filter.life_span_years[1]}
+              <strong>Lifespan</strong> is between {filter.life_span_years[0]}{" "}
+              to {filter.life_span_years[1]}
             </div>
           }
         >
@@ -48,6 +51,23 @@ const DatasetFilters: React.FC<DatasetFiltersProps> = ({
             filterKey="life_span_years"
             initValue={filter.life_span_years}
             max={15}
+          />
+        </PdfFilterButton>
+
+        <PdfFilterButton
+          filterKey="life_span_years"
+          label={
+            <div>
+              <strong>Type</strong> is
+              {filter.type.join(", ")}
+            </div>
+          }
+        >
+          <PdfFilterCheckboxes
+            filter={filter}
+            setFilter={set_filter}
+            filterKey="type"
+            initValue={filter.type}
           />
         </PdfFilterButton>
       </div>

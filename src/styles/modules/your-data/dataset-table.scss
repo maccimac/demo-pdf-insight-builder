@@ -24,6 +24,15 @@
     padding: 2px 8px;
     text-transform: none;
     border-radius: 4px;
+    .button-filter-label {
+      max-width: 200px;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: break-all;
+    }
   }
   .filter-label {
     color: $pdf-blue-muted-medium !important;
