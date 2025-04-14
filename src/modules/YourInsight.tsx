@@ -15,6 +15,7 @@ const YourInsight: React.FC<YourInsightProps> = () => {
   const { viewsList, set_viewsList } = useData();
   const { set_chartType } = useData();
   const { set_yAxis } = useData();
+  const { set_yColor } = useData();
   const { set_xAxis } = useData();
   const [selectedView, set_selectedView] = useState<string>(
     "Power and production cost"
@@ -47,6 +48,7 @@ const YourInsight: React.FC<YourInsightProps> = () => {
       set_chartType(insightView.params.chartType);
       set_yAxis(insightView.params.yAxis);
       set_xAxis(insightView.params.xAxis);
+      set_yColor(insightView.params.yColor);
     }
   };
 
