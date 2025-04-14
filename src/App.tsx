@@ -5,7 +5,7 @@ import Home from "./pages/Home"
 
 function App() {
   return (
-    <div className="">
+    <div className="pdf-insight-builder">
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>

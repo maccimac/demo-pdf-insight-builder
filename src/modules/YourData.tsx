@@ -6,8 +6,7 @@ interface YourDataProps {}
 
 const YourData: React.FC<YourDataProps> = () => {
   return (
-    <div className="pdf-your-data">
-      {/* Select and preview your data */}
+    <div className="pdf-your-data p-4">
       <div className="container-fluid">
         <div className="row">
           <div className="col col-md-4">

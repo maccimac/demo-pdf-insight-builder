@@ -31,6 +31,7 @@ const PdfButton: React.FC<PdfButtonProps> = ({
     <Button
       variant="contained"
       className="pdf-button"
+      disableElevation
       endIcon={
         endIcon ??
         icon ?? (

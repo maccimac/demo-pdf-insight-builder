@@ -18,25 +18,23 @@ const PdfChartTooltip: React.FC<PdfChartTooltipProps> = ({
     const semiconductorItem = payload[0].payload;
 
     return (
-      <div className="pdf-tooltip p-2 flex flex-col gap-2 rounded-sm bg-white shadow-md border border-gray-200 text-sm">
-        <div className="font-semibold text-base text-gray-800">
+      <div className="pdf-tooltip p-3 flex flex-col gap-2 rounded-sm  pdf-shadow text-sm">
+        <div className="text-weight-700 text-color-pdf-lightest mb-2">
           {semiconductorItem.model_name}
         </div>
 
         {xAxis && (
-          <div>
-            <span className="text-gray-500">
+          <div className="text-color-pdf-med">
+            <span className="text-weight-700">
               {semiconductorProps?.[xAxis]?.name || xAxis}:
             </span>{" "}
-            <span className="ml-2 text-gray-700">
-              {semiconductorItem[xAxis]}
-            </span>
+            <span className="ml-2 ">{semiconductorItem[xAxis]}</span>
           </div>
         )}
 
         {yAxis && (
-          <div>
-            <span className="text-gray-500">
+          <div className="text-color-pdf-med">
+            <span className="text-weight-700">
               {semiconductorProps?.[yAxis]?.name || yAxis}:
             </span>{" "}
             <span className="ml-2 text-gray-700">

@@ -2,7 +2,6 @@ import colors from "@utils/colors";
 import {
   Divider,
   FormGroup,
-  FormControlLabel,
   InputLabel,
   MenuItem,
   Switch,
@@ -26,7 +25,7 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
   saveView,
   deleteView,
 }) => {
-  const { viewsList, set_viewsList } = useData();
+  const { viewsList } = useData();
   const { chartType, set_chartType } = useData();
   const { yAxis, set_yAxis } = useData();
   const { xAxis, set_xAxis } = useData();
@@ -103,7 +102,8 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
   };
 
   return (
-    <div className="pdf-insight-designer p-2 mb-5">
+    <div className="pdf-insight-designer px-2 mb-5">
+      <div className="section-title mb-3">Design your insight</div>
       <div className="select-a-chart mb-4">
         <PdfSelector
           id="chart-type"
@@ -135,11 +135,28 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
         </div>
         {chartType !== "bar" && (
           <FormGroup className="w-50">
-            <InputLabel className="mb-0" shrink>
+            <InputLabel
+              className="mb-0"
+              shrink
+              sx={{
+                "&.MuiInputLabel-shrink": {
+                  fontSize: "20px",
+                  
+                },
+              }}
+            >
               How do you want to group your X-Axis?
             </InputLabel>
-            <div className="d-flex align-items-center mt-n2">
-              <small>Category</small>
+            <div className="xisnumber-switch d-flex align-items-center">
+              <small
+                className={
+                  xIsNumber
+                    ? "text-color-pdf-med"
+                    : "text-color-pdf-med-dark text-weight-500"
+                }
+              >
+                Category
+              </small>
               <Switch
                 checked={xIsNumber}
                 onChange={(e) => {
@@ -147,7 +164,15 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
                 }}
               />
 
-              <small>Number</small>
+              <small
+                className={
+                  !xIsNumber
+                    ? "text-color-pdf-med"
+                    : "text-color-pdf-med-dark text-weight-500"
+                }
+              >
+                Number
+              </small>
             </div>
           </FormGroup>
         )}
@@ -207,6 +232,9 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
               color: colors["pdf-blue-accent"],
               borderColor: colors["pdf-blue-accent"],
               borderWidth: "2px",
+            },
+            "&.MuiInputLabel-shrink": {
+              fontSize: "20px",
             },
           }}
           onChange={(e) => {

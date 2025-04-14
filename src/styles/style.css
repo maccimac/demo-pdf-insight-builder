@@ -1,13 +1,90 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
-.pdf-text-big {
-  color: #00194d;
-  font-size: 22pz;
-}
-
 .section-title {
   color: #00194d;
-  font-size: 32px;
+  font-size: 18px;
+  font-weight: 1000;
+  margin-bottom: 8px;
+}
+
+.text-weight-100 {
+  font-weight: 100 !important;
+}
+
+.text-weight-200 {
+  font-weight: 200 !important;
+}
+
+.text-weight-300 {
+  font-weight: 300 !important;
+}
+
+.text-weight-400 {
+  font-weight: 400 !important;
+}
+
+.text-weight-500 {
+  font-weight: 500 !important;
+}
+
+.text-weight-600 {
+  font-weight: 600 !important;
+}
+
+.text-weight-700 {
+  font-weight: 700 !important;
+}
+
+.text-weight-800 {
+  font-weight: 800 !important;
+}
+
+.text-weight-900 {
+  font-weight: 900 !important;
+}
+
+.text-color-pdf-blue-primary {
+  color: #00194d !important;
+}
+
+.text-color-pdf-blue-accent {
+  color: #428be4 !important;
+}
+
+.text-color-pdf-darkest {
+  color: #232933 !important;
+}
+
+.text-color-pdf-med-dark {
+  color: #535965 !important;
+}
+
+.text-color-pdf-med {
+  color: #8d929c !important;
+}
+
+.text-color-pdf-med-light {
+  color: #cfd3da !important;
+}
+
+.text-color-pdf-light {
+  color: #DEE2E9 !important;
+}
+
+.text-color-pdf-lightest {
+  color: #eef1f7 !important;
+}
+
+.text-color-pdf-lightest-transparent {
+  color: rgba(215, 220, 219, 0.33) !important;
+}
+
+.text-color-pdf-blue-muted-medium-light {
+  color: #8daacd !important;
+}
+
+.text-color-pdf-blue-muted-medium {
+  color: #576c99 !important;
 }
 
 .bg-pdf-blue-primary {
@@ -11957,6 +12034,23 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.pdf-insight-builder__wrapper {
+  height: 100vh;
+  max-height: 100vh;
+  overflow-x: hidden;
+}
+
+@media (min-height: 768px) {
+  .pdf-insight-builder__wrapper {
+    overflow: hidden;
+  }
+}
+@media (max-width: 768px) {
+  .pdf-insight-builder__wrapper {
+    height: auto;
+    max-height: auto;
+  }
+}
 .pdf-your-data {
   background-color: #eef1f7;
   min-height: 240px;
@@ -11970,6 +12064,10 @@ textarea.form-control-lg {
 .dataset-selected .MuiMenuItem-root,
 .dataset-selected .met {
   display: block;
+}
+.dataset-selected .MuiMenuItem-root .dataset-title,
+.dataset-selected .met .dataset-title {
+  font-size: 40px !important;
 }
 .dataset-selected .MuiMenuItem-root .dataset-description,
 .dataset-selected .met .dataset-description {
@@ -12044,6 +12142,27 @@ textarea.form-control-lg {
   background-color: rgba(215, 220, 219, 0.33);
 }
 
+.pdf-dataset-table .MuiTableCell-root {
+  line-height: 16px;
+  padding: 12px 8px !important;
+  border-bottom: none !important;
+}
+.pdf-dataset-table .MuiTable-root {
+  border-bottom: none !important;
+  color: #8d929c;
+}
+
+.pdf-filter-item .filter-button {
+  background-color: #cfd3da;
+  color: #576c99;
+  padding: 2px 8px;
+  text-transform: none;
+  border-radius: 4px;
+}
+.pdf-filter-item .filter-label {
+  color: #576c99 !important;
+}
+
 .pdf-dataset-row:hover {
   background-color: rgba(215, 220, 219, 0.33);
 }
@@ -12062,14 +12181,21 @@ textarea.form-control-lg {
 }
 
 .pdf-insight-view .insight-title {
-  font-size: 22px;
+  color: #00194d;
+  font-size: 24px;
   text-align: center;
   width: 100%;
+  margin-bottom: 8px;
 }
 .pdf-insight-view .insight-container {
   border-radius: 4px;
-  padding: 12px;
+  padding-top: 48px;
+  padding-left: 16px;
+  padding-bottom: 24px;
+  padding-right: 12px;
   background-color: #f7f9fb;
+  box-shadow: 0px 2px 24px 0px rgba(141, 146, 156, 0.4);
+  border-radius: 4px;
 }
 .pdf-insight-view .axis-labels {
   font-weight: 500;
@@ -12111,10 +12237,13 @@ textarea.form-control-lg {
   color: #eef1f7;
 }
 
+.pdf-insight-designer .xisnumber-switch {
+  margin-top: -8px;
+}
+
 *,
 .pdf-insight-builder {
   font-family: "IBM Plex Sans", sans-serif !important;
-  color: #535965;
   transition: color 0.5s ease-in-out, background-color 0.35s ease-in-out, border-color 0.35s ease-in-out, box-shadow 0.35s ease-in-out, transform 0.35s ease-in-out, opacity 0.35s ease-in-out, text-shadow 0.35s ease-in-out, filter 0.35s ease-in-out;
 }
 

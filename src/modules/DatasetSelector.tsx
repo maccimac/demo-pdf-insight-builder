@@ -98,7 +98,7 @@ const DatasetSelector: React.FC<DatasetSelectorProps> = () => {
               }}
             />
           ))}
-          <Divider color={colors["pdf-med-dark"]} />
+          <Divider className="mb-4" color={colors["pdf-light"]} />
           {notFavorites.map((ds) => (
             <PdfDatasetItem
               {...ds}

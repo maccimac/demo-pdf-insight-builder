@@ -8,6 +8,7 @@
 @import "./bootstrap-custom.scss";
 
 // Layouts
+@import "./modules/wrapper";
 @import "./modules/your-data/your-data.scss";
 @import "./modules/your-data/dataset-table.scss";
 @import "./modules/your-insight/your-insight.scss";
@@ -17,10 +18,9 @@
 *,
 .pdf-insight-builder {
   font-family: "IBM Plex Sans", sans-serif !important;
-  color: #535965;
-
   transition: color 0.5s ease-in-out, background-color 0.35s ease-in-out,
     border-color 0.35s ease-in-out, box-shadow 0.35s ease-in-out,
     transform 0.35s ease-in-out, opacity 0.35s ease-in-out,
     text-shadow 0.35s ease-in-out, filter 0.35s ease-in-out;
 }
+

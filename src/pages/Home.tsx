@@ -8,8 +8,8 @@ interface MyComponentProps {
 
 const Home: React.FC<MyComponentProps> = () => {
   return (
-    <div className="home">
-      <YourData/>
+    <div className="pdf-insight-builder__wrapper">
+      <YourData />
       <YourInsight />
     </div>
   );

@@ -21,7 +21,7 @@ const InsightChartLine: React.FC<InsightViewParameter> = ({
   yColor = "#F6CB67",
 }) => {
   return (
-    <ResponsiveContainer width="100%" height={600}>
+    <ResponsiveContainer width="100%" height={480}>
       <LineChart data={data} margin={{ bottom: 32, right: 16 }}>
         <CartesianGrid strokeDasharray="3 3" />
         <YAxis

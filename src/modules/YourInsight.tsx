@@ -17,7 +17,7 @@ const YourInsight: React.FC<YourInsightProps> = () => {
   const { set_yAxis } = useData();
   const { set_xAxis } = useData();
   const [selectedView, set_selectedView] = useState<string>(
-    "Processing power by production cost"
+    "Power and prodution cost"
   );
 
   const selectViewListOptions = useMemo(() => {
@@ -52,7 +52,6 @@ const YourInsight: React.FC<YourInsightProps> = () => {
 
   useEffect(() => {
     const stored = localStorage.getItem("pdf_views_list");
-    console.log(stored);
     const pdfViewsList: InsightViewMeta[] | null = stored
       ? JSON.parse(stored)
       : null;
@@ -70,23 +69,32 @@ const YourInsight: React.FC<YourInsightProps> = () => {
   }, [selectedView]);
 
   return (
-    <div className="pdf-your-insight mt-4">
-      <div className="container-fluid">
+    <div className="pdf-your-insight p-4">
+      <div className="container-fluid my-4">
         <div className="row">
           <div className="col col-xl-8">
             <InsightView></InsightView>
           </div>
           <div className="col col-xl-4">
+            <div className="section-title mb-3">Your insight</div>
             <PdfSelector
               id="select-view"
               label="Select view"
               value={selectedView}
               setValue={set_selectedView}
               items={selectViewListOptions}
+              sx={{
+                fontSize: "24px",
+                color: colors["pdf-blue-primary"],
+                fontWeight: 1000,
+                "&.Mui-focused": {
+                  color: colors["pdf-blue-primary"],
+                },
+              }}
             ></PdfSelector>
 
             <Divider color={colors["pdf-med-light"]} className="my-4" />
-            
+
             <InsightDesigner saveView={saveView} deleteView={deleteView} />
           </div>
         </div>

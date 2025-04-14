@@ -1,8 +1,48 @@
-.pdf-text-big {
-  color: $pdf-blue-primary;
-  font-size: 22pz;
-}
 .section-title {
   color: $pdf-blue-primary;
-  font-size: 32px;
+  font-size: 18px;
+  font-weight: 1000;
+  margin-bottom: 8px;
+}
+
+.text-weight-100 {
+  font-weight: 100 !important;
+}
+
+.text-weight-200 {
+  font-weight: 200 !important;
+}
+
+.text-weight-300 {
+  font-weight: 300 !important;
+}
+
+.text-weight-400 {
+  font-weight: 400 !important; // normal
+}
+
+.text-weight-500 {
+  font-weight: 500 !important;
+}
+
+.text-weight-600 {
+  font-weight: 600 !important;
+}
+
+.text-weight-700 {
+  font-weight: 700 !important; // bold
+}
+
+.text-weight-800 {
+  font-weight: 800 !important;
+}
+
+.text-weight-900 {
+  font-weight: 900 !important;
+}
+
+@each $variable-name, $color-value in $color-variables {
+  .text-color-#{$variable-name} {
+    color: $color-value !important;
+  }
 }

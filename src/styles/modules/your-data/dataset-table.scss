@@ -1,11 +1,32 @@
-.pdf-dataset-table{
-  // outline: 2px solid hotpink;
-  // max-height: 360px;
-  // overflow-y: scroll;
+.pdf-dataset-table {
+  .MuiTableCell-root {
+    line-height: 16px;
+    padding: 12px 8px !important;
+    border-bottom: none !important;
+  }
+  .MuiTable-root {
+    // line-height: 10px;
+    border-bottom: none !important;
+    color: $pdf-med;
+  }
 }
+
+.pdf-filter-item {
+  .filter-button {
+    background-color: $pdf-med-light;
+    color: $pdf-blue-muted-medium;
+    padding: 2px 8px;
+    text-transform: none;
+    border-radius: 4px;
+  }
+  .filter-label {
+    color: $pdf-blue-muted-medium !important;
+  }
+}
+
 .pdf-dataset-row {
   &:hover {
-    background-color:$pdf-lightest-transparent;
+    background-color: $pdf-lightest-transparent;
   }
   .MuiTableCell-root {
     max-width: 180px;
@@ -16,7 +37,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    &.model_name{
+    &.model_name {
       font-weight: 500;
       // color: $pdf-med-dark;
     }

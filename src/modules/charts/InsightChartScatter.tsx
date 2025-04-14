@@ -20,7 +20,7 @@ const InsightChartScatter: React.FC<InsightViewParameter> = ({
   yColor = "#F6CB67",
 }) => {
   return (
-    <ResponsiveContainer width="100%" height={400}>
+    <ResponsiveContainer width="100%" height={480}>
       <ScatterChart margin={{ bottom: 32, right: 16 }}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis

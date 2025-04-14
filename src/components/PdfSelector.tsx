@@ -11,6 +11,7 @@ interface PdfSelectorProps<T = any> {
   items?: SelectorItem[];
   children?: ReactNode;
   renderSelected?: (value: T) => ReactNode;
+  sx?: object;
 }
 
 const PdfSelector: React.FC<PdfSelectorProps> = ({
@@ -21,23 +22,34 @@ const PdfSelector: React.FC<PdfSelectorProps> = ({
   items,
   children,
   renderSelected,
+  sx,
 }) => {
   return (
     <div>
       <FormControl fullWidth>
-        <InputLabel id={id}>{label}</InputLabel>
+        <InputLabel
+          sx={{
+            "&.MuiInputLabel-shrink": {
+              fontSize: "20px",
+            },
+          }}
+          id={id}
+        >
+          {label}
+        </InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={value}
-          label={label}
+          label={label + "__"}
           onChange={(e) => {
             setValue && setValue(e.target.value);
           }}
           className="w-100"
           renderValue={renderSelected ? () => renderSelected(value) : undefined}
           sx={{
-            color: colors["pdf-med"],
+            color: colors["pdf-med-dark"],
+            fontWeight: 500,
             "& .MuiOutlinedInput-notchedOutline": {
               borderColor: colors["pdf-light"],
             },
@@ -53,6 +65,10 @@ const PdfSelector: React.FC<PdfSelectorProps> = ({
             "&.Mui-focused": {
               color: colors["pdf-med-dark"],
             },
+            "&.MuiInputLabel-shrink": {
+              fontSize: "20px",
+            },
+            ...sx,
           }}
           MenuProps={{
             MenuListProps: {

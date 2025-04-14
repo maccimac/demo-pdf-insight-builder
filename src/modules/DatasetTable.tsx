@@ -12,7 +12,8 @@ import PdfDatasetTableRow from "../components/PdfDatasetTableRow";
 import { semiconductorProps } from "../utils/semiconductorProps";
 import { Semiconductor, SemiconductorProperty } from "@/types";
 import { useMemo, useState } from "react";
-import { useData } from "../contexts/DataContext";
+import { useData } from "@contexts/DataContext";
+import PdfFilterItem from "@components/PdfFilterItem";
 
 interface DatasetTableProps {}
 
@@ -57,9 +58,15 @@ const DatasetTable: React.FC<DatasetTableProps> = () => {
 
   return (
     <div className="pdf-dataset-table">
+      <div className="d-flex gap-2 m-2">
+        <PdfFilterItem key="materials" label="Filter by any" />
+        <PdfFilterItem key="materials" label="Filter by any" />
+        <PdfFilterItem key="materials" label="Filter by any" />
+        <PdfFilterItem key="materials" label="Filter by any" />
+      </div>
       <TableContainer>
         <Table>
-          <TableHead>
+          <TableHead className="no-border-head">
             {Object.entries(semiconductorProps).map(
               ([key, semiCondProp]: [string, SemiconductorProperty]) => (
                 <TableCell key={key}>
@@ -86,13 +93,13 @@ const DatasetTable: React.FC<DatasetTableProps> = () => {
         </Table>
       </TableContainer>
 
-      <Button
+      {/* <Button
         onClick={() => {
           set_displayAll(!displayAll);
         }}
       >
         {displayAll ? "Collapse" : "Display all"}
-      </Button>
+      </Button> */}
     </div>
   );
 };
