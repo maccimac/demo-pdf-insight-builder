@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Popover } from "@mui/material";
 import { SketchPicker } from "react-color";
 import Icon from "@mdi/react";
 import { mdiPalette } from "@mdi/js";
+import { useData } from "@contexts/DataContext";
 
 interface PdfColorPickerProps {
   setColor?: Function;
 }
 const PdfColorPicker: React.FC<PdfColorPickerProps> = ({ setColor }) => {
+  const { yColor } = useData();
   const [color, setColorInner] = useState<string>("#F6CB67");
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -21,6 +23,10 @@ const PdfColorPicker: React.FC<PdfColorPickerProps> = ({ setColor }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  useEffect(()=>{
+    setColorInner(yColor)
+  }, [yColor])
 
   return (
     <div className="pdf-color-picker">
