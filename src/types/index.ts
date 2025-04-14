@@ -57,5 +57,5 @@ export interface DatasetItemMeta {
 
 export interface FilterOptions {
   type?: string[] | null;
-  cost_to_produce?: [number, number] | null;
+  cost_to_produce?: any;
 }

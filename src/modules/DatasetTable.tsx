@@ -13,12 +13,12 @@ import Icon from "@mdi/react";
 import { mdiChevronDown, mdiChevronUp } from "@mdi/js";
 import PdfDatasetTableRow from "../components/PdfDatasetTableRow";
 import PdfFilterItem from "@components/PdfFilterItem";
+import PdfFilterRangeSlider from "@components/PdfFilterRangeSlider";
 import { FilterOptions, Semiconductor, SemiconductorProperty } from "@/types";
 import {
   filterSemiconductors,
   sortSemiconstructors,
 } from "@utils/sortAndFilter";
-
 import { semiconductorProps } from "../utils/semiconductorProps";
 import { useEffect, useMemo, useState } from "react";
 import { useData } from "@contexts/DataContext";
@@ -32,7 +32,7 @@ const DatasetTable: React.FC<DatasetTableProps> = () => {
 
   // Filter logic
   const [filter, set_filter] = useState<FilterOptions>({
-    type: undefined,
+    type: null,
     cost_to_produce: [0, 10],
   });
 
@@ -56,18 +56,7 @@ const DatasetTable: React.FC<DatasetTableProps> = () => {
       orderBy // ex: life_span_year
     );
     set_filteredAndSortedData(data);
-  }, [datasetName, displayAll, order, orderBy]);
-
-  // const sortedData = useMemo<Semiconductor[]>(() => {
-  //   let data = datasets[datasetName] || [];
-  //   data = filterSemiconductors(data, filter);
-  //   data = sortSemiconstructors(
-  //     data,
-  //     order, // ex: asc / desc
-  //     orderBy // ex: life_span_year
-  //   );
-  //   return data;
-  // }, [datasetName, displayAll, order, orderBy]);
+  }, [datasetName, displayAll, order, orderBy, filter]);
 
   const displayData = useMemo<Semiconductor[]>(() => {
     return displayAll
@@ -84,6 +73,13 @@ const DatasetTable: React.FC<DatasetTableProps> = () => {
       }
     >
       <div className="d-flex gap-2 m-2">
+        {filter.cost_to_produce}
+        <PdfFilterRangeSlider
+          filter={filter}
+          data={datasets[datasetName]}
+          setFilter={set_filter}
+          filterKey="cost_to_produce"
+        />
         <PdfFilterItem key="materials" label="Filter by any" />
         <PdfFilterItem key="materials" label="Filter by any" />
         <PdfFilterItem key="materials" label="Filter by any" />

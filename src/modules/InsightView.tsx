@@ -1,5 +1,3 @@
-import { datasets } from "@mock-data/datasets";
-// import { TooltipProps } from "recharts";
 import InsightChartScatter from "./charts/InsightChartScatter";
 import { semiconductorProps } from "../utils/semiconductorProps";
 import { Semiconductor, SemiconductorProperty } from "@/types";
