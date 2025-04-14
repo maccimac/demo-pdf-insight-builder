@@ -69,7 +69,7 @@ const PdfDatasetItem: React.FC<DatasetItemProps> = ({
         </div>
         <div className="">
           <div className="dataset-meta">
-            {count} datasets | {publish_date && formatDate(publish_date)} |{" "}
+            {count} rows | {publish_date && formatDate(publish_date)} |{" "}
             {source}
           </div>
           <div className="dataset-description">{description}</div>

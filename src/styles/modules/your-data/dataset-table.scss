@@ -43,3 +43,48 @@
     }
   }
 }
+
+.table-footer {
+  text-align: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 100;
+  margin-top: -120px;
+  width: 100%;
+  position: relative;
+  pointer-events: none;
+  background: linear-gradient(0deg, $pdf-lightest, transparent);
+  display: flex;
+  height: 120px;
+  margin-bottom: 16px;
+
+  .text-we-are-analyzing {
+    font-size: 20px;
+    font-weight: 500;
+    color: $pdf-med-dark;
+    background-color: $pdf-lightest;
+    padding: 16px 32px;
+    .active-count {
+      font-weight: 1000;
+      color: $pdf-blue-accent;
+    }
+    .total-count {
+      font-weight: 1000;
+      color: $pdf-blue-primary;
+    }
+  }
+  .btn--display-all {
+    clear: both;
+    pointer-events: auto;
+    background-color: $pdf-lightest-transparent;
+    box-shadow: $pdf-shadow;
+    transition: all 0.4s ease-in-out;
+    
+    &:hover {
+      outline: 1px solid $pdf-light;
+      scale: 1.2;
+      margin-bottom: -8px;
+    }
+  }
+}

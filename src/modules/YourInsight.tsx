@@ -72,10 +72,10 @@ const YourInsight: React.FC<YourInsightProps> = () => {
     <div className="pdf-your-insight p-4">
       <div className="container-fluid my-4">
         <div className="row">
-          <div className="col col-xl-8">
+          <div className="col-12 col-xl-8 order-2 order-xl-1">
             <InsightView></InsightView>
           </div>
-          <div className="col col-xl-4">
+          <div className="col-12 col-xl-4 order-1 order-xl-2">
             <div className="section-title mb-3">Your insight</div>
             <PdfSelector
               id="select-view"

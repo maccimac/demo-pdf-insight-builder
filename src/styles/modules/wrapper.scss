@@ -4,13 +4,17 @@
   overflow-x: hidden;
 }
 @media (min-height: 768px) {
-    .pdf-insight-builder__wrapper {
-      overflow: hidden;
-    }
+  .pdf-insight-builder__wrapper:has(.pdf-table-collapsed) {
+    height: auto;
+    max-height: auto;
+    overflow-y: hidden;
   }
-@media (max-width: 768px) {
+}
+
+@media (max-width: 1024px) {
   .pdf-insight-builder__wrapper {
     height: auto;
     max-height: auto;
+    overflow-y: auto !important;
   }
 }

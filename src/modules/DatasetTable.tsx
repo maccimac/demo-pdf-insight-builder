@@ -1,19 +1,22 @@
+import colors from "@utils/colors";
 import { datasets } from "../mock-data/datasets";
 import {
+  IconButton,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableSortLabel,
-  Button,
 } from "@mui/material";
+import Icon from "@mdi/react";
+import { mdiChevronDown, mdiChevronUp } from "@mdi/js";
 import PdfDatasetTableRow from "../components/PdfDatasetTableRow";
+import PdfFilterItem from "@components/PdfFilterItem";
 import { semiconductorProps } from "../utils/semiconductorProps";
 import { Semiconductor, SemiconductorProperty } from "@/types";
 import { useMemo, useState } from "react";
 import { useData } from "@contexts/DataContext";
-import PdfFilterItem from "@components/PdfFilterItem";
 
 interface DatasetTableProps {}
 
@@ -53,11 +56,17 @@ const DatasetTable: React.FC<DatasetTableProps> = () => {
     let data = datasets[datasetName] || [];
     data = data.sort(getComparator(order, orderBy));
 
-    return displayAll ? data : data.slice(0, 5);
+    return displayAll ? data : data.slice(0, 4);
   }, [datasetName, displayAll, order, orderBy]);
 
   return (
-    <div className="pdf-dataset-table">
+    <div
+      className={
+        displayAll
+          ? "pdf-dataset-table pdf-table-expanded mb-4s"
+          : "pdf-dataset-table pdf-table-collapsed"
+      }
+    >
       <div className="d-flex gap-2 m-2">
         <PdfFilterItem key="materials" label="Filter by any" />
         <PdfFilterItem key="materials" label="Filter by any" />
@@ -93,13 +102,31 @@ const DatasetTable: React.FC<DatasetTableProps> = () => {
         </Table>
       </TableContainer>
 
-      {/* <Button
-        onClick={() => {
-          set_displayAll(!displayAll);
-        }}
-      >
-        {displayAll ? "Collapse" : "Display all"}
-      </Button> */}
+      <div className="table-footer">
+        <div>
+          <IconButton
+            className="btn--display-all"
+            onClick={() => {
+              set_displayAll(!displayAll);
+            }}
+          >
+            <Icon
+              path={displayAll ? mdiChevronUp : mdiChevronDown}
+              size="20px"
+              color={colors["pdf-med-dark"]}
+            />
+          </IconButton>
+          <div className="text-we-are-analyzing">
+            We are analyzing{" "}
+            <span className="active-count">
+              {datasets[datasetName].length}{" "}
+            </span>
+            of{" "}
+            <span className="total-count">{datasets[datasetName].length} </span>
+            rows
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
