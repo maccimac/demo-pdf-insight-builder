@@ -1,17 +1,15 @@
 import colors from "@utils/colors";
 import { datasets } from "../mock-data/datasets";
-import { IconButton } from "@mui/material";
-import Icon from "@mdi/react";
-import { mdiChevronDown, mdiChevronUp } from "@mdi/js";
-import PdfDatasetTable from "./DatasetTable";
-
 import DatasetFilters from "./DatasetFilters";
 import { FilterOptions, Semiconductor } from "@/types";
 import {
   filterSemiconductors,
   sortSemiconstructors,
 } from "@utils/sortAndFilter";
-
+import { IconButton, TextField, InputAdornment } from "@mui/material";
+import Icon from "@mdi/react";
+import { mdiChevronDown, mdiChevronUp, mdiMagnify } from "@mdi/js";
+import PdfDatasetTable from "./DatasetTable";
 import { useEffect, useMemo, useState } from "react";
 import { useData } from "@contexts/DataContext";
 
@@ -20,11 +18,21 @@ interface DatasetTableWrapperProps {}
 const DatasetTableWrapper: React.FC<DatasetTableWrapperProps> = () => {
   const { datasetName } = useData();
   const { filteredAndSortedData, set_filteredAndSortedData } = useData();
+
+  const [search, set_search] = useState<string>("");
   const [displayAll, set_displayAll] = useState<boolean>(false);
 
   // Filter logic
   const [filter, set_filter] = useState<FilterOptions>({
-    type: ["asic", "ai-accelerator", "controller", "cpu", "fpga", "gpu", "sensor"],
+    type: [
+      "asic",
+      "ai-accelerator",
+      "controller",
+      "cpu",
+      "fpga",
+      "gpu",
+      "sensor",
+    ],
     material: [
       "gaas",
       "gallium-arsenide",
@@ -58,6 +66,21 @@ const DatasetTableWrapper: React.FC<DatasetTableWrapperProps> = () => {
 
   const filterAndSort = () => {
     let data = datasets[datasetName] || [];
+    if (search.length) {
+      data = data.filter((d) => {
+        console.log(d);
+        const searchTerm = search.toLowerCase();
+        if (
+          d.model_name?.toLowerCase().includes(searchTerm) ||
+          d.type?.toLowerCase().includes(searchTerm) ||
+          d.material.join(" ").includes(searchTerm)
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    }
     data = filterSemiconductors(data, filter);
     data = sortSemiconstructors(
       data,
@@ -70,7 +93,7 @@ const DatasetTableWrapper: React.FC<DatasetTableWrapperProps> = () => {
   // Fix: sortedData
   useEffect(() => {
     filterAndSort();
-  }, [datasetName, order, orderBy, filter]);
+  }, [datasetName, order, orderBy, filter, search]);
 
   const displayData = useMemo<Semiconductor[]>(() => {
     return displayAll
@@ -86,7 +109,47 @@ const DatasetTableWrapper: React.FC<DatasetTableWrapperProps> = () => {
           : "pdf-dataset-table pdf-table-collapsed"
       }
     >
-      <DatasetFilters filter={filter} set_filter={set_filter} />
+      <div className="table-heading gap-3">
+        <DatasetFilters filter={filter} set_filter={set_filter} />
+
+        <TextField
+          variant="outlined"
+          placeholder="Search..."
+          size="small"
+          onChange={(e) => {
+            set_search(e.currentTarget.value);
+          }}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <Icon path={mdiMagnify} size="16px" color={colors["pdf-med"]} />
+              </InputAdornment>
+            ),
+          }}
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              color: colors["pdf-med-dark"],
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: colors["pdf-light"],
+              },
+            },
+            "& .MuiInputLabel-root": {
+              color: colors["pdf-med-light"],
+            },
+            "& .MuiInputLabel-shrink": {
+              color: colors["pdf-blue-accent"],
+            },
+            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+              color: colors["pdf-blue-accent"],
+              borderColor: colors["pdf-blue-accent"],
+              borderWidth: "2px",
+            },
+            "&.MuiInputLabel-shrink": {
+              fontSize: "20px",
+            },
+          }}
+        />
+      </div>
 
       <PdfDatasetTable
         displayData={displayData}

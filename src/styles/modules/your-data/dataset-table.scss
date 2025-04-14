@@ -1,3 +1,9 @@
+.table-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .pdf-dataset-table {
   .MuiTableCell-root {
     line-height: 16px;
@@ -80,7 +86,7 @@
     background-color: $pdf-lightest-transparent;
     box-shadow: $pdf-shadow;
     transition: all 0.4s ease-in-out;
-    
+
     &:hover {
       outline: 1px solid $pdf-light;
       scale: 1.2;

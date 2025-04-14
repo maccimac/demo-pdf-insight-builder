@@ -12150,6 +12150,12 @@ textarea.form-control-lg {
   background-color: rgba(215, 220, 219, 0.33);
 }
 
+.table-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .pdf-dataset-table .MuiTableCell-root {
   line-height: 16px;
   padding: 12px 8px !important;

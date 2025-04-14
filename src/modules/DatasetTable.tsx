@@ -6,6 +6,7 @@ import {
   TableContainer,
   TableHead,
   TableSortLabel,
+  TableRow
 } from "@mui/material";
 import { Semiconductor, SemiconductorProperty } from "@/types";
 import PdfDatasetTableRow from "@components/PdfDatasetTableRow";
@@ -28,20 +29,25 @@ const PdfDatasetTable: React.FC<PdfDatasetTableProps> = ({
     <TableContainer>
       <Table>
         <TableHead className="no-border-head">
-          {Object.entries(semiconductorProps).map(
-            ([key, semiCondProp]: [string, SemiconductorProperty]) => (
-              <TableCell key={key}>
-                <TableSortLabel
-                  active={orderBy === key}
-                  direction={orderBy === key ? order : "asc"}
-                  onClick={() => handleSortRequest(key as keyof Semiconductor)}
-                >
-                  {semiCondProp.name}
-                </TableSortLabel>
-              </TableCell>
-            )
-          )}
+          <TableRow>
+            {Object.entries(semiconductorProps).map(
+              ([key, semiCondProp]: [string, SemiconductorProperty]) => (
+                <TableCell key={key}>
+                  <TableSortLabel
+                    active={orderBy === key}
+                    direction={orderBy === key ? order : "asc"}
+                    onClick={() =>
+                      handleSortRequest(key as keyof Semiconductor)
+                    }
+                  >
+                    {semiCondProp.name}
+                  </TableSortLabel>
+                </TableCell>
+              )
+            )}
+          </TableRow>
         </TableHead>
+
         <TableBody>
           {displayData.map((row, index) => (
             <PdfDatasetTableRow key={index} row={row} />
