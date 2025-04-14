@@ -1,19 +1,22 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import colors from "@utils/colors";
 import Icon from "@mdi/react";
 import { mdiFilter } from "@mdi/js";
 import { Menu, Button } from "@mui/material";
+import { FilterOptions } from "@/types";
 
-interface PdfFilterItemProps {
-  key: string;
-  label?: string;
-  onSelect?: (value: string) => void;
+interface PdfFilterButtonProps {
+  filterKey: keyof FilterOptions;
+  label?: ReactNode;
+  // onSelect?: (value: string) => void;
+  children: ReactNode;
 }
 
-const PdfFilterItem: React.FC<PdfFilterItemProps> = ({
-  key,
+const PdfFilterButton: React.FC<PdfFilterButtonProps> = ({
   label,
-  onSelect,
+  // onSelect,
+  children,
+  filterKey,
 }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -24,9 +27,9 @@ const PdfFilterItem: React.FC<PdfFilterItemProps> = ({
 
   const handleClose = (value?: string) => {
     setAnchorEl(null);
-    if (value && onSelect) {
-      onSelect(value);
-    }
+    // if (value && onSelect) {
+    //   // onSelect(value);
+    // }
   };
 
   return (
@@ -35,6 +38,7 @@ const PdfFilterItem: React.FC<PdfFilterItemProps> = ({
         variant="contained"
         className="filter-button"
         disableElevation
+        onClick={handleClick} 
         sx={{
           color: colors["pdf-blue-muted-medium"],
           fontSize: "12px",
@@ -51,21 +55,24 @@ const PdfFilterItem: React.FC<PdfFilterItemProps> = ({
         }
       >
         <span></span>
-        Type is any
+        {label}
       </Button>
       <Menu
-        id={`pdf-filter-menu-${key}`}
+        id={`pdf-filter-menu-${filterKey}`}
         anchorEl={anchorEl}
         open={open}
         onClose={() => handleClose()}
         MenuListProps={{
-          "aria-labelledby": `pdf-filter-Pdfbutton-${key}`,
+          "aria-labelledby": `pdf-filter-Pdfbutton-${filterKey}`,
         }}
       >
         
+        <div
+        className="p-2"
+        >{children}</div>
       </Menu>
     </div>
   );
 };
 
-export default PdfFilterItem;
+export default PdfFilterButton;

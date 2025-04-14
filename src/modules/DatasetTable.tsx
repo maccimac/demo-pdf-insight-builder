@@ -11,14 +11,10 @@ import {
 } from "@mui/material";
 import Icon from "@mdi/react";
 import { mdiChevronDown, mdiChevronUp } from "@mdi/js";
-import PdfDatasetTableRow from "../components/PdfDatasetTableRow";
-import PdfFilterItem from "@components/PdfFilterItem";
-import PdfFilterRangeSlider from "@components/PdfFilterRangeSlider";
+import PdfDatasetTableRow from "@components/PdfDatasetTableRow";
+import DatasetFilters from "./DatasetFilters";
 import { FilterOptions, Semiconductor, SemiconductorProperty } from "@/types";
-import {
-  filterSemiconductors,
-  sortSemiconstructors,
-} from "@utils/sortAndFilter";
+import { filterSemiconductors, sortSemiconstructors } from "@utils/sortAndFilter";
 import { semiconductorProps } from "../utils/semiconductorProps";
 import { useEffect, useMemo, useState } from "react";
 import { useData } from "@contexts/DataContext";
@@ -33,7 +29,7 @@ const DatasetTable: React.FC<DatasetTableProps> = () => {
   // Filter logic
   const [filter, set_filter] = useState<FilterOptions>({
     type: null,
-    cost_to_produce: [0, 10],
+    cost_to_produce: [0, 20], // min and max
   });
 
   // Sorting logic
@@ -45,9 +41,8 @@ const DatasetTable: React.FC<DatasetTableProps> = () => {
     set_order(isAsc ? "desc" : "asc");
     set_orderBy(property);
   };
-
-  // Fix: sortedData
-  useEffect(() => {
+  
+  const filterAndSort = () => {
     let data = datasets[datasetName] || [];
     data = filterSemiconductors(data, filter);
     data = sortSemiconstructors(
@@ -56,13 +51,18 @@ const DatasetTable: React.FC<DatasetTableProps> = () => {
       orderBy // ex: life_span_year
     );
     set_filteredAndSortedData(data);
-  }, [datasetName, displayAll, order, orderBy, filter]);
+  };
+
+  // Fix: sortedData
+  useEffect(() => {
+    filterAndSort();
+  }, [datasetName, order, orderBy, filter]);
 
   const displayData = useMemo<Semiconductor[]>(() => {
     return displayAll
       ? filteredAndSortedData
       : filteredAndSortedData.slice(0, 4);
-  }, [filteredAndSortedData]);
+  }, [filteredAndSortedData, displayAll]);
 
   return (
     <div
@@ -72,19 +72,10 @@ const DatasetTable: React.FC<DatasetTableProps> = () => {
           : "pdf-dataset-table pdf-table-collapsed"
       }
     >
-      <div className="d-flex gap-2 m-2">
-        {filter.cost_to_produce}
-        <PdfFilterRangeSlider
-          filter={filter}
-          data={datasets[datasetName]}
-          setFilter={set_filter}
-          filterKey="cost_to_produce"
-        />
-        <PdfFilterItem key="materials" label="Filter by any" />
-        <PdfFilterItem key="materials" label="Filter by any" />
-        <PdfFilterItem key="materials" label="Filter by any" />
-        <PdfFilterItem key="materials" label="Filter by any" />
-      </div>
+      <DatasetFilters 
+        filter={filter}
+        set_filter={set_filter}
+      />
       <TableContainer>
         <Table>
           <TableHead className="no-border-head">
