@@ -49,7 +49,7 @@ const InsightChartLine: React.FC<InsightViewParameter> = ({
           type={xIsNumber ? "number" : "category"}
         />
 
-        <Line type="monotone" dataKey={yAxis} stroke="#F6CB67" />
+        <Line type="monotone" dataKey={yAxis} stroke={yColor} />
         <Tooltip content={<PdfChartTooltip xAxis={xAxis} yAxis={yAxis} />} />
         <Legend
           wrapperStyle={{

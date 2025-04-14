@@ -8,11 +8,11 @@ import {
   TextField,
 } from "@mui/material";
 import Icon from "@mdi/react";
-
 import { InsightViewMeta, SemiconductorProperty, SelectorItem } from "@/types";
 import { mdiContentSave } from "@mdi/js";
 import { semiconductorProps } from "@utils/semiconductorProps";
 import PdfButton from "@components/PdfButton";
+import PdfColorPicker from "@components/PdfColorPicker";
 import PdfSelector from "@components/PdfSelector";
 import { useData } from "@contexts/DataContext";
 import { useMemo, useState } from "react";
@@ -28,6 +28,7 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
   const { viewsList } = useData();
   const { chartType, set_chartType } = useData();
   const { yAxis, set_yAxis } = useData();
+  const { yColor, set_yColor } = useData();
   const { xAxis, set_xAxis } = useData();
   const { xIsNumber, set_xIsNumber } = useData();
 
@@ -86,6 +87,7 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
         chartType,
         yAxis,
         xAxis,
+        yColor,
       },
     };
 
@@ -143,7 +145,6 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
               sx={{
                 "&.MuiInputLabel-shrink": {
                   fontSize: "20px",
-                  
                 },
               }}
             >
@@ -180,30 +181,35 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
         )}
       </div>
 
-      <div className="mb-4">
-        <PdfSelector
-          id="y-axis"
-          value={yAxis}
-          setValue={set_yAxis}
-          label="Y-Axis"
-        >
-          {scParamsAxisY.map((key) => {
-            const semi = semiconductorProps[key];
+      <div className="mb-4 d-flex align-items-center gap-4">
+        <div className="w-50">
+          <PdfSelector
+            id="y-axis"
+            value={yAxis}
+            setValue={set_yAxis}
+            label="Y-Axis"
+          >
+            {scParamsAxisY.map((key) => {
+              const semi = semiconductorProps[key];
 
-            if (
-              typeof semi.dataType === "string" &&
-              !["string", "array"].includes(semi.dataType)
-            ) {
-              return (
-                <MenuItem key={key} value={key}>
-                  {semi.name}
-                </MenuItem>
-              );
-            }
+              if (
+                typeof semi.dataType === "string" &&
+                !["string", "array"].includes(semi.dataType)
+              ) {
+                return (
+                  <MenuItem key={key} value={key}>
+                    {semi.name}
+                  </MenuItem>
+                );
+              }
 
-            return null;
-          })}
-        </PdfSelector>
+              return null;
+            })}
+          </PdfSelector>
+        </div>
+        <div className="picker-holder">
+          <PdfColorPicker setColor={set_yColor} />
+        </div>
       </div>
 
       <Divider color={colors["pdf-med-light"]} className="my-4" />

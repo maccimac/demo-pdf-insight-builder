@@ -6,6 +6,7 @@ const DataContext = createContext<any>(null);
 export function DataProvider({ children }: { children: React.ReactNode }) {
   const [chartType, set_chartType] = useState("line");
   const [yAxis, set_yAxis] = useState<string>("processing_power");
+  const [yColor, set_yColor] = useState<string>("#F6CB67");
   const [xAxis, set_xAxis] = useState<string>("cost_to_produce");
   const [xIsNumber, set_xIsNumber] = useState<boolean>(true);
   const [datasetName, set_datasetName] = useState<string>(
@@ -33,6 +34,8 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
         set_chartType,
         yAxis,
         set_yAxis,
+        yColor,
+        set_yColor,
         xAxis,
         set_xAxis,
         datasetName,

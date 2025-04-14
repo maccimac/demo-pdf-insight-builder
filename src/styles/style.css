@@ -12294,6 +12294,22 @@ textarea.form-control-lg {
   color: #eef1f7;
 }
 
+.pdf-color-picker .btn-trigger {
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 4px;
+  display: flex;
+  border-radius: 4px;
+  height: 53px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 16px;
+  font-size: 14px;
+  color: #dee2e9;
+  border: 1px solid #dee2e9;
+}
+
 .pdf-insight-designer .xisnumber-switch {
   margin-top: -8px;
 }

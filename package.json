@@ -20,6 +20,7 @@
     "bootstrap": "^5.3.5",
     "react": "^19.1.0",
     "react-chartjs-2": "^5.3.0",
+    "react-color": "^2.19.3",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.5.0",
     "react-scripts": "5.0.1",
@@ -54,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-color": "^3.0.13",
     "customize-cra": "^1.0.0",
     "react-app-rewired": "^2.2.1"
   }

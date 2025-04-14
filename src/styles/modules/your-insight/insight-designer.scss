@@ -1,3 +1,23 @@
+.picker-holder {
+}
+.pdf-color-picker {
+  .btn-trigger {
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 4px;
+    display: flex;
+    border-radius: 4px;
+    height: 53px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 16px;
+    font-size: 14px;
+    color: $pdf-light;
+    border: 1px solid $pdf-light;
+  }
+}
+
 .pdf-insight-designer {
   .xisnumber-switch {
     margin-top: -8px;

@@ -12,6 +12,7 @@ const InsightView: React.FC = () => {
   const { datasetName } = useData();
   const { chartType } = useData();
   const { yAxis } = useData();
+  const { yColor } = useData();
   const { xAxis } = useData();
   const { xIsNumber } = useData();
   const { filteredAndSortedData } = useData();
@@ -90,12 +91,18 @@ const InsightView: React.FC = () => {
                 data={sortedData}
                 xAxis={xAxis}
                 yAxis={yAxis}
+                yColor={yColor}
                 xIsNumber={xIsNumber}
               />
             )}
 
             {chartType === "bar" && (
-              <InsightChartBar data={sortedData} xAxis={xAxis} yAxis={yAxis} />
+              <InsightChartBar
+                data={sortedData}
+                xAxis={xAxis}
+                yAxis={yAxis}
+                yColor={yColor}
+              />
             )}
 
             {chartType === "line" && (
@@ -103,6 +110,7 @@ const InsightView: React.FC = () => {
                 data={sortedData}
                 xAxis={xAxis}
                 yAxis={yAxis}
+                yColor={yColor}
                 xIsNumber={xIsNumber}
               />
             )}
@@ -120,6 +128,5 @@ const InsightView: React.FC = () => {
     </div>
   );
 };
-
 
 export default InsightView;
