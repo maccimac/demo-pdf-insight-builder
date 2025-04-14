@@ -121,54 +121,5 @@ const InsightView: React.FC = () => {
   );
 };
 
-// interface CustomTooltipProps extends TooltipProps<number, string> {
-//   xAxis: string;
-//   yAxis: string;
-// }
-
-// const CustomTooltip: React.FC<CustomTooltipProps> = ({
-//   active,
-//   payload,
-//   label,
-//   xAxis,
-//   yAxis,
-// }) => {
-//   if (active && payload && payload.length) {
-//     const semiconductorItem = payload[0]?.payload;
-//     return (
-//       <div className="pdf-tooltip p-2 flex flex-col gap-2 rounded-sm">
-//         <div className="label mb-2">{semiconductorItem.model_name}</div>
-
-//         {xAxis?.length && (
-//           <div className="">
-//             <span className="label">
-//               {
-//                 semiconductorProps[xAxis as keyof typeof semiconductorProps]
-//                   ?.name
-//               }{" "}
-//               :
-//             </span>{" "}
-//             <span className="value ml-2">{semiconductorItem[xAxis]}</span>
-//           </div>
-//         )}
-
-//         {yAxis?.length && (
-//           <div className="">
-//             <span className="label">
-//               {
-//                 semiconductorProps[yAxis as keyof typeof semiconductorProps]
-//                   ?.name
-//               }{" "}
-//               :
-//             </span>{" "}
-//             <span className="value ml-2">{semiconductorItem[yAxis]}</span>
-//           </div>
-//         )}
-//       </div>
-//     );
-//   }
-
-//   return null;
-// };
 
 export default InsightView;

@@ -1,5 +1,5 @@
 import React from "react";
-import DatasetTable from "./DatasetTable";
+import DatasetTableWrapper from "./DatasetTableWrapper";
 import DatasetInfo from "./DatasetInfo";
 
 interface YourDataProps {}
@@ -13,7 +13,7 @@ const YourData: React.FC<YourDataProps> = () => {
             <DatasetInfo />
           </div>
           <div className="col col-xl-8 mt-4 mt-xl-0">
-            <DatasetTable />
+            <DatasetTableWrapper />
           </div>
         </div>
       </div>
