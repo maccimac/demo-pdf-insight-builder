@@ -5,8 +5,6 @@ export const filterSemiconductors = (
   filters: FilterOptions
 ) => {
   return data.filter((item) => {
-
-    
     const matchesType = filters.type ? filters.type.includes(item.type) : true;
 
     // cost_to_produce
@@ -15,7 +13,13 @@ export const filterSemiconductors = (
         item.cost_to_produce <= filters.cost_to_produce[1]
       : true;
 
-    return matchesType && matchesCost;
+    // cost_to_produce
+    const matchesLifespan = filters.life_span_years
+      ? item.life_span_years >= filters.life_span_years[0] &&
+        item.life_span_years <= filters.life_span_years[1]
+      : true;
+
+    return matchesType && matchesCost && matchesLifespan;
   });
 };
 

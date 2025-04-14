@@ -2,6 +2,11 @@
   height: 100vh;
   max-height: 100vh;
   overflow-x: hidden;
+  &:has(.pdf-table-expanded) {
+    .table-footer {
+      margin-top: -20px !important;
+    }
+  }
 }
 @media (min-height: 768px) {
   .pdf-insight-builder__wrapper:has(.pdf-table-collapsed) {

@@ -30,6 +30,8 @@ const DatasetTable: React.FC<DatasetTableProps> = () => {
   const [filter, set_filter] = useState<FilterOptions>({
     type: null,
     cost_to_produce: [0, 20], // min and max
+    life_span_years: [0, 10]
+    
   });
 
   // Sorting logic

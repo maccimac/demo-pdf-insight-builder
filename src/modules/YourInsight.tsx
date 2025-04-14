@@ -17,7 +17,7 @@ const YourInsight: React.FC<YourInsightProps> = () => {
   const { set_yAxis } = useData();
   const { set_xAxis } = useData();
   const [selectedView, set_selectedView] = useState<string>(
-    "Power and prodution cost"
+    "Power and production cost"
   );
 
   const selectViewListOptions = useMemo(() => {

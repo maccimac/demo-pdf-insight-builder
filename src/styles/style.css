@@ -12039,6 +12039,9 @@ textarea.form-control-lg {
   max-height: 100vh;
   overflow-x: hidden;
 }
+.pdf-insight-builder__wrapper:has(.pdf-table-expanded) .table-footer {
+  margin-top: -20px !important;
+}
 
 @media (min-height: 768px) {
   .pdf-insight-builder__wrapper:has(.pdf-table-collapsed) {

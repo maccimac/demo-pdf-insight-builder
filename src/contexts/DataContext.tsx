@@ -17,7 +17,7 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
 
   const [viewsList, set_viewsList] = useState<InsightViewMeta[]>([
     {
-      name: "Power and prodution cost",
+      name: "Power and production cost",
       params: {
         chartType: "line",
         xAxis: "processing_power",

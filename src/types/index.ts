@@ -58,4 +58,6 @@ export interface DatasetItemMeta {
 export interface FilterOptions {
   type?: string[] | null;
   cost_to_produce?: any;
+  life_span_years?: any;
+  
 }
