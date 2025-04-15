@@ -5,6 +5,14 @@
 }
 
 .pdf-dataset-table {
+  .dataset-table {
+    max-height: 75vh;
+    overflow-y: scroll;
+    padding-bottom: 48px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
   .MuiTableCell-root {
     line-height: 16px;
     padding: 12px 8px !important;

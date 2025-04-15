@@ -43,13 +43,13 @@ export const semiconductorProps: Record<string, SemiconductorProperty> = {
     name: "Processing power",
     unit: "GHz",
     dataType: "number",
-    filterOptions: [0, 7],
+    filterOptions: [0, 10],
   },
   cost_to_produce: {
     name: "Cost of production",
     unit: "$",
     dataType: "number",
-    filterOptions: [0, 25]
+    filterOptions: [0, 30]
   },
   life_span_years: {
     name: "Lifespan",
@@ -61,12 +61,12 @@ export const semiconductorProps: Record<string, SemiconductorProperty> = {
     name: "Release date",
     unit: "",
     dataType: "date",
-    filterOptions: ["2010-01-01", "2025-12-31"]
+    filterOptions: ["1995-01-01", "2025-12-31"]
   },
   volume_size_cm3: {
     name: "Volume size",
     unit: "cm³",
     dataType: "number",
-    filterOptions: [0, 5],
+    filterOptions: [0, 10],
   },
 };

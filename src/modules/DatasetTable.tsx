@@ -6,56 +6,58 @@ import {
   TableContainer,
   TableHead,
   TableSortLabel,
-  TableRow
+  TableRow,
 } from "@mui/material";
 import { Semiconductor, SemiconductorProperty } from "@/types";
 import PdfDatasetTableRow from "@components/PdfDatasetTableRow";
 import { semiconductorProps } from "@utils/semiconductorProps";
 
-interface PdfDatasetTableProps {
+interface DatasetTableProps {
   displayData: Semiconductor[];
   orderBy: string;
   order: "asc" | "desc";
   handleSortRequest: (property: keyof Semiconductor) => void;
 }
 
-const PdfDatasetTable: React.FC<PdfDatasetTableProps> = ({
+const DatasetTable: React.FC<DatasetTableProps> = ({
   displayData,
   orderBy,
   order,
   handleSortRequest,
 }) => {
   return (
-    <TableContainer>
-      <Table>
-        <TableHead className="no-border-head">
-          <TableRow>
-            {Object.entries(semiconductorProps).map(
-              ([key, semiCondProp]: [string, SemiconductorProperty]) => (
-                <TableCell key={key}>
-                  <TableSortLabel
-                    active={orderBy === key}
-                    direction={orderBy === key ? order : "asc"}
-                    onClick={() =>
-                      handleSortRequest(key as keyof Semiconductor)
-                    }
-                  >
-                    {semiCondProp.name}
-                  </TableSortLabel>
-                </TableCell>
-              )
-            )}
-          </TableRow>
-        </TableHead>
+    <div className="dataset-table">
+      <TableContainer>
+        <Table>
+          <TableHead className="dataset-table-head">
+            <TableRow>
+              {Object.entries(semiconductorProps).map(
+                ([key, semiCondProp]: [string, SemiconductorProperty]) => (
+                  <TableCell key={key}>
+                    <TableSortLabel
+                      active={orderBy === key}
+                      direction={orderBy === key ? order : "asc"}
+                      onClick={() =>
+                        handleSortRequest(key as keyof Semiconductor)
+                      }
+                    >
+                      {semiCondProp.name}
+                    </TableSortLabel>
+                  </TableCell>
+                )
+              )}
+            </TableRow>
+          </TableHead>
 
-        <TableBody>
-          {displayData.map((row, index) => (
-            <PdfDatasetTableRow key={index} row={row} />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          <TableBody>
+            {displayData.map((row, index) => (
+              <PdfDatasetTableRow key={index} row={row} />
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   );
 };
 
-export default PdfDatasetTable;
+export default DatasetTable;

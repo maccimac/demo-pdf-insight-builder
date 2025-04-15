@@ -9,9 +9,10 @@ import {
 import { IconButton, TextField, InputAdornment } from "@mui/material";
 import Icon from "@mdi/react";
 import { mdiChevronDown, mdiChevronUp, mdiMagnify } from "@mdi/js";
-import PdfDatasetTable from "./DatasetTable";
+import DatasetTable from "./DatasetTable";
 import { useEffect, useMemo, useState } from "react";
 import { useData } from "@contexts/DataContext";
+import { semiconductorProps } from "@utils/semiconductorProps";
 
 interface DatasetTableWrapperProps {}
 
@@ -24,34 +25,13 @@ const DatasetTableWrapper: React.FC<DatasetTableWrapperProps> = () => {
 
   // Filter logic
   const [filter, set_filter] = useState<FilterOptions>({
-    type: [
-      "asic",
-      "ai-accelerator",
-      "controller",
-      "cpu",
-      "fpga",
-      "gpu",
-      "sensor",
-    ],
-    material: [
-      "gaas",
-      "gallium-arsenide",
-      "gallium-nitride",
-      "gan",
-      "germanium",
-      "indium-gallium-arsenide",
-      "indium-phosphide",
-      "inp",
-      "sige",
-      "silicon",
-      "silicon-carbide",
-      "silicon-germanium",
-    ],
-    cost_to_produce: [0, 25], // actual: [6.97, 22.0]
-    life_span_years: [0, 15], // actual: [3, 10]
-    volume_size_cm3: [0, 5], // actual: [1.57, 3.9]
-    processing_power: [0, 7], // actual: [1.24, 5.2]
-    release_date: ["2010-01-01", "2025-12-31"], // actual: 2011-01-20 to 2025-01-21
+    type: semiconductorProps.type.filterOptions,
+    material: semiconductorProps.material.filterOptions,
+    processing_power: semiconductorProps.processing_power.filterOptions,
+    cost_to_produce: semiconductorProps.cost_to_produce.filterOptions,
+    life_span_years: semiconductorProps.life_span_years.filterOptions,
+    release_date: semiconductorProps.release_date.filterOptions,
+    volume_size_cm3: semiconductorProps.volume_size_cm3.filterOptions,
   });
 
   // Sorting logic
@@ -151,7 +131,7 @@ const DatasetTableWrapper: React.FC<DatasetTableWrapperProps> = () => {
         />
       </div>
 
-      <PdfDatasetTable
+      <DatasetTable
         displayData={displayData}
         orderBy={orderBy}
         order={order}

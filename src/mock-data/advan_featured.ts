@@ -1,6 +1,11 @@
 import { Semiconductor } from "@/types";
+import { mock_50 } from "./more/mock_50";
+import { mock_100 } from "./more/mock_100";
 
 export const advan_featured: Semiconductor[] = [
+  ...mock_50,
+  ...mock_100,
+  
   {
     model_name: "HelioDrive X1",
     type: "cpu",

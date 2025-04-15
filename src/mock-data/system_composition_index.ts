@@ -1,6 +1,11 @@
 import { Semiconductor } from "@/types";
-
+import { mock_50 } from "./more/mock_50";
+import { mock_200 } from "./more/mockSemiconductors_200";
+import { mock_500 } from "./more/mock_500";
 export const system_composition_index: Semiconductor[] = [
+  ...mock_500,
+  ...mock_200,
+  ...mock_50,
   {
     model_name: "TitanEdge V2",
     type: "controller",
@@ -130,6 +135,5 @@ export const system_composition_index: Semiconductor[] = [
     life_span_years: 7,
     release_date: "2024-01-10",
     volume_size_cm3: 2.6,
-  }
-  
+  },
 ];

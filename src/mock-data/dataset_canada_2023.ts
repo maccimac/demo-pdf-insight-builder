@@ -1,6 +1,8 @@
 import { Semiconductor } from "@/types";
+import { mock_200 } from "./more/mockSemiconductors_200";
 
 export const dataset_canada_2023: Semiconductor[] = [
+  ...mock_200,
   {
     model_name: "XenoChip A1",
     type: "cpu",
