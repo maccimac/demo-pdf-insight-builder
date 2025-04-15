@@ -54,6 +54,7 @@ const InsightView: React.FC = () => {
     unit: "",
   });
 
+  const height = 460;
   useEffect(() => {
     const y_fromMeta = semiconductorProps[yAxis];
     set_yAxisLabel(y_fromMeta ? y_fromMeta : { name: "", unit: "" });
@@ -93,6 +94,7 @@ const InsightView: React.FC = () => {
                 yAxis={yAxis}
                 yColor={yColor}
                 xIsNumber={xIsNumber}
+                height={height}
               />
             )}
 
@@ -102,6 +104,7 @@ const InsightView: React.FC = () => {
                 xAxis={xAxis}
                 yAxis={yAxis}
                 yColor={yColor}
+                height={height}
               />
             )}
 
@@ -112,6 +115,7 @@ const InsightView: React.FC = () => {
                 yAxis={yAxis}
                 yColor={yColor}
                 xIsNumber={xIsNumber}
+                height={height}
               />
             )}
 

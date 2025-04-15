@@ -11,7 +11,7 @@
   .met {
     display: block;
     .dataset-title {
-      font-size: 40px !important;
+      font-size: 36px !important;
     }
     .dataset-description {
       -webkit-line-clamp: none;
@@ -51,8 +51,8 @@
   }
 
   .dataset-title {
-    font-size: 28px !important;
-    line-height: 36px;
+    font-size: 24px !important;
+    line-height: 32px;
     font-weight: 1000;
     color: $pdf-blue-muted-medium;
   }

@@ -73,14 +73,14 @@
   align-items: flex-end;
   justify-content: center;
   z-index: 100;
-  margin-top: -100px;
+  margin-top: -140px;
   width: 100%;
   position: relative;
   pointer-events: none;
   background: linear-gradient(0deg, $pdf-lightest, transparent);
   display: flex;
   height: 120px;
-  margin-bottom: 8px;
+  // margin-bottom: 8px;
 
   .text-we-are-analyzing {
     font-size: 20px;

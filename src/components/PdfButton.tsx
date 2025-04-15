@@ -12,10 +12,11 @@ interface PdfButtonProps extends ButtonProps {
   fontSize?: number;
   backgroundColor?: string;
   children?: ReactNode;
+  sx?: object,
 }
 
 const PdfButton: React.FC<PdfButtonProps> = ({
-  label = "Save as new view",
+  label = "Save",
   icon,
   endIcon,
   color = colors["pdf-lightest"],
@@ -24,6 +25,7 @@ const PdfButton: React.FC<PdfButtonProps> = ({
   width = null,
   fontSize = 16,
   backgroundColor = colors["pdf-blue-accent"],
+  sx,
   children,
   ...props
 }) => {
@@ -51,10 +53,13 @@ const PdfButton: React.FC<PdfButtonProps> = ({
         textTransform: "none", // optional: disables UPPERCASE
         px: 4, // optional: horizontal padding
         backgroundColor,
+        ...sx,
       }}
       {...props}
     >
+      <div className="d-block">
       {children ? children : label}
+      </div>
     </Button>
   );
 };

@@ -19,12 +19,8 @@ import { useMemo, useState } from "react";
 
 interface InsightDesignerProps {
   saveView: (value: InsightViewMeta) => void;
-  // deleteView: (value: InsightViewMeta) => void;
 }
-const InsightDesigner: React.FC<InsightDesignerProps> = ({
-  saveView,
-  // deleteView,
-}) => {
+const InsightDesigner: React.FC<InsightDesignerProps> = ({ saveView }) => {
   const { viewsList } = useData();
   const { chartType, set_chartType } = useData();
   const { yAxis, set_yAxis } = useData();
@@ -91,10 +87,8 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
       },
     };
 
-    if(!viewName || !viewName.trim().length){
-      set_validationError(
-        "Name is required"
-      );
+    if (!viewName || !viewName.trim().length) {
+      set_validationError("Name is required");
       return;
     }
     const isNotUnique = viewsList.some(
@@ -112,9 +106,9 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
   };
 
   return (
-    <div className="pdf-insight-designer px-2 mb-5">
+    <div className="pdf-insight-designer px-2 mb-2">
       <div className="section-title mb-3">Design your insight</div>
-      <div className="select-a-chart mb-4">
+      <div className="select-a-chart mb-4 w-75">
         <PdfSelector
           id="chart-type"
           value={chartType}
@@ -123,8 +117,6 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
           label="Chart type"
         />
       </div>
-
-      {/* <Divider color={colors["pdf-med-light"]} className="my-4" /> */}
       <div className="mb-4 d-flex gap-4">
         <div className="w-50">
           <PdfSelector
@@ -218,10 +210,10 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
         </div>
       </div>
 
-      <Divider color={colors["pdf-med-light"]} className="my-4" />
-      <div className="section-title mb-3">Save this view</div>
+      <Divider color={colors["pdf-med-light"]} className="mt-4 mb-3" />
+      <div className="section-title mb-3">Save as new view</div>
 
-      <div className="mb-3">
+      <div className="mb-3 d-flex gap-3">
         <TextField
           label="New insight name  "
           InputLabelProps={{ shrink: true }}
@@ -256,14 +248,27 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
           }}
           onChange={(e) => {
             set_viewName(e.currentTarget.value);
-            set_validationError("")
+            set_validationError("");
           }}
+        />
+        <PdfButton
+          onClick={saveNewInsight}
+          label="Save new"
+          width="180px"
+          sx={{ padding: "12px", lineHeight: "16px" }}
+          icon={
+            <Icon
+              path={mdiContentSave}
+              size="20px"
+              color={colors["pdf-lightest"]}
+            />
+          }
         />
       </div>
 
-      <PdfButton
+      {/* <PdfButton
         onClick={saveNewInsight}
-        width="100%"
+        width="25%"
         icon={
           <Icon
             path={mdiContentSave}
@@ -271,7 +276,7 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
             color={colors["pdf-lightest"]}
           />
         }
-      />
+      /> */}
     </div>
   );
 };

@@ -12073,7 +12073,7 @@ textarea.form-control-lg {
 }
 .dataset-selected .MuiMenuItem-root .dataset-title,
 .dataset-selected .met .dataset-title {
-  font-size: 40px !important;
+  font-size: 36px !important;
 }
 .dataset-selected .MuiMenuItem-root .dataset-description,
 .dataset-selected .met .dataset-description {
@@ -12112,8 +12112,8 @@ textarea.form-control-lg {
   margin-bottom: 6px;
 }
 .pdf-dataset-item .dataset-title {
-  font-size: 28px !important;
-  line-height: 36px;
+  font-size: 24px !important;
+  line-height: 32px;
   font-weight: 1000;
   color: #576c99;
 }
@@ -12216,14 +12216,13 @@ textarea.form-control-lg {
   align-items: flex-end;
   justify-content: center;
   z-index: 100;
-  margin-top: -100px;
+  margin-top: -140px;
   width: 100%;
   position: relative;
   pointer-events: none;
   background: linear-gradient(0deg, #eef1f7, transparent);
   display: flex;
   height: 120px;
-  margin-bottom: 8px;
 }
 .table-footer .text-we-are-analyzing {
   font-size: 20px;

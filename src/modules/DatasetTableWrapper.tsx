@@ -89,46 +89,54 @@ const DatasetTableWrapper: React.FC<DatasetTableWrapperProps> = () => {
           : "pdf-dataset-table pdf-table-collapsed"
       }
     >
-      <div className="table-heading gap-3">
-        <DatasetFilters filter={filter} set_filter={set_filter} />
+      <div className="table-heading gap-3 d-flex">
+        <div className="mb-1">
+          <DatasetFilters filter={filter} set_filter={set_filter} />
+        </div>
+        <div>
+          <TextField
+            variant="outlined"
+            placeholder="Search"
+            size="small"
+            onChange={(e) => {
+              set_search(e.currentTarget.value);
+            }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <Icon
+                    path={mdiMagnify}
+                    size="16px"
+                    color={colors["pdf-med"]}
+                  />
+                </InputAdornment>
+              ),
+            }}
+            sx={{
+              width: "100px",
+              fontSize: "14px",
+              transition: "all 0.3s ease",
 
-        <TextField
-          variant="outlined"
-          placeholder="Search..."
-          size="small"
-          onChange={(e) => {
-            set_search(e.currentTarget.value);
-          }}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <Icon path={mdiMagnify} size="16px" color={colors["pdf-med"]} />
-              </InputAdornment>
-            ),
-          }}
-          sx={{
-            "& .MuiOutlinedInput-root": {
-              color: colors["pdf-med-dark"],
-              "& .MuiOutlinedInput-notchedOutline": {
-                borderColor: colors["pdf-light"],
+              "& .MuiOutlinedInput-root": {
+                fontSize: "14px",
+                color: colors["pdf-med-dark"],
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "transparent",
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: colors["pdf-light"], // Optional: subtle on hover
+                },
+                "&.Mui-focused": {
+                  // width: "240px",
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: colors["pdf-blue-accent"],
+                    borderWidth: "2px",
+                  },
+                },
               },
-            },
-            "& .MuiInputLabel-root": {
-              color: colors["pdf-med-light"],
-            },
-            "& .MuiInputLabel-shrink": {
-              color: colors["pdf-blue-accent"],
-            },
-            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-              color: colors["pdf-blue-accent"],
-              borderColor: colors["pdf-blue-accent"],
-              borderWidth: "2px",
-            },
-            "&.MuiInputLabel-shrink": {
-              fontSize: "20px",
-            },
-          }}
-        />
+            }}
+          />
+        </div>
       </div>
 
       <DatasetTable
