@@ -131,7 +131,7 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
             id="x-axis"
             value={xAxis}
             setValue={set_xAxis}
-            label="X-Axis"
+            label="X-axis"
           >
             {scParamsAxisX.map((key) => {
               const semi = semiconductorProps[key];
@@ -154,7 +154,7 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
                 },
               }}
             >
-              How do you want to group your X-Axis?
+              How do you want to group your X-axis?
             </InputLabel>
             <div className="xisnumber-switch d-flex align-items-center">
               <small
@@ -193,7 +193,7 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
             id="y-axis"
             value={yAxis}
             setValue={set_yAxis}
-            label="Y-Axis"
+            label="Y-axis"
           >
             {scParamsAxisY.map((key) => {
               const semi = semiconductorProps[key];
@@ -223,7 +223,7 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
 
       <div className="mb-3">
         <TextField
-          label="New insight name"
+          label="New insight name  "
           InputLabelProps={{ shrink: true }}
           variant="outlined"
           value={viewName}

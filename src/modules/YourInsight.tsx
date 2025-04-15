@@ -120,7 +120,11 @@ const YourInsight: React.FC<YourInsightProps> = () => {
                 renderValue={
                   selectedView
                     ? undefined
-                    : () => "You have no saved views. Create one below."
+                    : () => {
+                       return viewsList.length
+                          ? "Select from saved view or create one below"
+                          : "You have no saved views, create one below";
+                      }
                 }
               >
                 {viewsList?.map((item: InsightViewMeta) => (
