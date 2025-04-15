@@ -15,13 +15,13 @@ interface PdfButtonProps extends ButtonProps {
 }
 
 const PdfButton: React.FC<PdfButtonProps> = ({
-  label = "Save",
+  label = "Save as new view",
   icon,
   endIcon,
   color = colors["pdf-lightest"],
   size = "large",
   height = 56,
-  width = 120,
+  width = null,
   fontSize = 16,
   backgroundColor = colors["pdf-blue-accent"],
   children,
@@ -32,6 +32,7 @@ const PdfButton: React.FC<PdfButtonProps> = ({
       variant="contained"
       className="pdf-button"
       disableElevation
+      size={size}
       endIcon={
         endIcon ??
         icon ?? (

@@ -19,11 +19,11 @@ import { useMemo, useState } from "react";
 
 interface InsightDesignerProps {
   saveView: (value: InsightViewMeta) => void;
-  deleteView: (value: InsightViewMeta) => void;
+  // deleteView: (value: InsightViewMeta) => void;
 }
 const InsightDesigner: React.FC<InsightDesignerProps> = ({
   saveView,
-  deleteView,
+  // deleteView,
 }) => {
   const { viewsList } = useData();
   const { chartType, set_chartType } = useData();
@@ -91,6 +91,12 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
       },
     };
 
+    if(!viewName || !viewName.trim().length){
+      set_validationError(
+        "Name is required"
+      );
+      return;
+    }
     const isNotUnique = viewsList.some(
       (vl: InsightViewMeta) => vl.name === viewName
     );
@@ -213,10 +219,12 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
       </div>
 
       <Divider color={colors["pdf-med-light"]} className="my-4" />
+      <div className="section-title mb-3">Save this view</div>
 
-      <div className="d-flex gap-2">
+      <div className="mb-3">
         <TextField
           label="New insight name"
+          InputLabelProps={{ shrink: true }}
           variant="outlined"
           value={viewName}
           placeholder="Lifespan x Volume size"
@@ -234,7 +242,8 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
               color: colors["pdf-med-light"],
             },
             "& .MuiInputLabel-shrink": {
-              color: colors["pdf-blue-accent"],
+              color: colors["pdf-med"],
+              fontSize: "20px",
             },
             "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
               color: colors["pdf-blue-accent"],
@@ -247,20 +256,22 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({
           }}
           onChange={(e) => {
             set_viewName(e.currentTarget.value);
+            set_validationError("")
           }}
         />
-
-        <PdfButton
-          onClick={saveNewInsight}
-          icon={
-            <Icon
-              path={mdiContentSave}
-              size="20px"
-              color={colors["pdf-lightest"]}
-            />
-          }
-        />
       </div>
+
+      <PdfButton
+        onClick={saveNewInsight}
+        width="100%"
+        icon={
+          <Icon
+            path={mdiContentSave}
+            size="20px"
+            color={colors["pdf-lightest"]}
+          />
+        }
+      />
     </div>
   );
 };

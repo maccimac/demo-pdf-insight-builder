@@ -16,16 +16,7 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
     Semiconductor[]
   >([]);
 
-  const [viewsList, set_viewsList] = useState<InsightViewMeta[]>([
-    {
-      name: "Power and production cost",
-      params: {
-        chartType: "line",
-        xAxis: "processing_power",
-        yAxis: "cost_to_produce",
-      },
-    },
-  ]);
+  const [viewsList, set_viewsList] = useState<InsightViewMeta[]>([]);
 
   return (
     <DataContext.Provider

@@ -1,11 +1,21 @@
 import colors from "@utils/colors";
-import { Divider } from "@mui/material";
+import {
+  Divider,
+  MenuItem,
+  IconButton,
+  Select,
+  FormControl,
+  InputLabel,
+} from "@mui/material";
+import Icon from "@mdi/react";
 import InsightView from "./InsightView";
 import { InsightViewMeta } from "@/types";
 import InsightDesigner from "./InsightDesigner";
+import { mdiTrashCan } from "@mdi/js";
+import PdfSelector from "@components/PdfSelector";
+import PdfButton from "@components/PdfButton";
 import { useData } from "@contexts/DataContext";
 import { useEffect, useMemo, useState } from "react";
-import PdfSelector from "@components/PdfSelector";
 
 interface YourInsightProps {
   // Add your prop types here
@@ -17,15 +27,7 @@ const YourInsight: React.FC<YourInsightProps> = () => {
   const { set_yAxis } = useData();
   const { set_yColor } = useData();
   const { set_xAxis } = useData();
-  const [selectedView, set_selectedView] = useState<string>(
-    "Power and production cost"
-  );
-
-  const selectViewListOptions = useMemo(() => {
-    return viewsList.map((vl: InsightViewMeta) => {
-      return { text: vl.name, value: vl.name };
-    });
-  }, [viewsList]);
+  const [selectedView, set_selectedView] = useState<string | null>(null);
 
   const saveView = (newView: InsightViewMeta) => {
     const updatedList = [...viewsList, newView];
@@ -34,10 +36,13 @@ const YourInsight: React.FC<YourInsightProps> = () => {
     localStorage.setItem("pdf_views_list", JSON.stringify(updatedList));
   };
 
-  const deleteView = (newView: InsightViewMeta) => {
+  const deleteView = (viewName: string) => {
     const updatedList = viewsList.filter(
-      (v: InsightViewMeta) => v.name !== newView.name
+      (v: InsightViewMeta) => v.name !== viewName
     );
+    if (viewName == selectedView) {
+      set_selectedView(null);
+    }
     set_viewsList(updatedList);
     localStorage.setItem("pdf_views_list", JSON.stringify(updatedList));
   };
@@ -78,26 +83,80 @@ const YourInsight: React.FC<YourInsightProps> = () => {
             <InsightView></InsightView>
           </div>
           <div className="col-12 col-xl-4 order-1 order-xl-2">
-            <div className="section-title mb-3">Your insight</div>
-            <PdfSelector
-              id="select-view"
-              label="Select view"
-              value={selectedView}
-              setValue={set_selectedView}
-              items={selectViewListOptions}
-              sx={{
-                fontSize: "24px",
-                color: colors["pdf-blue-primary"],
-                fontWeight: 1000,
-                "&.Mui-focused": {
-                  color: colors["pdf-blue-primary"],
-                },
-              }}
-            ></PdfSelector>
+            <div className="section-title mb-3">Your insights</div>
+            <FormControl fullWidth>
+              <InputLabel
+                shrink={!!selectedView}
+                sx={{
+                  "&.MuiInputLabel-shrink": {
+                    fontSize: "20px",
+                  },
+                }}
+                id="select-view"
+              >
+                {selectedView ? "Select view" : null}
+              </InputLabel>
+              <Select
+                id="select-view"
+                label={selectedView ? "Select view" : undefined}
+                value={selectedView}
+                onChange={(e) => {
+                  set_selectedView(e.target.value);
+                }}
+                sx={{
+                  fontSize: selectedView && "24px",
+                  color: selectedView
+                    ? colors["pdf-blue-primary"]
+                    : colors["pdf-med"],
+                  fontWeight: selectedView && 1000,
+                  "&.Mui-focused": {
+                    color: colors["pdf-blue-primary"],
+                  },
+                  " .btn-delete-view": {
+                    display: "none",
+                  },
+                }}
+                displayEmpty
+                renderValue={
+                  selectedView
+                    ? undefined
+                    : () => "You have no saved views. Create one below."
+                }
+              >
+                {viewsList?.map((item: InsightViewMeta) => (
+                  <MenuItem value={item.name}>
+                    <div className="d-flex justify-content-between w-100">
+                      <div> {item.name} </div>
+
+                      <div className="btn-delete-view">
+                        <IconButton
+                          size="medium"
+                          onClick={() => {
+                            deleteView(item.name);
+                          }}
+                        >
+                          <Icon
+                            path={mdiTrashCan}
+                            size="20px"
+                            color="#DAA1A1"
+                          />
+                        </IconButton>
+                      </div>
+                    </div>
+                  </MenuItem>
+                ))}
+
+                {!viewsList.length && (
+                  <div className="text-color-pdf-med-light p-4">
+                    Create a new insight view below
+                  </div>
+                )}
+              </Select>
+            </FormControl>
 
             <Divider color={colors["pdf-med-light"]} className="my-4" />
 
-            <InsightDesigner saveView={saveView} deleteView={deleteView} />
+            <InsightDesigner saveView={saveView} />
           </div>
         </div>
       </div>
