@@ -1,8 +1,8 @@
 import PdfFilterButton from "@components/PdfFilterButton";
+import PdfFilterDateRange from "@components/PdfFilterDateRange";
 import PdfFilterRangeSlider from "@components/PdfFilterRangeSlider";
-import PdfFilterCheckboxes from "@components/PdfFilterRangeCheckboxes";
+import PdfFilterMultiCheckbox from "@components/PdfFilterMultiCheckbox";
 import { FilterOptions } from "@/types";
-import { semiconductorProps } from "@utils/semiconductorProps";
 
 interface DatasetFiltersProps {
   filter: FilterOptions;
@@ -63,11 +63,28 @@ const DatasetFilters: React.FC<DatasetFiltersProps> = ({
             </div>
           }
         >
-          <PdfFilterCheckboxes
+          <PdfFilterMultiCheckbox
             filter={filter}
             setFilter={set_filter}
             filterKey="type"
             initValue={filter.type}
+          />
+        </PdfFilterButton>
+
+        <PdfFilterButton
+          filterKey="life_span_years"
+          label={
+            <div>
+              <strong>Release date</strong> is between {" "}
+              {filter.release_date[0]} and {filter.release_date[1]}
+            </div>
+          }
+        >
+          <PdfFilterDateRange
+            filter={filter}
+            setFilter={set_filter}
+            filterKey="release_date"
+            initValue={filter.release_date}
           />
         </PdfFilterButton>
       </div>

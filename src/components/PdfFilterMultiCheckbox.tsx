@@ -3,14 +3,14 @@ import { useEffect, useState } from "react";
 import { FormGroup, FormControlLabel, Checkbox } from "@mui/material";
 import { FilterOptions } from "@/types";
 
-interface PdfFilterCheckboxesProps {
+interface PdfFilterMultiCheckboxProps {
   filter: FilterOptions;
   setFilter: Function;
   filterKey: keyof FilterOptions;
   initValue: string[];
 }
 
-const PdfFilterCheckboxes: React.FC<PdfFilterCheckboxesProps> = ({
+const PdfFilterMultiCheckbox: React.FC<PdfFilterMultiCheckboxProps> = ({
   filter,
   setFilter,
   filterKey,
@@ -63,4 +63,4 @@ const PdfFilterCheckboxes: React.FC<PdfFilterCheckboxesProps> = ({
   );
 };
 
-export default PdfFilterCheckboxes;
+export default PdfFilterMultiCheckbox;

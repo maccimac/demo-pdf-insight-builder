@@ -12043,7 +12043,7 @@ textarea.form-control-lg {
   margin-top: -20px !important;
 }
 
-@media (min-height: 768px) {
+@media (min-height: 1200px) {
   .pdf-insight-builder__wrapper:has(.pdf-table-collapsed) {
     height: auto;
     max-height: auto;
@@ -12174,7 +12174,7 @@ textarea.form-control-lg {
   border-radius: 4px;
 }
 .pdf-filter-item .filter-button .button-filter-label {
-  max-width: 200px;
+  max-width: 240px;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
@@ -12209,14 +12209,14 @@ textarea.form-control-lg {
   align-items: flex-end;
   justify-content: center;
   z-index: 100;
-  margin-top: -120px;
+  margin-top: -100px;
   width: 100%;
   position: relative;
   pointer-events: none;
   background: linear-gradient(0deg, #eef1f7, transparent);
   display: flex;
   height: 120px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 .table-footer .text-we-are-analyzing {
   font-size: 20px;

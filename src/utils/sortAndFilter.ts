@@ -5,6 +5,7 @@ export const filterSemiconductors = (
   filters: FilterOptions
 ) => {
   return data.filter((item) => {
+    // type
     const matchesType = filters.type ? filters.type.includes(item.type) : true;
 
     // cost_to_produce
@@ -13,13 +14,19 @@ export const filterSemiconductors = (
         item.cost_to_produce <= filters.cost_to_produce[1]
       : true;
 
-    // cost_to_produce
+    // life_span_years
     const matchesLifespan = filters.life_span_years
       ? item.life_span_years >= filters.life_span_years[0] &&
         item.life_span_years <= filters.life_span_years[1]
       : true;
 
-    return matchesType && matchesCost && matchesLifespan;
+    // release_date
+    const matchesReleaseDate = filters.release_date
+      ? new Date(item.release_date) >= new Date(filters.release_date[0]) &&
+        new Date(item.release_date) <= new Date(filters.release_date[1])
+      : true;
+
+    return matchesType && matchesCost && matchesLifespan && matchesReleaseDate;
   });
 };
 
