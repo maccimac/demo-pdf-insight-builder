@@ -12,15 +12,20 @@ import {
 import PdfChartTooltip from "@components/PdfCustomTooltip";
 import { InsightViewParameter } from "@/types";
 
-const InsightChartScatter: React.FC<InsightViewParameter> = ({
+interface InsightChartScatterProps extends InsightViewParameter {
+  height?: number;
+}
+
+const InsightChartScatter: React.FC<InsightChartScatterProps> = ({
   data,
   xAxis,
   yAxis,
   xIsNumber,
   yColor = "#F6CB67",
+  height = 560,
 }) => {
   return (
-    <ResponsiveContainer width="100%" height={480}>
+    <ResponsiveContainer width="100%" height={height}>
       <ScatterChart margin={{ bottom: 32, right: 16 }}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis

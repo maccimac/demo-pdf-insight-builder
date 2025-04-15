@@ -13,15 +13,20 @@ import PdfChartTooltip from "@components/PdfCustomTooltip";
 import { formatDate } from "@utils/utils";
 import { InsightViewParameter } from "@/types";
 
-const InsightChartLine: React.FC<InsightViewParameter> = ({
+interface InsightChartLineProps extends InsightViewParameter {
+  height?: number;
+}
+
+const InsightChartLine: React.FC<InsightChartLineProps> = ({
   data,
   xAxis,
   yAxis,
   xIsNumber,
   yColor = "#F6CB67",
+  height = 560,
 }) => {
   return (
-    <ResponsiveContainer width="100%" height={480}>
+    <ResponsiveContainer width="100%" height={height}>
       <LineChart data={data} margin={{ bottom: 32, right: 16 }}>
         <CartesianGrid strokeDasharray="3 3" />
         <YAxis
