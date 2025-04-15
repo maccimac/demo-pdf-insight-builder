@@ -5,7 +5,6 @@ import Icon from "@mdi/react";
 import { mdiStar, mdiStarOutline } from "@mdi/js";
 import { MenuItem } from "@mui/material";
 
-
 interface DatasetItemProps extends DatasetItemMeta {
   onClick?: (value: string) => void;
   onClickFavorite?: (value: string) => void;
@@ -68,9 +67,9 @@ const PdfDatasetItem: React.FC<DatasetItemProps> = ({
           </div>
         </div>
         <div className="">
-          <div className="dataset-meta">
-            {count} rows | {publish_date && formatDate(publish_date)} |{" "}
-            {source}
+          <div className="dataset-meta response">
+            <span className="response-active"> {count} rows </span>|{" "}
+            {publish_date && formatDate(publish_date)} | {source}
           </div>
           <div className="dataset-description">{description}</div>
         </div>

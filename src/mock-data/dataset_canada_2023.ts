@@ -1,5 +1,5 @@
 import { Semiconductor } from "@/types";
-import { mock_200 } from "./more/mockSemiconductors_200";
+import { mock_200 } from "./more/mock_200";
 
 export const dataset_canada_2023: Semiconductor[] = [
   ...mock_200,
@@ -237,14 +237,5 @@ export const dataset_canada_2023: Semiconductor[] = [
     release_date: "2016-05-05",
     volume_size_cm3: 4.59,
   },
-  {
-    model_name: "NovaEngine V2",
-    type: "asic",
-    material: ["indium-phosphide"],
-    processing_power: 2.67,
-    cost_to_produce: 13.87,
-    life_span_years: 10,
-    release_date: "2018-07-29",
-    volume_size_cm3: 0.98,
-  },
+  
 ];

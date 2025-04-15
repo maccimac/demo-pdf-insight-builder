@@ -1,6 +1,6 @@
 import { Semiconductor } from "@/types";
 import { mock_50 } from "./more/mock_50";
-import { mock_200 } from "./more/mockSemiconductors_200";
+import { mock_200 } from "./more/mock_200";
 import { mock_500 } from "./more/mock_500";
 export const system_composition_index: Semiconductor[] = [
   ...mock_500,

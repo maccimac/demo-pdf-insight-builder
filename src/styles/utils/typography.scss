@@ -1,8 +1,28 @@
+.insight-title {
+}
+
 .section-title {
   color: $pdf-blue-primary;
   font-size: 18px;
   font-weight: 1000;
   margin-bottom: 8px;
+}
+
+.response,
+.response-inactive {
+  font-size: 16px;
+  color: $pdf-med;
+}
+
+.response-active {
+  font-size: 16px;
+  color: $pdf-med-dark;
+  font-weight: regular;
+}
+.response-strong {
+  font-size: 16px;
+  color: $pdf-darkest;
+  font-weight: 500;
 }
 
 .text-weight-100 {
