@@ -2,6 +2,7 @@ import colors from "@utils/colors";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { ReactNode } from "react";
 import { SelectorItem } from "@/types";
+import { useData } from "@contexts/DataContext";
 
 interface PdfSelectorProps<T = any> {
   id: string;
@@ -24,6 +25,8 @@ const PdfSelector: React.FC<PdfSelectorProps> = ({
   renderSelected,
   sx,
 }) => {
+  const { darkMode } = useData();
+
   return (
     <div>
       <FormControl fullWidth>
@@ -31,6 +34,7 @@ const PdfSelector: React.FC<PdfSelectorProps> = ({
           sx={{
             "&.MuiInputLabel-shrink": {
               fontSize: "20px",
+              color: darkMode && colors["pdf-light"],
             },
           }}
           id={id}
@@ -59,21 +63,32 @@ const PdfSelector: React.FC<PdfSelectorProps> = ({
             "&:hover:": {
               color: colors["pdf-med-dark"],
             },
-            "&:hover .MuiOutlinedInput-notchedOutline": {
-              borderColor: colors["pdf-med-light"],
-            },
+
             "&.Mui-focused": {
-              color: colors["pdf-med-dark"],
+              color: darkMode ? colors["pdf-light"] : colors["pdf-med-dark"],
             },
             "&.MuiInputLabel-shrink": {
               fontSize: "20px",
             },
+            //
+            borderColor: colors["pdf-light"],
+
+            "&:hover .MuiOutlinedInput-notchedOutline": {
+              borderColor: colors["pdf-light"],
+            },
+            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+              borderColor: colors["pdf-light"],
+            },
+            //
             ...sx,
           }}
           MenuProps={{
             MenuListProps: {
               sx: {
-                color: colors["pdf-med-dark"],
+                // backgroundColor: !darkMode
+                //   ? colors["pdf-light"]
+                //   : colors["pdf-med-dark"],
+                // color: darkMode ? colors["pdf-light"] : colors["pdf-med-dark"],
               },
             },
           }}

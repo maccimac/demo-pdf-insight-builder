@@ -12174,6 +12174,7 @@ textarea.form-control-lg {
   padding-bottom: 48px;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  overflow-x: hidden;
 }
 .pdf-dataset-table .MuiTableCell-root {
   line-height: 16px;
@@ -12235,6 +12236,7 @@ textarea.form-control-lg {
   background: linear-gradient(0deg, #eef1f7, transparent);
   display: flex;
   height: 120px;
+  transition: none !important;
 }
 .table-footer .text-we-are-analyzing {
   font-size: 20px;
@@ -12341,10 +12343,72 @@ textarea.form-control-lg {
   margin-top: -8px;
 }
 
+.dark-mode-controller {
+  background-color: #dee2e9;
+  margin: 32px;
+  box-shadow: 0px 2px 8px 0px rgba(141, 146, 156, 0.24);
+  display: inline-block;
+  padding: 12px 24px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-radius: 32px;
+  z-index: 100;
+}
+
+.dark-mode {
+  background-color: #535965;
+}
+.dark-mode .section-title,
+.dark-mode .dataset-title,
+.dark-mode .dataset-description,
+.dark-mode .dataset-meta,
+.dark-mode .dataset-table-head,
+.dark-mode .response-active,
+.dark-mode #select-dataset {
+  color: #eef1f7 !important;
+}
+.dark-mode .dark-mode-controller {
+  background-color: #535965;
+  box-shadow: none;
+  border: 2px solid #8d929c;
+}
+.dark-mode .pdf-your-data {
+  background-color: #232933;
+  color: #eef1f7;
+}
+.dark-mode .pdf-your-data .pdf-dataset-item {
+  background-color: #232933;
+}
+.dark-mode .pdf-your-data .pdf-filter-item .filter-button {
+  background-color: #535965;
+}
+.dark-mode .pdf-your-data .pdf-filter-item .filter-button .button-filter-label {
+  color: #dee2e9;
+}
+.dark-mode .pdf-your-data .table-footer {
+  background: none;
+  transition: none !important;
+}
+.dark-mode .pdf-your-data .table-footer .text-we-are-analyzing {
+  color: #8d929c;
+  background-color: #232933;
+}
+.dark-mode .pdf-your-data .table-footer .text-we-are-analyzing .active-count,
+.dark-mode .pdf-your-data .table-footer .text-we-are-analyzing .total-count {
+  color: #eef1f7;
+}
+.dark-mode .pdf-your-insight * {
+  color: #eef1f7;
+}
+.dark-mode .pdf-your-insight .insight-container {
+  background-color: #232933;
+}
+
 *,
 .pdf-insight-builder {
   font-family: "IBM Plex Sans", sans-serif !important;
-  transition: color 0.5s ease-in-out, background-color 0.35s ease-in-out, border-color 0.35s ease-in-out, box-shadow 0.35s ease-in-out, transform 0.35s ease-in-out, opacity 0.35s ease-in-out, text-shadow 0.35s ease-in-out, filter 0.35s ease-in-out;
+  transition: color 0.5s ease-in-out, border-color 0.35s ease-in-out, box-shadow 0.35s ease-in-out, transform 0.35s ease-in-out, opacity 0.35s ease-in-out, text-shadow 0.35s ease-in-out, filter 0.35s ease-in-out;
 }
 
 /*# sourceMappingURL=style.css.map */

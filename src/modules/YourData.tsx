@@ -9,10 +9,10 @@ const YourData: React.FC<YourDataProps> = () => {
     <div className="pdf-your-data p-2 p-lg-4">
       <div className="container-fluid">
         <div className="row">
-          <div className="col col-xl-4 ">
+          <div className="col  col-xl-4 ">
             <DatasetInfo />
           </div>
-          <div className="col col-xl-8 mt-4 mt-xl-0">
+          <div className="col  col-xl-8 mt-4 mt-xl-0">
             <DatasetTableWrapper />
           </div>
         </div>

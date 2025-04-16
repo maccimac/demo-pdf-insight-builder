@@ -4,6 +4,7 @@ import { formatDate } from "@utils/utils";
 import Icon from "@mdi/react";
 import { mdiStar, mdiStarOutline } from "@mdi/js";
 import { MenuItem } from "@mui/material";
+import { useData } from "@contexts/DataContext";
 
 interface DatasetItemProps extends DatasetItemMeta {
   onClick?: (value: string) => void;
@@ -24,6 +25,7 @@ const PdfDatasetItem: React.FC<DatasetItemProps> = ({
   onClick,
   onClickFavorite,
 }) => {
+  const { darkMode } = useData();
   return (
     <MenuItem
       className={
@@ -58,7 +60,9 @@ const PdfDatasetItem: React.FC<DatasetItemProps> = ({
                 path={isFavorite ? mdiStar : mdiStarOutline}
                 size="20px"
                 color={
-                  isActive
+                  darkMode
+                    ? colors["pdf-blue-muted-medium"]
+                    : isActive
                     ? colors["pdf-blue-primary"]
                     : colors["pdf-blue-muted-medium"]
                 }

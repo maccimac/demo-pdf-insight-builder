@@ -15,12 +15,15 @@
 @import "./modules/your-insight/insight-view.scss";
 @import "./modules/your-insight/insight-designer.scss";
 
+// Dark mode
+@import "./utils/dark-mode.scss";
 *,
 .pdf-insight-builder {
   font-family: "IBM Plex Sans", sans-serif !important;
-  transition: color 0.5s ease-in-out, background-color 0.35s ease-in-out,
-    border-color 0.35s ease-in-out, box-shadow 0.35s ease-in-out,
-    transform 0.35s ease-in-out, opacity 0.35s ease-in-out,
-    text-shadow 0.35s ease-in-out, filter 0.35s ease-in-out;
+  transition: color 0.5s ease-in-out,
+    // background-color 0.35s ease-in-out,
+    border-color 0.35s ease-in-out,
+    box-shadow 0.35s ease-in-out, transform 0.35s ease-in-out,
+    opacity 0.35s ease-in-out, text-shadow 0.35s ease-in-out,
+    filter 0.35s ease-in-out;
 }
-
