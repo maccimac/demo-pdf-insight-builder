@@ -18,7 +18,7 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
 
   const [viewsList, set_viewsList] = useState<InsightViewMeta[]>([]);
 
-  const [darkMode, set_darkMode] = useState<boolean>(true);
+  const [darkMode, set_darkMode] = useState<boolean>(false);
 
   return (
     <DataContext.Provider
