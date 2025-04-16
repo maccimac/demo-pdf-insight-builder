@@ -15,7 +15,7 @@ const DatasetFilters: React.FC<DatasetFiltersProps> = ({
 }) => {
   return (
     <div className="pdf-dataset-filters">
-      <div className="d-flex gap-2 m-2">
+      <div className="d-block d-lg-flex gap-2 m-2">
         {/* cost_to_prduce */}
         <PdfFilterButton
           filterKey="cost_to_produce"

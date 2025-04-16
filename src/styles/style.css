@@ -12074,6 +12074,12 @@ textarea.form-control-lg {
     max-height: auto;
     overflow-y: auto !important;
   }
+  .pdf-insight-builder__wrapper .dark-mode-controller {
+    display: none;
+  }
+  .pdf-insight-builder__wrapper .dataset-table {
+    min-width: 480px;
+  }
 }
 .pdf-your-data {
   background-color: #eef1f7;

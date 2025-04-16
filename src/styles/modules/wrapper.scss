@@ -21,5 +21,13 @@
     height: auto;
     max-height: auto;
     overflow-y: auto !important;
+
+    .dark-mode-controller {
+      display: none;
+    }
+
+    .dataset-table {
+      min-width: 480px;
+    }
   }
 }

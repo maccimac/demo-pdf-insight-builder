@@ -90,7 +90,7 @@ const DatasetTableWrapper: React.FC<DatasetTableWrapperProps> = () => {
           : "pdf-dataset-table pdf-table-collapsed"
       }
     >
-      <div className="table-heading gap-3 d-flex">
+      <div className="table-heading gap-3 d-block d-lg-flex">
         <div className="mb-1">
           <DatasetFilters filter={filter} set_filter={set_filter} />
         </div>
