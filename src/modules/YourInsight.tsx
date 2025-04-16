@@ -12,16 +12,15 @@ import InsightView from "./InsightView";
 import { InsightViewMeta } from "@/types";
 import InsightDesigner from "./InsightDesigner";
 import { mdiTrashCan } from "@mdi/js";
-import PdfSelector from "@components/PdfSelector";
-import PdfButton from "@components/PdfButton";
 import { useData } from "@contexts/DataContext";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface YourInsightProps {
-  // Add your prop types here
+  // 
 }
 
 const YourInsight: React.FC<YourInsightProps> = () => {
+  const { darkMode } = useData();
   const { viewsList, set_viewsList } = useData();
   const { set_chartType } = useData();
   const { set_yAxis } = useData();
@@ -91,6 +90,7 @@ const YourInsight: React.FC<YourInsightProps> = () => {
                   sx={{
                     "&.MuiInputLabel-shrink": {
                       fontSize: "20px",
+                      color: darkMode && colors["pdf-light"],
                     },
                   }}
                   id="select-view"
@@ -111,8 +111,22 @@ const YourInsight: React.FC<YourInsightProps> = () => {
                       : colors["pdf-med"],
                     fontWeight: selectedView && 1000,
                     "&.Mui-focused": {
-                      color: colors["pdf-blue-primary"],
+                      color: darkMode
+                        ? colors["pdf-light"]
+                        : colors["pdf-blue-primary"],
                     },
+                    // borders
+                    borderColor: colors["pdf-light"],
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderColor: colors["pdf-light"],
+                    },
+                    "&:hover .MuiOutlinedInput-notchedOutline": {
+                      borderColor: colors["pdf-light"],
+                    },
+                    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                      borderColor: colors["pdf-light"],
+                    },
+                    // inside
                     " .btn-delete-view": {
                       display: "none",
                     },

@@ -1,4 +1,4 @@
-import React from "react";
+import colors from "@utils/colors";
 import {
   Table,
   TableBody,
@@ -11,6 +11,7 @@ import {
 import { Semiconductor, SemiconductorProperty } from "@/types";
 import PdfDatasetTableRow from "@components/PdfDatasetTableRow";
 import { semiconductorProps } from "@utils/semiconductorProps";
+import { useData } from "@contexts/DataContext";
 
 interface DatasetTableProps {
   displayData: Semiconductor[];
@@ -25,6 +26,7 @@ const DatasetTable: React.FC<DatasetTableProps> = ({
   order,
   handleSortRequest,
 }) => {
+  const { darkMode } = useData();
   return (
     <div className="dataset-table">
       <TableContainer>
@@ -40,6 +42,20 @@ const DatasetTable: React.FC<DatasetTableProps> = ({
                       onClick={() =>
                         handleSortRequest(key as keyof Semiconductor)
                       }
+                      className="table-head"
+                      sx={{
+                        color: darkMode && colors["pdf-light"],
+                        "&.Mui-active": {
+                          color: darkMode && colors["pdf-light"],
+                          "& .MuiTableSortLabel-icon": {
+                            color: darkMode && colors["pdf-light"],
+                          },
+                        },
+                        "& .MuiTableSortLabel-icon": {
+                          color: darkMode && colors["pdf-light"],
+                        },
+                        
+                      }}
                     >
                       {semiCondProp.name}
                     </TableSortLabel>

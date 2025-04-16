@@ -1,0 +1,67 @@
+.dark-mode-controller {
+  background-color: $pdf-light;
+  margin: 32px;
+  box-shadow: $pdf-shadow;
+  display: inline-block;
+  padding: 12px 24px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-radius: 32px;
+  z-index: 100;
+}
+
+.dark-mode {
+  background-color: $pdf-med-dark;
+
+  .section-title,
+  .dataset-title,
+  .dataset-description,
+  .dataset-meta,
+  .dataset-table-head,
+  .response-active,
+  #select-dataset {
+    color: $pdf-lightest !important;
+  }
+
+  .dark-mode-controller {
+    background-color: $pdf-med-dark;
+    box-shadow: none;
+    border: 2px solid $pdf-med;
+  }
+  .pdf-your-data {
+    background-color: $pdf-darkest;
+    color: $pdf-lightest;
+    .pdf-dataset-item {
+      background-color: $pdf-darkest;
+    }
+    .pdf-filter-item .filter-button {
+      background-color: $pdf-med-dark;
+      .button-filter-label {
+        color: $pdf-light;
+      }
+    }
+
+    .table-footer {
+      // background: linear-gradient(0deg, $pdf-darkest, transparent);
+      background: none;
+      transition: none !important;
+      .text-we-are-analyzing {
+        color: $pdf-med;
+        background-color: $pdf-darkest;
+        .active-count,
+        .total-count {
+          color: $pdf-lightest;
+        }
+      }
+    }
+  }
+  .pdf-your-insight {
+    * {
+      color: $pdf-lightest;
+    }
+    .insight-container {
+      background-color: $pdf-darkest;
+    }
+  }
+}

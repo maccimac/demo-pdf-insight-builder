@@ -4,6 +4,7 @@ import Icon from "@mdi/react";
 import { mdiFilter } from "@mdi/js";
 import { Menu, Button } from "@mui/material";
 import { FilterOptions } from "@/types";
+import { useData } from "@contexts/DataContext";
 
 interface PdfFilterButtonProps {
   filterKey: keyof FilterOptions;
@@ -20,6 +21,7 @@ const PdfFilterButton: React.FC<PdfFilterButtonProps> = ({
 }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const { darkMode } = useData();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -47,7 +49,9 @@ const PdfFilterButton: React.FC<PdfFilterButtonProps> = ({
           <Icon
             path={mdiFilter}
             size="16px"
-            color={colors["pdf-blue-muted-medium"]}
+            color={
+              darkMode ? colors["pdf-light"] : colors["pdf-blue-muted-medium"]
+            }
           />
         }
       >

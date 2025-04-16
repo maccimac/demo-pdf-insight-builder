@@ -22,6 +22,7 @@ const RenderActiveDatasetItem: React.FC<RenderActiveDatasetItemProp> = ({
   onClickFavorite,
 }) => {
   const { datasetName } = useData();
+
   const datasetSelected = useMemo<DatasetItemMeta | undefined>(() => {
     return datasetMeta.find((ds) => ds.value === datasetName);
   }, [datasetName]);

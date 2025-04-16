@@ -8,9 +8,11 @@
   .dataset-table {
     max-height: 70vh;
     overflow-y: scroll;
+    
     padding-bottom: 48px;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    overflow-x: hidden;
   }
 
   .MuiTableCell-root {
@@ -80,6 +82,7 @@
   background: linear-gradient(0deg, $pdf-lightest, transparent);
   display: flex;
   height: 120px;
+  transition: none !important;
   // margin-bottom: 8px;
 
   .text-we-are-analyzing {

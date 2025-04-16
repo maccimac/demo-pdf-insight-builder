@@ -19,6 +19,7 @@ interface DatasetTableWrapperProps {}
 const DatasetTableWrapper: React.FC<DatasetTableWrapperProps> = () => {
   const { datasetName } = useData();
   const { filteredAndSortedData, set_filteredAndSortedData } = useData();
+  const { darkMode } = useData();
 
   const [search, set_search] = useState<string>("");
   const [displayAll, set_displayAll] = useState<boolean>(false);
@@ -157,7 +158,7 @@ const DatasetTableWrapper: React.FC<DatasetTableWrapperProps> = () => {
             <Icon
               path={displayAll ? mdiChevronUp : mdiChevronDown}
               size="20px"
-              color={colors["pdf-med-dark"]}
+              color={darkMode ? colors["pdf-lightest"] : colors["pdf-med-dark"]}
             />
           </IconButton>
           <div className="text-we-are-analyzing">

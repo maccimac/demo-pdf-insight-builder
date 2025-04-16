@@ -27,6 +27,7 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({ saveView }) => {
   const { yColor, set_yColor } = useData();
   const { xAxis, set_xAxis } = useData();
   const { xIsNumber, set_xIsNumber } = useData();
+  const { darkMode } = useData();
 
   const chartTypes: SelectorItem[] = [
     { text: "Line", value: "line" },
@@ -153,6 +154,8 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({ saveView }) => {
                 className={
                   xIsNumber
                     ? "text-color-pdf-med"
+                    : darkMode
+                    ? "text-color-pdf-light text-weight-500"
                     : "text-color-pdf-med-dark text-weight-500"
                 }
               >
@@ -169,6 +172,8 @@ const InsightDesigner: React.FC<InsightDesignerProps> = ({ saveView }) => {
                 className={
                   !xIsNumber
                     ? "text-color-pdf-med"
+                    : darkMode
+                    ? "text-color-pdf-light text-weight-500"
                     : "text-color-pdf-med-dark text-weight-500"
                 }
               >
